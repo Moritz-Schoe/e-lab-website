@@ -1,8 +1,7 @@
 import { bitter } from "@styles/fonts";
 import { cx } from "class-variance-authority";
 import type { Metadata } from "next";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowDown, faRocket, faBuilding, faGraduationCap, faCode, faScaleBalanced, faUsers, faBullhorn, faHandshake, IconDefinition } from "@fortawesome/free-solid-svg-icons";
+import { ArrowDown, ArrowRight, Rocket, Building2, GraduationCap, Code, Scale, Users, Megaphone, Handshake } from "lucide-react";
 import Hero from "@components/Hero";
 
 export const metadata: Metadata = {
@@ -63,73 +62,103 @@ const steps: Step[] = [
 
 interface Department {
   name: string;
-  icon: IconDefinition;
+  icon: React.ElementType;
   description: string;
   gradient: string;
 }
 
+interface PreviousWork {
+  title: string;
+  description: string;
+  link: string;
+  date: string;
+  category: "Research" | "Project";
+}
+
+const previousWork: PreviousWork[] = [
+  {
+    title: "IBM SS24 Research",
+    description: "We address a fundamental limitation in language models: their struggle with numerical reasoning. While these models excel at text generation, they lack natural inductive bias for handling numbers, especially in scientific contexts. Our solution introduces two novel loss functions that improve numerical accuracy by incorporating regression-like objectives into the training process. When applied to a standard T5 model, we demonstrate significant improvements in numerical accuracy across mathematical tasks.",
+    link: "https://arxiv.org/abs/2411.02083",
+    date: "Summer 2024",
+    category: "Research"
+  },
+  {
+    title: "MIT SS24 Research",
+    description: "We bridge the gap between computational predictions and laboratory synthesis in materials science. While machine learning has improved the prediction of stable material structures, translating these predictions into successful laboratory syntheses remains challenging. Our work introduces the first Reaction Graph Network (RGN) to model precursor interactions and predict synthesis conditions for inorganic reactions, significantly accelerating the path from computational predictions to material synthesis.",
+    link: "https://openreview.net/pdf?id=VGsXQOTs1E",
+    date: "Summer 2024",
+    category: "Research"
+  },
+  {
+    title: "MIT WS24/25 Research",
+    description: "We present Retro-Rank-In, a novel framework for inorganic material retrosynthesis that overcomes limitations in traditional machine learning approaches. Unlike previous methods that rely on known precursors, our approach embeds target and precursor materials in a shared latent space and learns a pairwise ranker on a bipartite graph. This enables unprecedented generalization capabilities, as demonstrated by correctly predicting precursor pairs never seen in training, setting new state-of-the-art results in material synthesis planning.",
+    link: "https://arxiv.org/abs/2502.04289",
+    date: "Winter 2024",
+    category: "Research"
+  }
+];
+
 const departments: Department[] = [
   {
     name: "Makeathon",
-    icon: faRocket,
+    icon: Rocket,
     description: "Organizing Munich's largest AI Makeathon - a 48-hour virtual challenge where teams develop real-world business cases with AI. Features workshops, talks, and expert mentorship.",
     gradient: "bg-gradient-to-br from-slate-50 via-slate-100 to-slate-200",
   },
   {
     name: "Venture",
-    icon: faBuilding,
+    icon: Building2,
     description: "Bridging the gap between ideas and successful AI startups. We foster innovation and entrepreneurial spirit within TUM.ai.",
     gradient: "bg-gradient-to-br from-slate-50 via-slate-100 to-slate-200",
   },
   {
     name: "Industry",
-    icon: faGraduationCap,
+    icon: GraduationCap,
     description: "Connecting TUM.ai members with industry partners for real-world AI projects during lecture-free periods.",
     gradient: "bg-gradient-to-br from-slate-50 via-slate-100 to-slate-200",
   },
   {
     name: "Education",
-    icon: faGraduationCap,
+    icon: GraduationCap,
     description: "Creating and delivering AI educational content and events for all skill levels - from beginner to expert.",
     gradient: "bg-gradient-to-br from-slate-50 via-slate-100 to-slate-200",
   },
   {
     name: "Software Dev",
-    icon: faCode,
+    icon: Code,
     description: "Building and maintaining TUM.ai's digital infrastructure, from in-house tools to cloud services.",
     gradient: "bg-gradient-to-br from-slate-50 via-slate-100 to-slate-200",
   },
   {
     name: "Legal & Finance",
-    icon: faScaleBalanced,
+    icon: Scale,
     description: "Ensuring TUM.ai's compliance and financial sustainability while maintaining our non-profit status.",
     gradient: "bg-gradient-to-br from-slate-50 via-slate-100 to-slate-200",
   },
   {
     name: "Community",
-    icon: faUsers,
+    icon: Users,
     description: "Building and nurturing our community through events, buddy programs, and recruitment.",
     gradient: "bg-gradient-to-br from-slate-50 via-slate-100 to-slate-200",
   },
   {
     name: "Marketing",
-    icon: faBullhorn,
+    icon: Megaphone,
     description: "Shaping TUM.ai's public image and promoting our vision through strategic communication.",
     gradient: "bg-gradient-to-br from-slate-50 via-slate-100 to-slate-200",
   },
   {
     name: "Partners & Sponsors",
-    icon: faHandshake,
+    icon: Handshake,
     description: "Building strategic partnerships and securing sponsorships to enable ambitious events and projects.",
     gradient: "bg-gradient-to-br from-slate-50 via-slate-100 to-slate-200",
   },
 ];
 
 const Arrow = ({ color = "slate-400" }: { color?: string }) => (
-  <div 
-    className="flex justify-center items-center my-8"
-  >
-    <FontAwesomeIcon icon={faArrowDown} className={`text-${color} text-lg opacity-40`} />
+  <div className="flex justify-center items-center my-8">
+    <ArrowDown className={`text-${color} text-lg opacity-40`} />
   </div>
 );
 
@@ -147,14 +176,43 @@ const Card = ({ step, className = "" }: { step: Step; className?: string }) => (
   </div>
 );
 
-const DepartmentCard = ({ department }: { department: Department }) => (
+const DepartmentCard = ({ department }: { department: Department }) => {
+  const Icon = department.icon;
+  return (
     <div className={`h-full relative rounded-xl border border-slate-200 shadow-sm ${department.gradient} p-8`}>
       <div className="flex items-center gap-4 mb-5">
-        <FontAwesomeIcon icon={department.icon} className="text-slate-600 text-xl" />
+        <Icon className="text-slate-600 w-5 h-5" />
         <h3 className="text-lg font-semibold text-slate-900 tracking-tight">{department.name}</h3>
       </div>
       <p className="text-sm text-slate-600 leading-relaxed">{department.description}</p>
     </div>
+  );
+};
+
+const WorkCard = ({ work }: { work: PreviousWork }) => (
+  <a 
+    href={work.link}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="group block h-full"
+  >
+    <div className="relative h-full rounded-xl border border-slate-200 bg-white p-8 transition-all duration-200 hover:border-slate-300 hover:shadow-md hover:bg-slate-50/50">
+      <div className="flex items-center justify-between mb-4">
+        <span className="text-xs font-medium text-slate-500 tracking-wide">{work.date}</span>
+        <span className="text-xs font-medium px-2 py-1 rounded-full bg-slate-100 text-slate-600 group-hover:bg-slate-200 transition-colors">
+          {work.category}
+        </span>
+      </div>
+      <h3 className="text-lg font-semibold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors line-clamp-2">
+        {work.title}
+      </h3>
+      <p className="text-sm text-slate-600 leading-relaxed line-clamp-4">{work.description}</p>
+      <div className="mt-4 flex items-center gap-1 text-xs text-blue-600 group-hover:text-blue-700 transition-colors">
+        Read more
+        <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+      </div>
+    </div>
+  </a>
 );
 
 export default function Members() {
@@ -219,6 +277,23 @@ export default function Members() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 auto-rows-fr">
               {departments.map((dept) => (
                 <DepartmentCard key={dept.name} department={dept} />
+              ))}
+            </div>
+          </div>
+
+          {/* Previous Work Section */}
+          <div>
+            <div className="text-center mb-20">
+              <h2 className={cx("text-4xl font-bold text-slate-900 mb-6 tracking-tight", bitter.className)}>
+                Our Impact Projects
+              </h2>
+              <p className="text-slate-600 max-w-2xl mx-auto text-lg">
+                Explore our latest research papers and projects that showcase the innovative work of our members.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {previousWork.map((work) => (
+                <WorkCard key={work.title} work={work} />
               ))}
             </div>
           </div>

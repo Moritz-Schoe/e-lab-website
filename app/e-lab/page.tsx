@@ -5,9 +5,6 @@ import Stat from "@components/Stat";
 import Testimonials from "@components/Testimonials";
 import Timeline from "@components/Timeline";
 import Section from "@components/ui/Section";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@components/ui/carousel";
-import Card from "@components/ui/Card";
-import { startups } from "data/e-lab-startups";
 import {
   faBook,
   faCircleNodes,
@@ -166,46 +163,6 @@ export default function Page() {
           </div>
         </div>
       </Section>
-
-      <Section className="bg-purple-950 text-white">
-                <h1 className="mb-12 bg-gradient-to-r from-yellow-500 to-red-500 bg-clip-text text-5xl font-semibold uppercase text-transparent">
-                    MEET AI E-LAB STARTUPS
-                </h1>
-
-                <p className="mb-12 text-2xl">
-                    <span className="bg-gradient-to-r from-yellow-500 to-red-500 bg-clip-text font-semibold text-transparent">
-                        Have a look at the startups that have been part of the AI E-Lab
-                    </span>{" "}
-                    and see what they have achieved so far. We are proud of their progress and are excited to see what the future holds for them.
-                </p>
-
-                <Carousel>
-                  <CarouselContent>
-                    {startups.slice(0, 4).map((startup) => (
-                      <CarouselItem key={startup.id}>
-                        <Card
-                          key={startup.id}
-                          imageSrc={startup.logo}
-                          title={startup.name}
-                          description={startup.description}
-                          detailLink={`/e-lab/startups/${startup.id}`}
-                          className="h-full"
-                        />
-                      </CarouselItem>
-                    ))}                    
-                  </CarouselContent>
-                  <CarouselPrevious />
-                  <CarouselNext />
-                </Carousel>
-                <div className="mt-16 text-center">
-                <Link
-                    className="inline-block rounded-full border-2 border-yellow-500 p-4 text-center font-bold text-yellow-500 transition-colors duration-300 hover:bg-yellow-500 hover:text-purple-950"
-                    href="/e-lab/startuplist"
-                >
-                    See all E-Lab Startups
-                </Link>
-            </div>
-            </Section>
 
         <Section className="bg-purple-950 text-white">
           <h2 className="mb-12 bg-gradient-to-r from-yellow-500 to-red-500 bg-clip-text text-3xl font-semibold uppercase tracking-widest text-transparent sm:text-5xl">
