@@ -8,20 +8,46 @@ interface Props {
   title: string;
   subtitle?: string;
 }
+
 export default function Hero({ imageSrc, title, subtitle }: Props) {
   return (
     <section className="relative overflow-hidden">
+      {/* Background Image with Enhanced Effects */}
       <Image
         src={imageSrc}
         alt="Hero background image"
         fill
-        className="absolute -z-10 scale-110 object-cover blur-sm brightness-50 saturate-50"
+        className="absolute -z-10 scale-110 object-cover transition-transform duration-700 hover:scale-105"
+        priority
       />
+      
+      {/* Gradient Overlays */}
+      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black/80 via-black/60 to-black/80" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10" />
+      
+      {/* Content Container */}
       <div className="container relative mx-auto flex min-h-[80vh] max-w-4xl flex-col justify-center p-8 text-white md:p-16">
-        <h1 className={cx("mb-4 text-6xl font-medium", bitter.className)}>
-          {title}
-        </h1>
-        {!!subtitle && <p className="text-xl">{subtitle}</p>}
+        {/* Decorative Elements */}
+        <div className="absolute left-0 top-1/2 h-32 w-1 -translate-y-1/2 bg-gradient-to-b from-blue-500 to-purple-500 opacity-50" />
+        
+        {/* Main Content */}
+        <div className="space-y-6">
+          <h1 
+            className={cx(
+              "text-6xl font-medium tracking-tight md:text-7xl",
+              "bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent",
+              "animate-fade-in-up",
+              bitter.className
+            )}
+          >
+            {title}
+          </h1>
+          {!!subtitle && (
+            <p className="text-xl text-gray-300 animate-fade-in-up [animation-delay:200ms]">
+              {subtitle}
+            </p>
+          )}
+        </div>
       </div>
     </section>
   );
