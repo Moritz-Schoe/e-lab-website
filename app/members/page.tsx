@@ -1,7 +1,7 @@
 import { bitter } from "@styles/fonts";
 import { cx } from "class-variance-authority";
 import type { Metadata } from "next";
-import { ArrowDown, ArrowRight, Rocket, Building2, GraduationCap, Code, Scale, Users, Megaphone, Handshake } from "lucide-react";
+import { ArrowDown, ArrowRight, Rocket, Building2, GraduationCap, Code, Scale, Users, Megaphone, Handshake, Sparkles } from "lucide-react";
 import Hero from "@components/Hero";
 
 export const metadata: Metadata = {
@@ -162,29 +162,17 @@ const Arrow = ({ color = "slate-400" }: { color?: string }) => (
   </div>
 );
 
-const Card = ({ step, className = "" }: { step: Step; className?: string }) => (
-  <div className={`relative ${className}`}>
-    <div
-      className={`relative min-h-[240px] w-full rounded-xl border border-slate-200 shadow-sm ${step.gradient} flex flex-col items-center justify-center text-slate-900 px-12 py-10 text-center`}
-    >
-      <div className="absolute top-8 left-8 text-xs font-medium text-slate-500 tracking-wide">
-        {step.step}
-      </div>
-      <h3 className="text-2xl font-semibold mb-6 tracking-tight text-slate-900">{step.name}</h3>
-      <p className="text-sm text-slate-600 leading-relaxed max-w-[85%]">{step.description}</p>
-    </div>
-  </div>
-);
-
 const DepartmentCard = ({ department }: { department: Department }) => {
   const Icon = department.icon;
   return (
-    <div className={`h-full relative rounded-xl border border-slate-200 shadow-sm ${department.gradient} p-8`}>
-      <div className="flex items-center gap-4 mb-5">
-        <Icon className="text-slate-600 w-5 h-5" />
-        <h3 className="text-lg font-semibold text-slate-900 tracking-tight">{department.name}</h3>
+    <div className="relative h-full rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm p-8">
+      <div className="relative flex items-center gap-4 mb-5">
+        <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-white/10">
+          <Icon className="text-white w-5 h-5" />
+        </div>
+        <h3 className="text-lg font-semibold text-white tracking-tight">{department.name}</h3>
       </div>
-      <p className="text-sm text-slate-600 leading-relaxed">{department.description}</p>
+      <p className="text-sm text-slate-300 leading-relaxed">{department.description}</p>
     </div>
   );
 };
@@ -194,22 +182,22 @@ const WorkCard = ({ work }: { work: PreviousWork }) => (
     href={work.link}
     target="_blank"
     rel="noopener noreferrer"
-    className="group block h-full"
+    className="block h-full"
   >
-    <div className="relative h-full rounded-xl border border-slate-200 bg-white p-8 transition-all duration-200 hover:border-slate-300 hover:shadow-md hover:bg-slate-50/50">
-      <div className="flex items-center justify-between mb-4">
+    <div className="relative h-full rounded-xl border border-slate-200 bg-white p-8">
+      <div className="relative flex items-center justify-between mb-4">
         <span className="text-xs font-medium text-slate-500 tracking-wide">{work.date}</span>
-        <span className="text-xs font-medium px-2 py-1 rounded-full bg-slate-100 text-slate-600 group-hover:bg-slate-200 transition-colors">
+        <span className="text-xs font-medium px-2 py-1 rounded-full bg-slate-100 text-slate-600">
           {work.category}
         </span>
       </div>
-      <h3 className="text-lg font-semibold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors line-clamp-2">
+      <h3 className="text-lg font-semibold text-slate-900 mb-3 line-clamp-2">
         {work.title}
       </h3>
       <p className="text-sm text-slate-600 leading-relaxed line-clamp-4">{work.description}</p>
-      <div className="mt-4 flex items-center gap-1 text-xs text-blue-600 group-hover:text-blue-700 transition-colors">
+      <div className="mt-4 flex items-center gap-1 text-xs text-blue-600">
         Read more
-        <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+        <ArrowRight className="w-3 h-3" />
       </div>
     </div>
   </a>
@@ -225,27 +213,51 @@ export default function Members() {
       />
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-        <div className="text-center mb-24">
-          <h2 className={cx("text-4xl font-bold text-slate-900 mb-6 tracking-tight", bitter.className)}>
-            The TUM.ai Member Journey
-          </h2>
-          <p className="text-slate-600 max-w-2xl mx-auto text-lg">
-            All of our active members embark on an exciting journey - working on projects, driving AI innovation, and helping shape the TUM.ai community. At the heart of it all is our community, which empowers every member to grow, take initiative, and turn bold ideas into reality. No matter your ambition, TUM.ai is here to help you pursue it and make a meaningful impact - together.
-          </p>
-        </div>
+      <div className="relative">
+        {/* Journey Section - Light background with subtle pattern */}
+        <div className="relative bg-gradient-to-b from-white to-slate-50">
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="absolute inset-0 grid grid-cols-8 grid-rows-8 gap-8 opacity-5">
+              {Array.from({ length: 64 }).map((_, i) => (
+                <div key={i} className="h-1 w-1 rounded-full bg-blue-300" />
+              ))}
+            </div>
+          </div>
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+            <div className="text-center mb-24">
+              <h2 className={cx("text-4xl font-bold text-slate-900 mb-6 tracking-tight", bitter.className)}>
+                The TUM.ai Member Journey
+              </h2>
+              <p className="text-slate-600 max-w-2xl mx-auto text-lg">
+                All of our active members embark on an exciting journey - working on projects, driving AI innovation, and helping shape the TUM.ai community. At the heart of it all is our community, which empowers every member to grow, take initiative, and turn bold ideas into reality. No matter your ambition, TUM.ai is here to help you pursue it and make a meaningful impact - together.
+              </p>
+            </div>
 
-        <div className="space-y-24">
-          {/* Journey Section */}
-          <div>
             <div className="flex flex-col gap-8">
-              <Card step={steps[0]!} className="w-full" />
+              {/* First Card */}
+              <div className="relative w-full">
+                <div className="relative min-h-[240px] w-full rounded-xl border border-slate-200 bg-white/80 backdrop-blur-sm flex flex-col items-center justify-center text-slate-900 px-12 py-10 text-center">
+                  <div className="absolute top-8 left-8 text-xs font-medium text-slate-500 tracking-wide">
+                    {steps[0]!.step}
+                  </div>
+                  <h3 className="text-2xl font-semibold mb-6 tracking-tight text-slate-900">{steps[0]!.name}</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed max-w-[85%]">{steps[0]!.description}</p>
+                </div>
+              </div>
               
               <Arrow color="slate-400" />
 
               <div className="flex gap-16 justify-center">
                 {steps.slice(1, 3).map((step) => (
-                  <Card key={step.name} step={step} className="flex-1"/>
+                  <div key={step.name} className="relative flex-1">
+                    <div className="relative min-h-[240px] w-full rounded-xl border border-slate-200 bg-white/80 backdrop-blur-sm flex flex-col items-center justify-center text-slate-900 px-12 py-10 text-center">
+                      <div className="absolute top-8 left-8 text-xs font-medium text-slate-500 tracking-wide">
+                        {step.step}
+                      </div>
+                      <h3 className="text-2xl font-semibold mb-6 tracking-tight text-slate-900">{step.name}</h3>
+                      <p className="text-sm text-slate-600 leading-relaxed max-w-[85%]">{step.description}</p>
+                    </div>
+                  </div>
                 ))}
               </div>
 
@@ -254,23 +266,60 @@ export default function Members() {
                 <Arrow color="slate-400" />
               </div>
 
-              <Card step={steps[3]!} className="w-full" />
+              {/* Growth Opportunities Card */}
+              <div className="relative w-full">
+                <div className="relative min-h-[240px] w-full rounded-xl border border-slate-200 bg-white/80 backdrop-blur-sm flex flex-col items-center justify-center text-slate-900 px-12 py-10 text-center">
+                  <div className="absolute top-8 left-8 text-xs font-medium text-slate-500 tracking-wide">
+                    {steps[3]!.step}
+                  </div>
+                  <h3 className="text-2xl font-semibold mb-6 tracking-tight text-slate-900">{steps[3]!.name}</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed max-w-[85%]">{steps[3]!.description}</p>
+                </div>
+              </div>
               
               <Arrow color="slate-400" />
               
-              <Card step={steps[4]!} className="w-full" />
+              {/* REX Program Card */}
+              <div className="relative w-full">
+                <div className="relative min-h-[240px] w-full rounded-xl border border-slate-200 bg-white/80 backdrop-blur-sm flex flex-col items-center justify-center text-slate-900 px-12 py-10 text-center">
+                  <div className="absolute top-8 left-8 text-xs font-medium text-slate-500 tracking-wide">
+                    {steps[4]!.step}
+                  </div>
+                  <h3 className="text-2xl font-semibold mb-6 tracking-tight text-slate-900">{steps[4]!.name}</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed max-w-[85%]">{steps[4]!.description}</p>
+                </div>
+              </div>
               
               <Arrow color="slate-400" />
               
-              <Card step={steps[5]!} className="w-full" />
+              {/* Alumni Program Card */}
+              <div className="relative w-full">
+                <div className="relative min-h-[240px] w-full rounded-xl border border-slate-200 bg-white/80 backdrop-blur-sm flex flex-col items-center justify-center text-slate-900 px-12 py-10 text-center">
+                  <div className="absolute top-8 left-8 text-xs font-medium text-slate-500 tracking-wide">
+                    {steps[5]!.step}
+                  </div>
+                  <h3 className="text-2xl font-semibold mb-6 tracking-tight text-slate-900">{steps[5]!.name}</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed max-w-[85%]">{steps[5]!.description}</p>
+                </div>
+              </div>
             </div>
           </div>
+        </div>
 
-          {/* Departments Section */}
-          <div>
+        {/* Departments Section - Dark gradient background */}
+        <div className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,white,transparent)] opacity-5" />
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-purple-500/10" />
+          </div>
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
             <div className="text-center mb-20">
-              <h2 className={cx("text-4xl font-bold text-slate-900 mb-6 tracking-tight", bitter.className)}>Our Core Departments</h2>
-              <p className="text-slate-600 max-w-2xl mx-auto text-lg">
+              <div className="inline-flex items-center gap-2 mb-4">
+                <h2 className={cx("text-4xl font-bold text-white tracking-tight", bitter.className)}>
+                  Our Core Departments
+                </h2>
+              </div>
+              <p className="text-slate-300 max-w-2xl mx-auto text-lg">
                 Discover the diverse teams that make TUM.ai thrive. Each department plays a crucial role in our mission to shape the future of AI.
               </p>
             </div>
@@ -280,9 +329,15 @@ export default function Members() {
               ))}
             </div>
           </div>
+        </div>
 
-          {/* Previous Work Section */}
-          <div>
+        {/* Previous Work Section - Light background with modern pattern */}
+        <div className="relative bg-gradient-to-b from-slate-50 to-white">
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,transparent,white)] opacity-10" />
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-100/30 via-transparent to-purple-100/30" />
+          </div>
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
             <div className="text-center mb-20">
               <h2 className={cx("text-4xl font-bold text-slate-900 mb-6 tracking-tight", bitter.className)}>
                 Our Impact Projects
