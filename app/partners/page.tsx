@@ -79,75 +79,125 @@ export default function Partners() {
       </Section>
 
       <Section background="inverted">
-        <h2
-          className={cx(
-            "text-uppercase mb-8 w-full text-4xl font-semibold text-white",
-            bitter.className
-          )}
-        >
-          Connecting students, industry and academia.
-        </h2>
-
-        <div className="grid gap-4 md:grid-cols-2">
-          <div className="mb-4">
-            <p className="mb-4 text-xl">
-              Get access to our exclusive{" "}
-              <span className="text-purple-300">
-                pre-selected talent pool of AI enthusiasts
-              </span>
-              . Our members are experienced in software development, data
-              science, data engineering and AI business strategy.
-            </p>
-
-            <p className="mb-4">
-              Joining TUM.ai as a partner or sponsor can support our non-profit
-              organization in many ways. Interact with us in our signature
-              projects and formats like:
-            </p>
-
-            <ul className="mb-4 list-inside list-disc">
-              <li>
-                <b>Challenge setter</b> for the Makeathon
-              </li>
-              <li>
-                <b>Project partner</b> for an Industry phase
-              </li>
-              <li>
-                <b>Lecturer</b> at the AI academy
-              </li>
-              <li>
-                <b>Workshops</b> at your offices
-              </li>
-              <li>
-                <b>Participant</b> or <b>speaker</b> at our events, e.g. the AI
-                summit
-              </li>
-              <li>
-                <b>Sponsorships</b> with logo recognition for other events
-              </li>
-              <li>
-                <b>Mentor</b> for our members
-              </li>
-              <li>
-                <b>Judge</b> or <b>mentor</b> in our in-house AI E-lab incubator
-                for startups
-              </li>
-              <li>
-                Post <b>open positions</b> or a master thesis inside our talent
-                network
-              </li>
-            </ul>
-            <p className="mb-8">
-              We would be more than happy to discuss a long-term collaboration
-              with you!
-            </p>
-
-            <Button intent="primary" asChild>
-              <Link href="mailto:partners@tum-ai.com">Become a partner</Link>
-            </Button>
+        <div className="mx-auto max-w-7xl">
+          {/* Background dots pattern */}
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="absolute inset-0 grid grid-cols-8 grid-rows-8 gap-8 opacity-10">
+              {Array.from({ length: 64 }).map((_, i) => (
+                <div key={i} className="h-1 w-1 rounded-full bg-purple-300" />
+              ))}
+            </div>
           </div>
 
-          <Image src={MartinTalk} alt="Martin talk" className="rounded" />
+          <div className="relative mb-16 flex flex-col items-center text-center">
+            <h2
+              className={cx(
+                "mb-6 text-5xl font-semibold text-white",
+                bitter.className
+              )}
+            >
+              Partner with TUM.ai
+            </h2>
+            <p className="max-w-2xl text-xl text-white/90">
+              Access our exclusive talent pool of AI enthusiasts, experienced in software development, data science, and AI strategy.
+            </p>
+          </div>
+
+          <div className="relative grid gap-16 md:grid-cols-2">
+            <div className="relative">
+              <div className="relative space-y-8 rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur-sm">
+                <div className="space-y-6">
+                  <h3 className={cx("text-2xl font-semibold text-white", bitter.className)}>
+                    Ways to Collaborate
+                  </h3>
+                  <p className="text-white/80">
+                    We&apos;re always open to new ideas and creative ways to collaborate.
+                  </p>
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    <div className="rounded-lg border border-white/10 p-4">
+                      <h4 className="mb-2 font-medium text-white">Events & Community</h4>
+                      <ul className="space-y-2 text-sm text-white/80">
+                        <li className="flex items-center gap-2">
+                          <span className="h-1 w-1 rounded-full bg-purple-300" />
+                          <span>AI Summit Speaker</span>
+                        </li>
+                        <li className="flex items-center gap-2">
+                          <span className="h-1 w-1 rounded-full bg-purple-300" />
+                          <span>Makeathon Challenge</span>
+                        </li>
+                        <li className="flex items-center gap-2">
+                          <span className="h-1 w-1 rounded-full bg-purple-300" />
+                          <span>Workshop Host</span>
+                        </li>
+                        <li className="flex items-center gap-2">
+                          <span className="h-1 w-1 rounded-full bg-purple-300" />
+                          <span>Mentorship Program</span>
+                        </li>
+                      </ul>
+                    </div>
+                    <div className="rounded-lg border border-white/10 p-4">
+                      <h4 className="mb-2 font-medium text-white">Industry & Projects</h4>
+                      <ul className="space-y-2 text-sm text-white/80">
+                        <li className="flex items-center gap-2">
+                          <span className="h-1 w-1 rounded-full bg-purple-300" />
+                          <span>Industry Project Partner</span>
+                        </li>
+                        <li className="flex items-center gap-2">
+                          <span className="h-1 w-1 rounded-full bg-purple-300" />
+                          <span>AI E-lab Judge</span>
+                        </li>
+                        <li className="flex items-center gap-2">
+                          <span className="h-1 w-1 rounded-full bg-purple-300" />
+                          <span>Post Open Positions</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-6">
+                  <h3 className={cx("text-2xl font-semibold text-white", bitter.className)}>
+                    Education & Knowledge
+                  </h3>
+                  <ul className="space-y-3 text-white/80">
+                    <li className="flex items-center gap-2">
+                      <span className="h-1 w-1 rounded-full bg-purple-300" />
+                      <span>AI Academy Lecturer</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="h-1 w-1 rounded-full bg-purple-300" />
+                      <span>Technical Workshop Leader</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="h-1 w-1 rounded-full bg-purple-300" />
+                      <span>Research Collaboration</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <Button intent="primary" className="w-full">
+                  <Link href="mailto:partners@tum-ai.com">Become a partner</Link>
+                </Button>
+              </div>
+            </div>
+
+            <div className="relative">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm">
+                <Image 
+                  src={MartinTalk} 
+                  alt="Martin talk" 
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-8">
+                  <p className="text-lg text-white">
+                    Join our network of industry leaders and innovators
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </Section>
 
