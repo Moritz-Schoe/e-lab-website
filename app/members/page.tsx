@@ -1,7 +1,7 @@
 import { bitter } from "@styles/fonts";
 import { cx } from "class-variance-authority";
 import type { Metadata } from "next";
-import { ArrowDown, ArrowRight, Rocket, Building2, GraduationCap, Code, Scale, Users, Megaphone, Handshake, Sparkles } from "lucide-react";
+import { ArrowDown, ArrowRight, Rocket, Building2, GraduationCap, Code, Scale, Users, Megaphone, Handshake } from "lucide-react";
 import Hero from "@components/Hero";
 
 export const metadata: Metadata = {
@@ -247,9 +247,9 @@ export default function Members() {
               
               <Arrow color="slate-400" />
 
-              <div className="flex gap-16 justify-center">
+              <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 justify-center">
                 {steps.slice(1, 3).map((step) => (
-                  <div key={step.name} className="relative flex-1">
+                  <div key={step.name} className="relative w-full lg:flex-1">
                     <div className="relative min-h-[240px] w-full rounded-xl border border-slate-200 bg-white/80 backdrop-blur-sm flex flex-col items-center justify-center text-slate-900 px-12 py-10 text-center">
                       <div className="absolute top-8 left-8 text-xs font-medium text-slate-500 tracking-wide">
                         {step.step}
@@ -261,9 +261,14 @@ export default function Members() {
                 ))}
               </div>
 
-              <div className="flex gap-32 justify-center">
-                <Arrow color="slate-400" />
-                <Arrow color="slate-400" />
+              {/* Double Arrows */}
+              <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 justify-center">
+                <div className="flex justify-center lg:flex-1">
+                  <Arrow color="slate-400" />
+                </div>
+                <div className="hidden lg:flex justify-center lg:flex-1">
+                  <Arrow color="slate-400" />
+                </div>
               </div>
 
               {/* Growth Opportunities Card */}
