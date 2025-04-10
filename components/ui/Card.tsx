@@ -1,98 +1,131 @@
 import * as React from "react";
-import Link from "next/link";
-import Image from "next/image";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faInstagram,
-  faLinkedin,
-  faSlack,
-} from "@fortawesome/free-brands-svg-icons";
-import Button from "components/ui/Button";
+import { cva, type VariantProps } from "class-variance-authority";
+import { cn } from "@components/lib/utils";
 
-interface CardProps {
-  imageSrc: string;
-  title: string;
-  description: string;
-  detailLink?: string;
-  instagramLink?: string;
-  linkedinLink?: string;
-  slackLink?: string;
-  className?: string; // Add className to CardProps
-}
+const cardVariants = cva("rounded-xl border py-6 shadow-sm overflow-clip", {
+  variants: {
+    variant: {
+      default: "bg-card text-card-foreground",
+      glass:
+        "border-white/10 bg-white/5 backdrop-blur-sm hover:bg-white/10 text-white relative",
+      "glass-light":
+        "border-slate-200 bg-white/80 backdrop-blur-sm hover:border-purple-100 hover:shadow-md text-slate-900 relative",
+    },
+  },
+  defaultVariants: {
+    variant: "default",
+  },
+});
 
-export default function Card({
-  imageSrc,
-  title,
-  description,
-  detailLink,
-  instagramLink,
-  linkedinLink,
-  slackLink,
-  className, // Destructure className
-}: CardProps) {
-  // Encode the title to be URL-safe
-  const dlink = detailLink ?? "";
+interface CardProps
+  extends React.ComponentProps<"div">,
+    VariantProps<typeof cardVariants> {}
 
+// Glass effect elements components (for internal use only)
+const GlassHighlights = () => (
+  <>
+    {/* Glass-like top highlight */}
+    <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-purple-300/50 to-transparent"></div>
+    {/* Glass-like left highlight */}
+    <div className="absolute inset-y-0 left-0 w-[1px] bg-gradient-to-b from-transparent via-purple-300/50 to-transparent"></div>
+  </>
+);
+
+const GlassHighlightsLight = () => (
+  <>
+    {/* Glass-like top highlight */}
+    <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-white/80 via-purple-100/50 to-white/80"></div>
+    {/* Glass-like left highlight */}
+    <div className="absolute inset-y-0 left-0 w-[1px] bg-gradient-to-b from-white/80 via-purple-100/50 to-white/80"></div>
+  </>
+);
+
+function Card({ className, variant, ...props }: CardProps) {
   return (
-    <div className={className}>
-      <div
-        className={`group relative flex cursor-pointer flex-col overflow-hidden rounded-lg border border-gray-200 bg-white ${className}`}
-      >
-        <div className="flex h-full flex-col p-5">
-          <div>
-            <h5 className="text-μ font-bold tracking-tight text-gray-900 dark:text-black">
-              {title}
-            </h5>
-            <Image
-              src={imageSrc}
-              alt={title}
-              width={64}
-              height={64}
-              className="rounded-full"
-            />
-          </div>
-          <div className="grow">
-            <p className="text-μ font-bold tracking-tight text-gray-900 dark:text-black">
-              {description}
-            </p>
-          </div>
-          <div className="h-2"></div>
-          <div className="mt-auto flex items-center justify-end space-x-3">
-            <Button asChild>
-              <Link href={dlink}>Details</Link>
-            </Button>
-            {instagramLink && (
-              <Link href={instagramLink} passHref>
-                <FontAwesomeIcon
-                  icon={faInstagram}
-                  size="xl"
-                  className="text-black duration-500 hover:text-purple-300"
-                />
-              </Link>
-            )}
-
-            {linkedinLink && (
-              <Link href={linkedinLink} passHref>
-                <FontAwesomeIcon
-                  icon={faLinkedin}
-                  size="xl"
-                  className="text-black duration-500 hover:text-purple-300"
-                />
-              </Link>
-            )}
-
-            {slackLink && (
-              <Link href={slackLink} passHref>
-                <FontAwesomeIcon
-                  icon={faSlack}
-                  size="xl"
-                  className="text-black duration-500 hover:text-purple-300"
-                />
-              </Link>
-            )}
-          </div>
-        </div>
-      </div>
+    <div
+      data-slot="card"
+      className={cn(cardVariants({ variant, className }))}
+      {...props}
+    >
+      {variant === "glass" && <GlassHighlights />}
+      {variant === "glass-light" && <GlassHighlightsLight />}
+      {props.children}
     </div>
   );
 }
+
+function CardHeader({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="card-header"
+      className={cn(
+        "@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6",
+        className,
+      )}
+      {...props}
+    />
+  );
+}
+
+function CardTitle({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="card-title"
+      className={cn("leading-none font-semibold", className)}
+      {...props}
+    />
+  );
+}
+
+function CardDescription({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="card-description"
+      className={cn("text-muted-foreground text-sm", className)}
+      {...props}
+    />
+  );
+}
+
+function CardAction({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="card-action"
+      className={cn(
+        "col-start-2 row-span-2 row-start-1 self-start justify-self-end",
+        className,
+      )}
+      {...props}
+    />
+  );
+}
+
+function CardContent({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="card-content"
+      className={cn("px-6", className)}
+      {...props}
+    />
+  );
+}
+
+function CardFooter({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="card-footer"
+      className={cn("flex items-center px-6 [.border-t]:pt-6", className)}
+      {...props}
+    />
+  );
+}
+
+export {
+  Card,
+  CardHeader,
+  CardFooter,
+  CardTitle,
+  CardAction,
+  CardDescription,
+  CardContent,
+};

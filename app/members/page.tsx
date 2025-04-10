@@ -14,6 +14,7 @@ import {
   Handshake,
 } from "lucide-react";
 import Image from "next/image";
+import { Card } from "@components/ui/card";
 
 export const metadata: Metadata = {
   title: "TUM.ai - Members",
@@ -188,12 +189,7 @@ const Arrow = ({ color = "slate-400" }: { color?: string }) => (
 const DepartmentCard = ({ department }: { department: Department }) => {
   const Icon = department.icon;
   return (
-    <div className="group relative h-full rounded-xl border border-white/10 bg-white/5 p-8 backdrop-blur-sm transition-all duration-300 hover:bg-white/10">
-      {/* Glass-like top highlight */}
-      <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-purple-300/50 to-transparent"></div>
-      {/* Glass-like left highlight */}
-      <div className="absolute inset-y-0 left-0 w-[1px] bg-gradient-to-b from-transparent via-purple-300/50 to-transparent"></div>
-
+    <Card variant="glass" className="h-full p-8">
       <div className="relative mb-5 flex items-center gap-4">
         <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/10 transition-colors group-hover:bg-white/15">
           <Icon className="h-5 w-5 text-white" />
@@ -205,7 +201,7 @@ const DepartmentCard = ({ department }: { department: Department }) => {
       <p className="text-sm leading-relaxed text-slate-300">
         {department.description}
       </p>
-    </div>
+    </Card>
   );
 };
 
@@ -216,12 +212,7 @@ const WorkCard = ({ work }: { work: PreviousWork }) => (
     rel="noopener noreferrer"
     className="block h-full"
   >
-    <div className="group relative h-full rounded-xl border border-slate-200 bg-white/90 p-8 backdrop-blur-sm transition-all duration-300 hover:border-purple-100 hover:shadow-lg">
-      {/* Glass-like top highlight */}
-      <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-white/80 via-purple-100/50 to-white/80"></div>
-      {/* Glass-like left highlight */}
-      <div className="absolute inset-y-0 left-0 w-[1px] bg-gradient-to-b from-white/80 via-purple-100/50 to-white/80"></div>
-
+    <Card variant="glass-light" className="group h-full p-8">
       <div className="relative mb-4 flex items-center justify-between">
         <span className="text-xs font-medium tracking-wide text-slate-500">
           {work.date}
@@ -240,8 +231,22 @@ const WorkCard = ({ work }: { work: PreviousWork }) => (
         Read more
         <ArrowRight className="h-3 w-3" />
       </div>
-    </div>
+    </Card>
   </a>
+);
+
+const StepCard = ({ step }: { step: Step }) => (
+  <Card variant="glass-light" className="px-12 py-10 text-center">
+    <div className="absolute top-8 left-8 text-xs font-medium tracking-wide text-slate-500">
+      {step.step}
+    </div>
+    <h3 className="mb-6 text-2xl font-semibold tracking-tight text-slate-900">
+      {step.name}
+    </h3>
+    <p className="mx-auto max-w-[85%] text-sm leading-relaxed text-slate-600">
+      {step.description}
+    </p>
+  </Card>
 );
 
 export default function Members() {
@@ -320,22 +325,7 @@ export default function Members() {
             <div className="flex flex-col gap-8">
               {/* First Card */}
               <div className="relative w-full">
-                <div className="relative flex min-h-[240px] w-full flex-col items-center justify-center rounded-xl border border-slate-200 bg-white/80 px-12 py-10 text-center text-slate-900 shadow-sm backdrop-blur-sm transition-all duration-300 hover:border-purple-100 hover:shadow-md">
-                  {/* Glass-like top highlight */}
-                  <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-white/80 via-purple-100/50 to-white/80"></div>
-                  {/* Glass-like left highlight */}
-                  <div className="absolute inset-y-0 left-0 w-[1px] bg-gradient-to-b from-white/80 via-purple-100/50 to-white/80"></div>
-
-                  <div className="absolute top-8 left-8 text-xs font-medium tracking-wide text-slate-500">
-                    {steps[0].step}
-                  </div>
-                  <h3 className="mb-6 text-2xl font-semibold tracking-tight text-slate-900">
-                    {steps[0].name}
-                  </h3>
-                  <p className="max-w-[85%] text-sm leading-relaxed text-slate-600">
-                    {steps[0].description}
-                  </p>
-                </div>
+                <StepCard step={steps[0]} />
               </div>
 
               <Arrow color="slate-400" />
@@ -343,22 +333,7 @@ export default function Members() {
               <div className="flex flex-col justify-center gap-8 lg:flex-row lg:gap-16">
                 {steps.slice(1, 3).map((step) => (
                   <div key={step.name} className="relative w-full lg:flex-1">
-                    <div className="relative flex min-h-[240px] w-full flex-col items-center justify-center rounded-xl border border-slate-200 bg-white/80 px-12 py-10 text-center text-slate-900 shadow-sm backdrop-blur-sm transition-all duration-300 hover:border-purple-100 hover:shadow-md">
-                      {/* Glass-like top highlight */}
-                      <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-white/80 via-purple-100/50 to-white/80"></div>
-                      {/* Glass-like left highlight */}
-                      <div className="absolute inset-y-0 left-0 w-[1px] bg-gradient-to-b from-white/80 via-purple-100/50 to-white/80"></div>
-
-                      <div className="absolute top-8 left-8 text-xs font-medium tracking-wide text-slate-500">
-                        {step.step}
-                      </div>
-                      <h3 className="mb-6 text-2xl font-semibold tracking-tight text-slate-900">
-                        {step.name}
-                      </h3>
-                      <p className="max-w-[85%] text-sm leading-relaxed text-slate-600">
-                        {step.description}
-                      </p>
-                    </div>
+                    <StepCard step={step} />
                   </div>
                 ))}
               </div>
@@ -375,66 +350,21 @@ export default function Members() {
 
               {/* Growth Opportunities Card */}
               <div className="relative w-full">
-                <div className="relative flex min-h-[240px] w-full flex-col items-center justify-center rounded-xl border border-slate-200 bg-white/80 px-12 py-10 text-center text-slate-900 shadow-sm backdrop-blur-sm transition-all duration-300 hover:border-purple-100 hover:shadow-md">
-                  {/* Glass-like top highlight */}
-                  <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-white/80 via-purple-100/50 to-white/80"></div>
-                  {/* Glass-like left highlight */}
-                  <div className="absolute inset-y-0 left-0 w-[1px] bg-gradient-to-b from-white/80 via-purple-100/50 to-white/80"></div>
-
-                  <div className="absolute top-8 left-8 text-xs font-medium tracking-wide text-slate-500">
-                    {steps[3].step}
-                  </div>
-                  <h3 className="mb-6 text-2xl font-semibold tracking-tight text-slate-900">
-                    {steps[3].name}
-                  </h3>
-                  <p className="max-w-[85%] text-sm leading-relaxed text-slate-600">
-                    {steps[3].description}
-                  </p>
-                </div>
+                <StepCard step={steps[3]} />
               </div>
 
               <Arrow color="slate-400" />
 
               {/* REX Program Card */}
               <div className="relative w-full">
-                <div className="relative flex min-h-[240px] w-full flex-col items-center justify-center rounded-xl border border-slate-200 bg-white/80 px-12 py-10 text-center text-slate-900 shadow-sm backdrop-blur-sm transition-all duration-300 hover:border-purple-100 hover:shadow-md">
-                  {/* Glass-like top highlight */}
-                  <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-white/80 via-purple-100/50 to-white/80"></div>
-                  {/* Glass-like left highlight */}
-                  <div className="absolute inset-y-0 left-0 w-[1px] bg-gradient-to-b from-white/80 via-purple-100/50 to-white/80"></div>
-
-                  <div className="absolute top-8 left-8 text-xs font-medium tracking-wide text-slate-500">
-                    {steps[4].step}
-                  </div>
-                  <h3 className="mb-6 text-2xl font-semibold tracking-tight text-slate-900">
-                    {steps[4].name}
-                  </h3>
-                  <p className="max-w-[85%] text-sm leading-relaxed text-slate-600">
-                    {steps[4].description}
-                  </p>
-                </div>
+                <StepCard step={steps[4]} />
               </div>
 
               <Arrow color="slate-400" />
 
               {/* Alumni Program Card */}
               <div className="relative w-full">
-                <div className="relative flex min-h-[240px] w-full flex-col items-center justify-center rounded-xl border border-slate-200 bg-white/80 px-12 py-10 text-center text-slate-900 shadow-sm backdrop-blur-sm transition-all duration-300 hover:border-purple-100 hover:shadow-md">
-                  {/* Glass-like top highlight */}
-                  <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-white/80 via-purple-100/50 to-white/80"></div>
-                  {/* Glass-like left highlight */}
-                  <div className="absolute inset-y-0 left-0 w-[1px] bg-gradient-to-b from-white/80 via-purple-100/50 to-white/80"></div>
-
-                  <div className="absolute top-8 left-8 text-xs font-medium tracking-wide text-slate-500">
-                    {steps[5].step}
-                  </div>
-                  <h3 className="mb-6 text-2xl font-semibold tracking-tight text-slate-900">
-                    {steps[5].name}
-                  </h3>
-                  <p className="max-w-[85%] text-sm leading-relaxed text-slate-600">
-                    {steps[5].description}
-                  </p>
-                </div>
+                <StepCard step={steps[5]} />
               </div>
             </div>
           </div>

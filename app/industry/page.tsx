@@ -1,4 +1,4 @@
-import Button from "@components/ui/Button";
+import Button from "@components/ui/button";
 import Tabs from "@components/ui/Tabs";
 import { partners_ip5, projects } from "data/industry";
 import Image from "next/image";

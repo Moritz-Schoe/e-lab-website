@@ -23,8 +23,8 @@ const iconContainerStyles = cva(
 const headingStyles = cva("text-base font-medium text-foreground", {
   variants: {
     color: {
-      purple: "text-purple-600 dark:text-purple-400",
-      yellow: "text-yellow-600 dark:text-yellow-400",
+      purple: "text-purple-600",
+      yellow: "text-yellow-600",
     },
   },
 });
@@ -46,7 +46,7 @@ const gridStyles = cva("grid gap-8", {
 const articleStyles = cva("flex flex-col gap-4 transition-all duration-200", {
   variants: {
     shadow: {
-      true: "rounded-xl p-6 bg-white/5 backdrop-blur-md border border-white/10 dark:bg-black/20",
+      true: "rounded-xl p-6 bg-white/5 backdrop-blur-md border border-white/10",
       false: "p-5",
     },
   },

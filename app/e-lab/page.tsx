@@ -10,7 +10,6 @@ import { faq, testimonials } from "data/e-lab";
 import Link from "next/link";
 import { Hero } from "./hero";
 import type { Metadata } from "next";
-import VentureTeam from "@components/VentureTeam";
 import { Organization, WithContext } from "schema-dts";
 
 export const metadata: Metadata = {
@@ -375,8 +374,6 @@ export default function Page() {
           Become a partner
         </Link>
       </Section>
-
-      <VentureTeam />
 
       <Section className="bg-purple-950 text-white">
         <h3 className="text-primary mb-2 block text-center text-lg font-semibold">

@@ -1,4 +1,4 @@
-import Button from "@components/ui/Button";
+import Button from "@components/ui/button";
 import Image from "next/image";
 import MartinTalk from "@public/assets/partners/martin_talk.jpg";
 import { cx } from "class-variance-authority";

@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import * as z from "zod";
-import Button from "@components/ui/Button";
+import Button from "@components/ui/button";
 
 export const Waitlist = () => {
   const [joinedWaitlist, setJoinedWaitlist] = useState(false);

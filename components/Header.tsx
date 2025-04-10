@@ -8,7 +8,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as Dialog from "@radix-ui/react-dialog";
-import Button from "@components/ui/Button";
+import Button from "@components/ui/button";
 import { cx } from "class-variance-authority";
 import {
   motion,

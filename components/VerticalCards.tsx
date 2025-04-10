@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
-import Button, { type Props as ButtonProps } from "./ui/Button";
+import Button, { type Props as ButtonProps } from "./ui/button";
 
 export interface Props {
   cards: CardProps[];

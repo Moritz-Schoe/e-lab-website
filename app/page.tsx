@@ -1,4 +1,4 @@
-import Button from "@components/ui/Button";
+import Button from "@components/ui/button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSlack } from "@fortawesome/free-brands-svg-icons";
 import { bitter } from "../styles/fonts";
@@ -12,6 +12,13 @@ import {
   initiatives_collabrated_with,
   partners_collabrated_with,
 } from "data/partners";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardTitle,
+} from "@components/ui/card";
 
 export const metadata: Metadata = {
   title: "TUM.ai - Student Initiative focused on Artificial Intelligence",
@@ -149,7 +156,7 @@ export default function Index() {
         </div>
 
         <div className="container mx-auto">
-          <div className="relative mx-auto max-w-6xl px-4">
+          <div className="relative mx-auto max-w-7xl px-4">
             <h2
               className={cx(
                 "mb-16 text-center text-3xl font-semibold",
@@ -211,7 +218,7 @@ export default function Index() {
         <div className="absolute bottom-1/3 left-0 h-[25vw] max-h-96 w-[25vw] max-w-96 rounded-full bg-gradient-to-tr from-blue-300/10 to-purple-300/5 blur-3xl"></div>
 
         <div className="container mx-auto">
-          <div className="relative z-10 mx-auto max-w-6xl px-4">
+          <div className="relative z-10 mx-auto max-w-7xl px-4">
             <div className="flex flex-col gap-16 lg:flex-row">
               <div className="lg:w-1/2">
                 <h2
@@ -295,10 +302,10 @@ export default function Index() {
         </div>
 
         <div className="container mx-auto">
-          <div className="relative z-10 mx-auto max-w-6xl px-4">
+          <div className="relative z-10 mx-auto max-w-7xl px-4">
             <div className="flex flex-col items-center gap-16 lg:flex-row">
-              <div className="lg:w-1/2">
-                <div className="relative h-[400px] w-full overflow-hidden rounded-2xl">
+              <div className="w-full lg:w-1/2">
+                <div className="relative mx-auto h-[300px] w-full max-w-[500px] overflow-hidden rounded-2xl sm:h-[350px] md:h-[400px]">
                   <div className="absolute inset-0 -m-1 rounded-2xl bg-gradient-to-br from-purple-300/10 to-blue-300/10 backdrop-blur-[2px]"></div>
                   <div className="absolute inset-1 overflow-hidden rounded-xl border border-white/10 shadow-lg">
                     <Image
@@ -312,7 +319,7 @@ export default function Index() {
                 </div>
               </div>
 
-              <div className="lg:w-1/2">
+              <div className="w-full lg:w-1/2">
                 <h2
                   className={cx(
                     "mb-8 text-3xl font-semibold",
@@ -369,7 +376,7 @@ export default function Index() {
         <div className="absolute bottom-1/3 left-1/4 h-[15vw] max-h-64 w-[15vw] max-w-64 rounded-full bg-gradient-to-tr from-blue-300/10 to-purple-300/5 blur-3xl"></div>
 
         <div className="container mx-auto">
-          <div className="relative z-10 mx-auto max-w-6xl px-4">
+          <div className="relative z-10 mx-auto max-w-7xl px-4">
             <h2
               className={cx(
                 "mb-16 text-center text-3xl font-semibold",
@@ -411,7 +418,7 @@ export default function Index() {
         </div>
 
         <div className="container mx-auto">
-          <div className="relative z-10 mx-auto max-w-6xl px-4">
+          <div className="relative z-10 mx-auto max-w-7xl px-4">
             <h2
               className={cx(
                 "mb-16 text-center text-3xl font-semibold",
@@ -450,7 +457,7 @@ export default function Index() {
         <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:20px_20px] opacity-30"></div>
 
         <div className="container mx-auto">
-          <div className="relative z-10 mx-auto max-w-6xl px-4">
+          <div className="relative z-10 mx-auto max-w-7xl px-4">
             <div className="flex flex-col items-center">
               {/* Main card */}
               <div className="relative mx-auto w-full max-w-3xl overflow-hidden rounded-2xl border border-white/60 bg-gradient-to-br from-white/80 to-white/40 shadow-xl backdrop-blur-sm">
@@ -554,57 +561,42 @@ function ProgramCard({
   status: string;
 }) {
   return (
-    <div className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white/80 backdrop-blur-sm transition-all duration-300 hover:translate-y-[-2px] hover:border-purple-100 hover:shadow-xl">
-      {/* Glass-like top highlight */}
-      <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-white/80 via-purple-100/50 to-white/80"></div>
-      {/* Glass-like left highlight */}
-      <div className="absolute inset-y-0 left-0 w-[1px] bg-gradient-to-b from-white/80 via-purple-100/50 to-white/80"></div>
-
-      <div className="relative h-48 overflow-hidden">
+    <Card
+      variant="glass-light"
+      className="group flex h-full flex-col overflow-hidden py-0 transition-all duration-200 hover:translate-y-[-2px] hover:shadow-md"
+    >
+      <div className="relative h-40 overflow-hidden">
         <Image
           src={icon}
           alt={title}
           fill
-          className="object-cover transition-transform duration-700 group-hover:scale-105"
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
       </div>
 
-      <div className="flex flex-1 flex-col p-5">
-        <h3 className="mb-3 text-lg font-medium text-gray-900">{title}</h3>
-        <p className="mb-5 flex-1 text-sm leading-relaxed text-gray-600">
+      <CardContent className="flex flex-1 flex-col p-5">
+        <CardTitle className="mb-2 text-lg font-medium">{title}</CardTitle>
+        <CardDescription className="mb-4 text-sm text-gray-600">
           {description}
-        </p>
+        </CardDescription>
 
-        <div className="mt-auto space-y-3">
+        <CardFooter className="mt-auto flex flex-col items-start p-0">
           {status && (
-            <div className="flex items-center">
-              <span className="mr-2 h-2 w-2 flex-shrink-0 animate-pulse rounded-full bg-purple-500"></span>
+            <div className="mb-3 flex items-center">
+              <span className="mr-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-purple-500"></span>
               <p className="text-xs font-medium text-purple-600">{status}</p>
             </div>
           )}
 
           <Link
             href={link}
-            className="-transform inline-flex items-center text-sm font-medium text-purple-600 transition-colors duration-300 group-hover:translate-x-0.5 hover:text-purple-800"
+            className="inline-flex items-center text-sm font-medium text-purple-600 transition-colors hover:text-purple-800"
           >
             {cta}
-            <svg
-              className="ml-1.5 h-4 w-4 transition-transform group-hover:translate-x-1"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 5l7 7-7 7"
-              />
-            </svg>
           </Link>
-        </div>
-      </div>
-    </div>
+        </CardFooter>
+      </CardContent>
+    </Card>
   );
 }
