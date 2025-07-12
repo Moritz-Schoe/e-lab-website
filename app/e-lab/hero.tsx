@@ -6,35 +6,39 @@ import Link from "next/link";
 
 export const Hero = () => {
   return (
-    <section className="relative h-screen bg-purple-950">
-      <video muted autoPlay loop playsInline className="h-full w-full">
+    <section className="relative h-screen bg-black">
+      {/* <video muted autoPlay loop playsInline className="h-full w-full">
         <source src="/assets/e-lab/spheretumai.mp4" />
-      </video>
+      </video> */}
 
       <div className="absolute top-0 flex h-full w-full items-center text-white">
         <div className="max-w-8xl mx-auto space-y-6 p-8 md:p-16">
-          <h1 className="text-center font-bold lg:text-left">
-            <span className="text-8xl">AI</span>
-            <br />
-            <span className="text-3xl sm:text-5xl xl:text-8xl">
-              Entrepreneurship Lab
+          <h1 className="flex items-center justify-center font-bold lg:justify-start">
+            <span className="inline-block h-[10rem] w-[10rem] mr-6 align-middle">
+              <video
+                muted
+                autoPlay
+                loop
+                playsInline
+                className="h-full w-full object-contain"
+                style={{ display: "block" }}
+              >
+                <source src="/assets/e-lab/sphere-e-lab.mp4" />
+              </video>
             </span>
+            <span className="text-8xl align-middle">AI E-Lab</span>
           </h1>
-
           <div className="flex flex-col items-center">
-            <p className="mb-8 max-w-2xl text-center text-2xl font-bold">
-              Join the AI E-Lab and unlock your potential to shape the future of
-              technology
-            </p>
-          </div>
-          <div className="flex flex-col items-center gap-6">
-            <Link
-              className="max-w-lg min-w-[200px] rounded-full border-none bg-linear-to-b from-yellow-500 to-red-500 p-4 text-center sm:min-w-[400px]"
-              href="https://forms.tum-ai.com/ai-e-lab-3.0-application"
-              target="_blank"
-            >
-              Apply to AI E-LAB 3.0!
-            </Link>
+            <div className="mb-4 flex items-center justify-center">
+              <p className="max-w-2xl text-center text-2xl font-bold mb-0">
+                by
+              </p>
+              <img
+                src="/assets/logo_new_white_standard.png"
+                alt="Tum.ai Logo"
+                className="ml-4 h-10 w-auto"
+              />
+            </div>
           </div>
         </div>
       </div>
