@@ -41,37 +41,76 @@ const Navigation = ({ open, setOpen }: NavigationProps) => {
           <Link
             key={text}
             href={href}
-            className="text-sm font-medium text-white/90 transition-colors hover:text-white"
+            className="group relative text-sm font-medium text-white/85 transition-all duration-300 hover:text-white"
           >
-            {text}
+            <span className="relative z-10">{text}</span>
+            <div 
+              className="absolute inset-0 -m-2 rounded-xl bg-white/0 transition-all duration-300 group-hover:bg-white/10 group-hover:backdrop-blur-md" 
+              style={{
+                boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.1)',
+              }} 
+            />
           </Link>
         ))}
-        <Link href="https://join.tum-ai.com/">
-          <Button intent="primary">Join us</Button>
-        </Link>
+        
+        <div className="ml-2 flex items-center gap-4">
+                     <Link href="https://join.tum-ai.com/">
+             <Button 
+               intent="primary" 
+               className="relative overflow-hidden backdrop-blur-2xl border border-purple-400/30 hover:border-purple-300/40 transition-all duration-300"
+               style={{
+                 background: 'linear-gradient(135deg, rgba(147, 51, 234, 0.3) 0%, rgba(126, 34, 206, 0.2) 100%)',
+                 boxShadow: '0 8px 32px rgba(147, 51, 234, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 -1px 0 rgba(255, 255, 255, 0.05)',
+               }}
+             >
+               Join us
+             </Button>
+           </Link>
 
-        <div className="ml-4 flex items-center space-x-3">
-          <Link
-            href="https://www.instagram.com/tum.ai_official/"
-            className="flex h-8 w-8 items-center justify-center rounded-md text-white/70 transition-colors hover:text-white"
-            aria-label="Instagram"
+          <div 
+            className="flex items-center gap-2 rounded-2xl p-1.5 backdrop-blur-2xl border border-black/10" 
+            style={{
+              background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.12) 0%, rgba(0, 0, 0, 0.06) 100%)',
+              boxShadow: '0 4px 16px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1)',
+            }}
           >
-            <FontAwesomeIcon icon={faInstagram} size="sm" />
-          </Link>
-          <Link
-            href="https://de.linkedin.com/company/tum-ai"
-            className="flex h-8 w-8 items-center justify-center rounded-md text-white/70 transition-colors hover:text-white"
-            aria-label="LinkedIn"
-          >
-            <FontAwesomeIcon icon={faLinkedin} size="sm" />
-          </Link>
-          <Link
-            href="https://join.slack.com/t/tumaipublic/shared_invite/zt-10kg0t1f9-JLRXDxY_d_vprKWgab0cVw"
-            className="flex h-8 w-8 items-center justify-center rounded-md text-white/70 transition-colors hover:text-white"
-            aria-label="Slack"
-          >
-            <FontAwesomeIcon icon={faSlack} size="sm" />
-          </Link>
+            <Link
+              href="https://www.instagram.com/tum.ai_official/"
+              className="flex h-8 w-8 items-center justify-center rounded-xl text-white transition-all duration-300 hover:bg-black/20 hover:scale-105"
+              style={{
+                background: 'rgba(0, 0, 0, 0.08)',
+                backdropFilter: 'blur(10px)',
+                boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+              }}
+              aria-label="Instagram"
+            >
+              <FontAwesomeIcon icon={faInstagram} size="sm" />
+            </Link>
+            <Link
+              href="https://de.linkedin.com/company/tum-ai"
+              className="flex h-8 w-8 items-center justify-center rounded-xl text-white transition-all duration-300 hover:bg-black/20 hover:scale-105"
+              style={{
+                background: 'rgba(0, 0, 0, 0.08)',
+                backdropFilter: 'blur(10px)',
+                boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+              }}
+              aria-label="LinkedIn"
+            >
+              <FontAwesomeIcon icon={faLinkedin} size="sm" />
+            </Link>
+            <Link
+              href="https://join.slack.com/t/tumaipublic/shared_invite/zt-10kg0t1f9-JLRXDxY_d_vprKWgab0cVw"
+              className="flex h-8 w-8 items-center justify-center rounded-xl text-white transition-all duration-300 hover:bg-black/20 hover:scale-105"
+              style={{
+                background: 'rgba(0, 0, 0, 0.08)',
+                backdropFilter: 'blur(10px)',
+                boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+              }}
+              aria-label="Slack"
+            >
+              <FontAwesomeIcon icon={faSlack} size="sm" />
+            </Link>
+          </div>
         </div>
       </nav>
 
@@ -85,28 +124,33 @@ const Navigation = ({ open, setOpen }: NavigationProps) => {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                  className="fixed inset-0 z-40 bg-black/40 backdrop-blur-xl lg:hidden"
+                  transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                  className="fixed inset-0 z-40 bg-black/50 backdrop-blur-xl lg:hidden"
                 />
               </Dialog.Overlay>
 
               <Dialog.Content asChild>
                 <motion.div
-                  initial={{ x: "100%" }}
-                  animate={{ x: 0 }}
-                  exit={{ x: "100%" }}
-                  transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-                  className="fixed inset-y-0 right-0 z-50 w-full max-w-sm overflow-hidden bg-purple-950/95 p-6 shadow-xl backdrop-blur-xl lg:hidden"
+                  initial={{ x: "100%", opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  exit={{ x: "100%", opacity: 0 }}
+                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                  className="fixed inset-y-0 right-0 z-50 w-full max-w-sm overflow-hidden backdrop-blur-3xl border-l border-black/20 lg:hidden"
+                  style={{
+                    background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.10) 100%)',
+                    backdropFilter: 'blur(40px) saturate(180%)',
+                    boxShadow: '0 0 40px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.3)',
+                  }}
                 >
                   <Dialog.Title className="sr-only">
                     Navigation Menu
                   </Dialog.Title>
-                  <div className="flex h-full flex-col">
+                  <div className="flex h-full flex-col p-6">
                     <div className="flex items-center justify-end">
                       <Dialog.Close>
                         <button
                           type="button"
-                          className="flex h-9 w-9 items-center justify-center rounded-md text-white/90 transition-colors hover:bg-purple-800/50 hover:text-white"
+                          className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-white/90 transition-all duration-300 hover:bg-white/10 hover:text-white hover:scale-105 border border-white/10"
                           aria-label="Close menu"
                           onClick={() => setOpen(false)}
                         >
@@ -116,12 +160,12 @@ const Navigation = ({ open, setOpen }: NavigationProps) => {
                       </Dialog.Close>
                     </div>
 
-                    <nav className="mt-6 flex-1">
-                      <ul className="space-y-1.5">
+                    <nav className="mt-8 flex-1">
+                      <ul className="space-y-2">
                         {links.map(({ href, text }) => (
                           <li key={text}>
                             <Link
-                              className="flex w-full items-center rounded-md px-4 py-2.5 text-base font-medium text-white transition-colors hover:bg-purple-800/50"
+                              className="flex w-full items-center rounded-xl px-4 py-3 text-base font-medium text-white/90 transition-all duration-300 hover:bg-white/10 hover:text-white hover:scale-[1.02] border border-transparent hover:border-white/10"
                               href={href}
                               onClick={() => setOpen(false)}
                             >
@@ -129,10 +173,10 @@ const Navigation = ({ open, setOpen }: NavigationProps) => {
                             </Link>
                           </li>
                         ))}
-                        <li className="mt-4 border-t border-white/10 pt-4">
+                        <li className="mt-6 border-t border-white/10 pt-6">
                           <Link
                             href="https://join.tum-ai.com/"
-                            className="flex w-full items-center rounded-md bg-purple-600 px-4 py-2.5 text-base font-medium text-white transition-colors hover:bg-purple-700"
+                            className="flex w-full items-center rounded-xl bg-purple-500/80 px-4 py-3 text-base font-medium text-white transition-all duration-300 hover:bg-purple-500 hover:scale-[1.02] border border-purple-400/20 backdrop-blur-sm"
                             onClick={() => setOpen(false)}
                           >
                             Join us
@@ -142,25 +186,25 @@ const Navigation = ({ open, setOpen }: NavigationProps) => {
                     </nav>
 
                     <div className="mt-auto border-t border-white/10 pt-6">
-                      <div className="flex items-center justify-between">
-                        <div className="flex space-x-5">
+                      <div className="flex items-center justify-center">
+                        <div className="flex gap-3 rounded-full bg-white/5 p-2 backdrop-blur-sm border border-white/10">
                           <Link
                             href="https://www.instagram.com/tum.ai_official/"
-                            className="flex h-9 w-9 items-center justify-center rounded-md text-white/80 transition-colors hover:bg-purple-800/50 hover:text-white"
+                            className="flex h-10 w-10 items-center justify-center rounded-full text-white/80 transition-all duration-300 hover:bg-white/10 hover:text-white hover:scale-105"
                           >
                             <FontAwesomeIcon icon={faInstagram} size="sm" />
                             <span className="sr-only">Instagram</span>
                           </Link>
                           <Link
                             href="https://de.linkedin.com/company/tum-ai"
-                            className="flex h-9 w-9 items-center justify-center rounded-md text-white/80 transition-colors hover:bg-purple-800/50 hover:text-white"
+                            className="flex h-10 w-10 items-center justify-center rounded-full text-white/80 transition-all duration-300 hover:bg-white/10 hover:text-white hover:scale-105"
                           >
                             <FontAwesomeIcon icon={faLinkedin} size="sm" />
                             <span className="sr-only">LinkedIn</span>
                           </Link>
                           <Link
                             href="https://join.slack.com/t/tumaipublic/shared_invite/zt-10kg0t1f9-JLRXDxY_d_vprKWgab0cVw"
-                            className="flex h-9 w-9 items-center justify-center rounded-md text-white/80 transition-colors hover:bg-purple-800/50 hover:text-white"
+                            className="flex h-10 w-10 items-center justify-center rounded-full text-white/80 transition-all duration-300 hover:bg-white/10 hover:text-white hover:scale-105"
                           >
                             <FontAwesomeIcon icon={faSlack} size="sm" />
                             <span className="sr-only">Slack</span>
@@ -178,7 +222,13 @@ const Navigation = ({ open, setOpen }: NavigationProps) => {
         {/* Mobile Menu Button */}
         <div className="flex lg:hidden">
           <Dialog.Trigger asChild>
-            <button className="flex h-9 w-9 items-center justify-center rounded-md text-white/90 transition-colors hover:bg-purple-800/50 hover:text-white">
+            <button 
+              className="flex h-10 w-10 items-center justify-center rounded-2xl text-white transition-all duration-300 hover:bg-black/20 hover:scale-105 border border-black/10 backdrop-blur-xl"
+              style={{
+                background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.12) 0%, rgba(0, 0, 0, 0.06) 100%)',
+                boxShadow: '0 4px 16px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.3)',
+              }}
+            >
               <Menu size={20} />
               <span className="sr-only">Open menu</span>
             </button>
@@ -194,22 +244,49 @@ export const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const { scrollYProgress } = useScroll();
   useMotionValueEvent(scrollYProgress, "change", (latest) =>
-    setScrolled(latest > 0),
+    setScrolled(latest > 0.01),
   );
 
   return (
     <motion.header
-      className={cx(
-        "fixed top-0 z-50 w-full transition-all duration-300",
-        scrolled && !navOpen && "bg-purple-950/95 backdrop-blur-xl",
-      )}
+      className="fixed top-0 z-50 w-full"
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
-          <Logo scrolled={scrolled} navOpen={navOpen} />
-          <Navigation open={navOpen} setOpen={setNavOpen} />
-        </div>
-      </div>
+      <motion.div
+        className={cx(
+          "mx-auto max-w-7xl transition-all duration-500 ease-out",
+          scrolled && !navOpen && "mt-2"
+        )}
+      >
+                 <motion.div
+           className={cx(
+             "mx-4 sm:mx-6 lg:mx-8 transition-all duration-500 ease-out",
+             scrolled && !navOpen 
+               ? "rounded-3xl backdrop-blur-3xl border border-black/10" 
+               : "rounded-none"
+           )}
+           style={{
+             backdropFilter: scrolled && !navOpen ? 'blur(40px) saturate(180%)' : 'none',
+             background: scrolled && !navOpen 
+               ? 'linear-gradient(135deg, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.08) 100%)'
+               : 'transparent',
+             boxShadow: scrolled && !navOpen 
+               ? '0 8px 32px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.3), inset 0 -1px 0 rgba(255, 255, 255, 0.1)'
+               : 'none',
+           }}
+          animate={{
+            scale: scrolled && !navOpen ? 0.98 : 1,
+          }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <div className={cx(
+            "flex items-center justify-between transition-all duration-500",
+            scrolled && !navOpen ? "h-14 px-6" : "h-16 px-0"
+          )}>
+            <Logo scrolled={scrolled} navOpen={navOpen} />
+            <Navigation open={navOpen} setOpen={setNavOpen} />
+          </div>
+        </motion.div>
+      </motion.div>
     </motion.header>
   );
 };
@@ -221,14 +298,18 @@ interface LogoProps {
 
 const Logo = ({ scrolled, navOpen }: LogoProps) => {
   return (
-    <Link href="/" className="flex items-center">
-      <svg
-        className="h-8 w-auto fill-white"
+    <Link href="/" className="flex items-center group">
+      <motion.svg
+        className="h-8 w-auto fill-white transition-all duration-300 group-hover:scale-105"
         viewBox="0 0 951 228"
         aria-labelledby="tumaiHomepage tumaiLogoDesc"
         role="img"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
+        animate={{
+          scale: scrolled && !navOpen ? 0.9 : 1,
+        }}
+        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
       >
         <title id="tumaiHomepage">TUM.ai Homepage</title>
         <desc id="tumaiLogoDesc">TUM.ai Logo</desc>
@@ -250,8 +331,8 @@ const Logo = ({ scrolled, navOpen }: LogoProps) => {
         </g>
         <g
           className={cx(
-            "transition-opacity duration-300",
-            scrolled && !navOpen && "opacity-0",
+            "transition-opacity duration-500",
+            scrolled && !navOpen && "opacity-70",
           )}
         >
           <path d="M427.875 86.7339V179.486H402.834V86.7339H371.697V64.4933H459.012V86.7339H427.875Z" />
@@ -261,7 +342,7 @@ const Logo = ({ scrolled, navOpen }: LogoProps) => {
           <path d="M872.871 179.486C868.477 179.486 864.798 178.113 861.833 175.367C858.977 172.621 857.165 168.942 856.396 164.329H855.408C854.09 169.93 851.179 174.214 846.676 177.179C842.173 180.035 836.627 181.462 830.037 181.462C821.36 181.462 814.715 179.156 810.103 174.543C805.49 169.93 803.183 163.835 803.183 156.256C803.183 147.141 806.478 140.386 813.068 135.993C819.768 131.49 828.829 129.238 840.251 129.238H853.925V123.802C853.925 119.628 852.827 116.333 850.63 113.917C848.433 111.391 844.754 110.128 839.592 110.128C834.759 110.128 830.915 111.171 828.06 113.258C825.204 115.345 822.843 117.706 820.976 120.342L806.478 107.492C809.993 102.33 814.386 98.321 819.658 95.4654C825.039 92.5 832.288 91.0173 841.404 91.0173C853.705 91.0173 862.931 93.7082 869.081 99.0898C875.232 104.472 878.307 112.324 878.307 122.648V160.54H886.38V179.486H872.871ZM839.098 164.494C843.161 164.494 846.621 163.615 849.477 161.858C852.442 160.101 853.925 157.245 853.925 153.291V143.077H842.063C832.508 143.077 827.73 146.317 827.73 152.797V155.268C827.73 158.453 828.719 160.814 830.696 162.352C832.673 163.78 835.473 164.494 839.098 164.494Z" />
           <path d="M923.173 83.7685C918.231 83.7685 914.606 82.6702 912.3 80.4736C910.103 78.1672 909.005 75.2567 909.005 71.7421V68.1177C909.005 64.6031 910.103 61.7476 912.3 59.551C914.606 57.2445 918.231 56.0913 923.173 56.0913C928.116 56.0913 931.685 57.2445 933.882 59.551C936.188 61.7476 937.341 64.6031 937.341 68.1177V71.7421C937.341 75.2567 936.188 78.1672 933.882 80.4736C931.685 82.6702 928.116 83.7685 923.173 83.7685ZM910.982 92.9943H935.364V179.486H910.982V92.9943Z" />
         </g>
-      </svg>
+      </motion.svg>
     </Link>
   );
 };

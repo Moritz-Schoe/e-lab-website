@@ -1,3 +1,5 @@
+"use client";
+
 import Benefits from "@components/Benefit";
 import FAQ from "@components/FAQ";
 import Logos from "@components/Logos";
@@ -9,28 +11,9 @@ import { Network, Handshake, BookOpen, CircleDollarSign } from "lucide-react";
 import { faq, testimonials } from "data/e-lab";
 import Link from "next/link";
 import { Hero } from "./hero";
-import type { Metadata } from "next";
 import { Organization, WithContext } from "schema-dts";
-
-export const metadata: Metadata = {
-  title: "TUM.ai - AI Entrepreneurship Lab",
-  description:
-    "Join the AI Entrepreneurship Lab if you are up for a 3-month startup incubator designed to ignite your innovative spirit and equip you with the relevant know-how to build the next AI unicorn in Munich.",
-  openGraph: {
-    title:
-      "TUM.ai's AI Entrepreneurship Lab: A Founding Journey in Artificial Intelligence",
-    description:
-      "A 3-month startup incubator for curious and driven individuals. We provide relevant know-how, a team, and support to lay the foundation for AI startups in Munich.",
-    images: [
-      {
-        url: "https://timonschramm.com/sm-preview.jpg", // Must be an absolute URL
-        width: 1200,
-        height: 630,
-        alt: "AI E-Lab Sphere",
-      },
-    ],
-  },
-};
+import Image from "next/image";
+import { useState } from "react";
 
 export default function Page() {
   const jsonLd: WithContext<Organization> = {
@@ -88,6 +71,35 @@ export default function Page() {
     },
   };
 
+  const [openFAQ, setOpenFAQ] = useState<number | null>(null);
+
+  const toggleFAQ = (index: number) => {
+    setOpenFAQ(openFAQ === index ? null : index);
+  };
+
+  const faqItems = [
+    {
+      question: "Can I apply as a solo founder?",
+      answer: "Yes, you can absolutely apply as a solo founder! We welcome individual applicants who are passionate about building AI startups. During the program, you'll have opportunities to find co-founders through our team-building activities and networking events."
+    },
+    {
+      question: "Do I need an idea to apply?",
+      answer: "No, you don't need a fully formed idea to apply. The AI E-Lab is designed to help you develop and validate ideas during the program. We provide ideation workshops and guidance to help you discover the right opportunity to pursue."
+    },
+    {
+      question: "Does the AI E Lab require me to work from Munich?",
+      answer: "Yes, the AI E-Lab is an in-person program based in Munich. You'll be working from our headquarters at TUM.ai, collaborating with other founders and having access to our physical workspace, mentors, and the local startup ecosystem."
+    },
+    {
+      question: "What is the time commitment for the program?",
+      answer: "The AI E-Lab is a 12-week intensive program that requires significant time commitment. We expect participants to dedicate substantial time each week to building their startups, attending workshops, and participating in program activities."
+    },
+    {
+      question: "Do you take equity in my startup?",
+      answer: "No, the AI E-Lab is completely equity-free! We don't take any equity stake in your venture. Our mission is to make AI entrepreneurship accessible to everyone, which is why we provide all support and resources without any financial investment or equity requirements."
+    }
+  ];
+
   return (
     <>
       <section>
@@ -98,348 +110,294 @@ export default function Page() {
         />
       </section>
       <Hero />
-      {/* {
-      <Section className="items-center justify-center bg-purple-950 text-white">
-        <h2 className="mb-8 bg-linear-to-r from-yellow-500 to-red-500 bg-clip-text text-center text-3xl font-semibold uppercase tracking-widest text-transparent sm:text-5xl">
-          AI E-Lab Final Pitch Event
-        </h2>
-
-        <div className="flex items-center justify-center ">
-          <div className="flex max-w-xl flex-col gap-8">
-            <p className="text-center">
-              Come around to see new and exciting ideas in the world of AI at
-              our AI E-Lab Final Pitch Event Friday, January 19th in Munich. An evening
-              where our top startups showcase their exciting developments.
-              It&apos;s a great chance to see fresh ideas in action and meet
-              some of the key players in the industry.{" "}
-            </p>
-            <div className="flex flex-col justify-center gap-6 ">
-              <Link
-                className="min-w-[300px] rounded-full border-none bg-linear-to-b from-yellow-500 to-red-500 p-4 text-center sm:min-w-[400px]"
-                href="https://www.eventbrite.de/e/ai-e-lab-final-pitch-competition-tickets-784536669297?aff=oddtdtcreator"
-                target="_blank"
-              >
-                Sign up now
-              </Link>
+      <Section className="flex flex-col items-center justify-center py-20 bg-white w-full">
+        <h2 className="text-4xl font-normal mb-12 text-black text-center w-full">What to expect</h2>
+        <div className="w-full max-w-5xl mx-auto">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-12 mb-16">
+            <div className="flex items-center justify-center">
+              {/* AI text already cut out with Munich image */}
+              <Image
+                src="/Mask group.png"
+                alt="AI Munich"
+                width={350}
+                height={280}
+                priority
+                className="block"
+              />
+            </div>
+            <div className="max-w-xl text-black text-lg space-y-4 flex-1">
+              <p>The AI E Lab is built by founders, for founders — with speed, agility, and real impact at its core.</p>
+              <p>In 12 weeks, we give you what actually matters: your own workspace, direct access to top VCs, weekly sessions with operators, and a team of peers who move as fast as you do.</p>
+              <p>Whether you have an idea, a prototype, or just motivation — you'll build it here. No equity. No theory. Just traction.</p>
+              <p className="text-sm text-gray-500">Backed by TUM.ai and supported by leading VCs.</p>
             </div>
           </div>
         </div>
       </Section>
-     } */}
-      <Section className="bg-purple-950 text-white">
-        <div className="mb-8 sm:mb-16 md:w-3/5 lg:mb-32">
-          <h2 className="mb-12 bg-linear-to-r from-yellow-500 to-red-500 bg-clip-text text-5xl font-semibold text-transparent uppercase">
-            What is the AI E-Lab?
-          </h2>
-          <p className="text-2xl">
-            <span className="text-yellow-500">
-              The AI Entrepreneurship Lab is the Launchpad for your AI ventures,
-            </span>{" "}
-            a 3-months founding journey for curious and driven individuals. We
-            provide you with relevant know-how, a team, and support to lay the
-            foundation for your own AI startup.
-          </p>
+      
+      <Section className="flex flex-col items-center justify-center py-20 bg-white w-full">
+        <div className="w-full max-w-5xl border-t border-gray-200 flex flex-col md:flex-row justify-center items-center divide-y md:divide-y-0 md:divide-x divide-gray-200 mx-auto">
+          <div className="flex-1 flex flex-col items-center py-8">
+            <span className="text-5xl font-bold text-purple-600 mb-2">38</span>
+            <span className="text-center text-black text-lg">AI E-Lab Ventures<br/>since 2022</span>
+          </div>
+          <div className="flex-1 flex flex-col items-center py-8">
+            <span className="text-5xl font-bold text-purple-600 mb-2">€5M+</span>
+            <span className="text-center text-black text-lg">raised by AI E-Lab ventures</span>
+          </div>
+          <div className="flex-1 flex flex-col items-center py-8">
+            <span className="text-5xl font-bold text-purple-600 mb-2">3</span>
+            <span className="text-center text-black text-lg">AI E-Lab<br/>Iterations</span>
+          </div>
         </div>
-
-        <div className="flex items-end justify-end">
-          <div className="flex w-full flex-col items-center md:w-3/5">
-            <h3 className="mb-4 text-4xl font-semibold text-yellow-500">
-              Inside the E-Lab: A Founder&apos;s Journey
-            </h3>
-            <iframe
-              src="https://www.youtube.com/embed/DPJGAG9blO8?si=jDCtCvf6sVZRX69X"
-              style={{ aspectRatio: 16 / 9 }}
-              className="w-full"
-              title="YouTube video player"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
+      </Section>
+      
+      <Section className="flex flex-col items-center justify-center py-20 bg-white w-full">
+        <h2 className="text-4xl font-normal mb-12 text-black text-center">Our Alumni are part of</h2>
+        <div className="flex flex-wrap items-center justify-center gap-16 max-w-5xl mx-auto">
+          <div className="flex items-center justify-center w-24 h-20">
+            <Image
+              src="/assets/e-lab/partners/YC.png"
+              alt="Y Combinator"
+              width={96}
+              height={80}
+              className="object-contain max-h-full max-w-full"
+            />
+          </div>
+          <div className="flex items-center justify-center w-28 h-20">
+            <Image
+              src="/assets/e-lab/partners/ewor.png"
+              alt="EWOR"
+              width={112}
+              height={80}
+              className="object-contain max-h-full max-w-full"
+            />
+          </div>
+          <div className="flex items-center justify-center w-24 h-20">
+            <Image
+              src="/assets/e-lab/partners/Stanford.png"
+              alt="Stanford"
+              width={96}
+              height={80}
+              className="object-contain max-h-full max-w-full"
+            />
+          </div>
+          <div className="flex items-center justify-center w-24 h-20">
+            <Image
+              src="/assets/e-lab/partners/CDTM.png"
+              alt="CDTM"
+              width={96}
+              height={80}
+              className="object-contain max-h-full max-w-full"
             />
           </div>
         </div>
       </Section>
-
-      <Section className="bg-purple-950 text-white">
-        <h2 className="mb-12 bg-linear-to-r from-yellow-500 to-red-500 bg-clip-text text-3xl font-semibold tracking-widest text-transparent uppercase sm:text-5xl">
-          How founders experience the E-Lab
-        </h2>
-        <p className="flex flex-col justify-start gap-2 text-3xl font-semibold text-yellow-500 sm:text-4xl">
-          <span>you.</span>
-          <span>yes you.</span>
-          <span>you can build something great!</span>
-        </p>
-
-        <p>
-          Are you ready for your next step? Great. With our AI Entrepreneurship
-          Lab we aim at making the founding of AI{" "}
-          <span className="text-red-500">startups </span>
-          accessible to everyone, including you. Bring your motivation and
-          dedication, and we&apos;ll provide the rest, striving to make founding
-          as easy as possible for you.
-        </p>
-
-        <div className="mt-16">
-          <SnapSlider cards={testimonials} />
-        </div>
-      </Section>
-
-      <Section className="bg-purple-950 text-white">
-        <h2 className="mb-16 bg-linear-to-r from-yellow-500 to-red-500 bg-clip-text text-center text-3xl font-semibold tracking-widest text-transparent uppercase sm:text-5xl">
-          Last AI E-Lab in numbers
-        </h2>
-
-        <div className="flex flex-wrap justify-center gap-8 md:gap-24">
-          <Stat description={"Workshops"} value={"17+"} />
-          <Stat description={"Startups"} value={"16"} />
-          <Stat description={"Winners"} value={"3"} />
-        </div>
-
-        <div className="mt-24">
-          <h3 className="mb-16 bg-linear-to-r from-yellow-500 to-red-500 bg-clip-text text-center text-2xl font-medium tracking-widest text-transparent uppercase sm:text-4xl">
-            Top 3 Startups have
-          </h3>
-          <div className="flex flex-wrap justify-center gap-8 md:gap-24">
-            <Stat description={"B2B customers"} value={"50+"} />
-            <Stat description={"Funding"} value={"1M+"} />
-            <Stat description={"ARR"} value={"300K+"} />
-            <Stat description={"Hired employees"} value={"30+"} />
+      
+      <Section className="flex flex-col items-center justify-center py-20 bg-white w-full">
+        <h2 className="text-4xl font-normal mb-12 text-black text-center">Hear more from the community</h2>
+        <div className="flex flex-col gap-8 max-w-4xl mx-auto">
+          <div className="flex items-start gap-4">
+            <div className="w-16 h-16 flex-shrink-0">
+              <Image
+                src="/assets/e-lab/testimonials/benedikt_wieser.png"
+                alt="Benedikt Wieser"
+                width={64}
+                height={64}
+                className="w-16 h-16 object-cover"
+              />
+            </div>
+            <div>
+              <p className="text-gray-800 mb-1 text-lg">"The AI E-Lab is the best program for creating top-end entrepreneurs that has ever existed."</p>
+              <p className="text-sm text-gray-600"><strong>Benedikt Wieser</strong>, CDTM, Winner AI E-lab 2.0</p>
+            </div>
+          </div>
+          
+          <div className="flex items-start gap-4">
+            <div className="w-16 h-16 flex-shrink-0">
+              <Image
+                src="/assets/e-lab/testimonials/leon_hergert.png"
+                alt="Leon Hergert"
+                width={64}
+                height={64}
+                className="w-16 h-16 object-cover"
+              />
+            </div>
+            <div>
+              <p className="text-gray-800 mb-1 text-lg">"The AI E-Lab is the best program for creating top-end entrepreneurs that has ever existed."</p>
+              <p className="text-sm text-gray-600"><strong>Leon Hergert</strong>, Co-Founder @ Spherecast (YC S24), AI E-Lab 1.0</p>
+            </div>
+          </div>
+          
+          <div className="flex items-start gap-4">
+            <div className="w-16 h-16 flex-shrink-0">
+              <Image
+                src="/assets/e-lab/testimonials/leonardo_benini.png"
+                alt="Leonardo Benini"
+                width={64}
+                height={64}
+                className="w-16 h-16 object-cover"
+              />
+            </div>
+            <div>
+              <p className="text-gray-800 mb-1 text-lg">"The AI E-Lab is the best program for creating top-end entrepreneurs that has ever existed."</p>
+              <p className="text-sm text-gray-600"><strong>Leonardo Benini</strong>, Founder Stealth, EWOR, AI E-Lab 3.0</p>
+            </div>
+          </div>
+          
+          <div className="flex items-start gap-4">
+            <div className="w-16 h-16 flex-shrink-0">
+              <Image
+                src="/assets/e-lab/testimonials/oliver_schoppe.png"
+                alt="Oliver Schoppe"
+                width={64}
+                height={64}
+                className="w-16 h-16 object-cover"
+              />
+            </div>
+            <div>
+              <p className="text-gray-800 mb-1 text-lg">"The AI E-Lab is the best program for creating top-end entrepreneurs that has ever existed."</p>
+              <p className="text-sm text-gray-600"><strong>Oliver Schoppe</strong>, Principal, UVC Partners</p>
+            </div>
           </div>
         </div>
       </Section>
-
-      <Section className="bg-purple-950 text-white">
-        <h2 className="mb-12 bg-linear-to-r from-yellow-500 to-red-500 bg-clip-text text-center text-3xl font-semibold tracking-widest text-transparent uppercase sm:text-5xl">
-          Benefits
-        </h2>
-
-        <p className="mb-8 text-center text-4xl">
-          We <span className="text-yellow-500">support </span>you in achieving
-          your endeavors because your{" "}
-          <span className="text-yellow-500">personal growth</span> is our{" "}
-          <span className="text-yellow-500">goal</span>
-        </p>
-        <div className="my-24 flex flex-col gap-8 lg:px-24 xl:px-44">
-          <p className="px-8 text-center">
-            Are you passionate about AI and ready to make a real-world impact?
-            TUM.ai invites you to join our AI E-Lab, a platform where
-            visionaries, doers, and risk-takers with an interest in founding an
-            AI-based startup come together to shape the future of AI. We value
-            diversity, curiosity, and a commitment to learning and improvement.
-          </p>
-          <p className="px-8 text-center">
-            As part of the AI E-Lab, you&apos;ll connect with a vibrant
-            ecosystem of startups, industry partners, and like-minded peers.
-            You&apos;ll have the opportunity to contribute to groundbreaking AI
-            projects and drive positive social impact.
-          </p>
-          <p className="px-8 text-center">
-            This is a part-time program and we expect you to provide us with
-            intermediate deliverables on a weekly basis: pitches, MVPs, learning
-            outcomes, sprint planning, etc. Our events are planned to take place
-            in Munich, so you must be able join in person. The more you commit,
-            the more you get.
-          </p>
+      
+      <Section className="flex flex-col items-center justify-center py-20 bg-white w-full">
+        <h2 className="text-4xl font-normal mb-12 text-black text-center">Program</h2>
+        <div className="relative max-w-2xl mx-auto">
+          {/* Vertical line */}
+          <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-black"></div>
+          
+          {/* Timeline items */}
+          <div className="relative space-y-12">
+            {/* Start - Right side */}
+            <div className="flex items-center">
+              <div className="w-1/2"></div>
+              <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-black rounded-full z-10"></div>
+              <div className="w-1/2 pl-8">
+                <h3 className="font-normal text-lg">Start</h3>
+                <p className="text-sm text-gray-600">October</p>
+              </div>
+            </div>
+            
+            {/* Onboarding Weekend - Left side */}
+            <div className="flex items-center">
+              <div className="w-1/2 pr-8 text-right">
+                <h3 className="font-normal text-lg">Onboarding Weekend</h3>
+                <p className="text-sm text-gray-600">3 days intensive</p>
+              </div>
+              <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-black rounded-full z-10"></div>
+              <div className="w-1/2"></div>
+            </div>
+            
+            {/* Execution Sessions - Right side */}
+            <div className="flex items-center">
+              <div className="w-1/2"></div>
+              <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-black rounded-full z-10"></div>
+              <div className="w-1/2 pl-8">
+                <h3 className="font-normal text-lg">Execution Sessions</h3>
+                <p className="text-sm text-gray-600">Weekly sessions</p>
+              </div>
+            </div>
+            
+            {/* Build & Iterate - Left side */}
+            <div className="flex items-center">
+              <div className="w-1/2 pr-8 text-right">
+                <h3 className="font-normal text-lg">Build & Iterate</h3>
+                <p className="text-sm text-gray-600">4 weeks</p>
+              </div>
+              <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-black rounded-full z-10"></div>
+              <div className="w-1/2"></div>
+            </div>
+            
+            {/* Litmus Test - Right side */}
+            <div className="flex items-center">
+              <div className="w-1/2"></div>
+              <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-black rounded-full z-10"></div>
+              <div className="w-1/2 pl-8">
+                <h3 className="font-normal text-lg">Litmus Test</h3>
+                <p className="text-sm text-gray-600">Pitch event</p>
+              </div>
+            </div>
+            
+            {/* Build Sprint 2 - Left side */}
+            <div className="flex items-center">
+              <div className="w-1/2 pr-8 text-right">
+                <h3 className="font-normal text-lg">Build Sprint 2</h3>
+                <p className="text-sm text-gray-600">Stress Test</p>
+              </div>
+              <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-black rounded-full z-10"></div>
+              <div className="w-1/2"></div>
+            </div>
+            
+            {/* Demo Day - Right side */}
+            <div className="flex items-center">
+              <div className="w-1/2"></div>
+              <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-black rounded-full z-10"></div>
+              <div className="w-1/2 pl-8">
+                <h3 className="font-normal text-lg">Demo Day</h3>
+                <p className="text-sm text-gray-600">Final presentation</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <Benefits
-          benefits={[
-            {
-              icon: Network,
-              title: "Access to our network",
-              text: "In order to shape something meaningful and have impact, knowledge alone does not suffice. You need a network of diverse people you can learn from and share your passion with. We therefore organise several events where you can meet and mingle with TUM.ai members, business and domain experts, startups, founders, investors and many more. Of course, you're also welcome to reach out at any time in between our scheduled events.",
-            },
-            {
-              icon: Handshake,
-              title: "Count on our support",
-              text: "We help you develop your final MVP and guide you through the program with individual coaching and tailored mentoring with founders and domain experts. You and your team have the opportunity to experience vivid discussions in our co-working spaces. We also provide you with software and hardware resources, and you can count on tech support.",
-            },
-            {
-              icon: BookOpen,
-              title: "Learn and grow",
-              text: "Everyone has superpowers and we support you in using them to excel. With hands-on workshops we provide you with the knowledge to found your AI startup and encourage you to test it in a real-world setting. You'll hear stories of other founders and have the possibility to learn from their experiences. Our program is customer-centric and feedback-oriented, emphasising the importance of listening and interacting with others for personal growth and success.",
-            },
-            {
-              icon: CircleDollarSign,
-              title: "We are equity free",
-              text: "Making AI and the founding process accessible to everyone is one of our missions at TUM.ai. We, therefore, do not charge any costs for the AI E-Lab and do not take any equity stake in your venture. Further, we don't expect pre-seed readiness or any initial investment. The only investment you have to arrange is your time, eagerness and dedication.",
-            },
-          ]}
-          color="yellow"
-        />
       </Section>
-
-      <Section className="bg-purple-950 text-white">
-        <h2 className="mb-12 ml-16 bg-linear-to-r from-yellow-500 to-red-500 bg-clip-text text-center text-3xl font-semibold tracking-widest text-transparent uppercase sm:text-5xl md:ml-0">
-          Timeline
-        </h2>
-        <Timeline
-          events={[
-            {
-              title: "Formation & Ideation",
-              duration: "4 Weeks",
-              date: "October 2024",
-              text: "You will interact with potential co-founders, explore ideas, and form teams through the AI E-Lab onboarding, co-founder matching/team building, and ideation activities. This phase will end with a relaxed informal event where you and your team will share your ideas and concepts.",
-            },
-            {
-              title: "Idea validation",
-              duration: "2 Weeks",
-              date: "November 2024",
-              text: "You will focus on validating and shaping your startup idea from the previous phase through market research and developing robust business models that will undergo evaluation in the first pitch event, a Litmus Test to a jury.",
-            },
-            {
-              title: "Build-measure learn",
-              duration: "4 Weeks",
-              date: "Nov - Dec 2024",
-              text: "If your team can make it through the Litmus Test with validated ideas you will start to build prototypes, measure performance, gather valuable feedback from mentors, industry experts, and customers, and continuously iterate towards achieving product-market fit. This phase will end with a Stress test (second pitch event) where a more experienced jury will rigorously test the product market fit and prototypes of your startup and determine who is fit enough to make it to the final pitch to pitch to investors in Phase 4.",
-            },
-            {
-              title: "Refinement & Final pitch",
-              duration: "4 Weeks",
-              date: "Dec - Jan 2025",
-              text: "Should your team successfully pass the Stress Test, you will continue to refine your prototypes into Minimum Viable Products (MVPs) and further refine your business models, and pitches based on the valuable feedback received from customers, mentors, industry experts, and the jury during the Stress Test. The goal of your startup in this phase will be to prepare to showcase your polished startups to real investors and a public audience in the AI E-Lab final pitch event. ",
-            },
-          ]}
-        />
-      </Section>
-
-      <Section className="bg-purple-950 text-white">
-        <h2 className="mb-12 bg-linear-to-r from-yellow-500 to-red-500 bg-clip-text text-center text-3xl font-semibold tracking-widest text-transparent uppercase sm:text-5xl">
-          Meet our Partners and Sponsors
-        </h2>
-
-        <div className="mb-24">
-          {/*     <h3 className="text-uppercase mb-12 w-full text-center text-2xl font-bold">
-            Partners
-          </h3> */}
-          <Logos
-            logos={[
-              {
-                src: "/assets/e-lab/partners/ai_munich_w.png",
-                alt: "AI+Munich",
-                href: "https://www.must-munich.com/aimunich/",
-              },
-              {
-                src: "/assets/e-lab/partners/ewor_w.png",
-                alt: "Ewor",
-                href: "https://ewor.io/",
-                width: 120,
-              },
-              {
-                src: "/assets/e-lab/partners/campus_founders_w.png",
-                alt: "Campus Founders",
-                href: "https://campusfounders.de/",
-              },
-              {
-                src: "/assets/e-lab/partners/merantix.svg",
-                alt: "Merantix",
-                href: "https://www.merantix.com/",
-                width: 200,
-              },
-              {
-                src: "/assets/e-lab/partners/hubert_burda_media.png",
-                alt: "Burda",
-                href: "https://www.burda.com/",
-                width: 300,
-              },
-            ]}
-          />
+      
+      <Section className="flex flex-col items-center justify-center py-20 bg-white w-full">
+        <h2 className="text-4xl font-normal mb-12 text-black text-center">Community is created by working together</h2>
+        <div className="flex flex-col md:flex-row items-center justify-center gap-12 max-w-5xl mx-auto">
+          <div className="w-full md:w-1/2">
+            <Image
+              src="/assets/office_space.png"
+              alt="TUM.ai Office Space"
+              width={500}
+              height={300}
+              className="w-full h-64 object-cover rounded"
+            />
+          </div>
+          <div className="w-full md:w-1/2 space-y-4">
+            <p className="text-gray-800 text-lg">Work from the TUM.ai headquarters, the home base of Europe's leading student AI initiatives.</p>
+            <p className="text-gray-800 text-lg">You'll share the space with founders, builders, and AI talents from the TUM.ai network.</p>
+            <p className="text-gray-800 text-lg">Get your designated Desks, monitors, whiteboards — and a community that's building every day.</p>
+          </div>
         </div>
-        <Logos
-          logos={[
-            {
-              src: "/assets/e-lab/partners/uvc_w.svg",
-              alt: "UVC Partners",
-              href: "https://www.uvcpartners.com/",
-              width: 140,
-            },
-            {
-              href: "https://www.cherry.vc/",
-              src: "/assets/e-lab/partners/cherry_w.png",
-              alt: "Cherry VC",
-              width: 140,
-            },
-            {
-              href: "https://ananda.vc/",
-              src: "/assets/e-lab/partners/anandavc.png",
-              alt: "Ananda Impact Ventures",
-              width: 200,
-            },
-          ]}
-        />
       </Section>
-
-      <Section className="bg-purple-950 text-center text-white">
-        <Link
-          className="rounded-full border-2 border-yellow-500 p-4 text-center font-bold text-yellow-500"
-          href="mailto:venture@tum-ai.com"
-        >
-          Become a partner
-        </Link>
+      
+      <Section className="flex flex-col items-center justify-center py-20 bg-white w-full">
+        <h2 className="text-4xl font-normal mb-8 text-black text-center">
+          Applications for <span className="underline">AI E-Lab 4.0</span> are open!
+        </h2>
+        <div className="flex justify-center">
+          <button className="bg-purple-600 text-white px-8 py-4 rounded font-normal hover:bg-purple-700 transition-colors text-lg">
+            Apply Now
+          </button>
+        </div>
       </Section>
-
-      <Section className="bg-purple-950 text-white">
-        <h3 className="text-primary mb-2 block text-center text-lg font-semibold">
-          FAQ
-        </h3>
-        <h4 className="text-dark mb-12 text-center text-3xl font-bold sm:text-4xl">
-          Do you have any questions?
-        </h4>
-        <FAQ questions={faq} />
-        <div className="flex flex-col items-center justify-center gap-6">
-          <h3 className="mt-20 text-center text-2xl font-semibold">
-            You still have other questions?
-          </h3>
-          <Link
-            className="min-w-[300px] rounded-full border-2 border-yellow-500 p-4 text-center font-semibold transition-colors duration-300 hover:border-red-500 sm:min-w-[400px]"
-            href="mailto:venture@tum-ai.com"
-          >
-            Ask us here
-          </Link>
+      
+      <Section className="flex flex-col items-center justify-center py-20 bg-white w-full">
+        <h2 className="text-4xl font-normal mb-12 text-black text-center">Frequently Asked Questions</h2>
+        <div className="w-full max-w-4xl mx-auto space-y-4">
+          {faqItems.map((item, index) => (
+            <div key={index} className="border-b border-gray-200 pb-4">
+              <div 
+                className="flex justify-between items-center cursor-pointer"
+                onClick={() => toggleFAQ(index)}
+              >
+                <h3 className="text-lg font-normal text-gray-800">{item.question}</h3>
+                <span className={`text-2xl text-gray-400 transition-transform ${openFAQ === index ? 'rotate-45' : ''}`}>
+                  +
+                </span>
+              </div>
+              {openFAQ === index && (
+                <div className="mt-4 text-gray-600 text-lg animate-in slide-in-from-top-2 duration-200">
+                  {item.answer}
+                </div>
+              )}
+            </div>
+          ))}
         </div>
       </Section>
     </>
   );
-
-  interface SnapSliderProps {
-    cards: {
-      imgSrc: string;
-      name: string;
-      text: string;
-      logoSrc: string;
-      logoAlt: string;
-      link: string;
-      company: string;
-    }[];
-  }
-
-  function SnapSlider({ cards }: SnapSliderProps) {
-    return (
-      <div className="scrollbar-hidden scrollbar-yellow flex snap-x space-x-8 overflow-x-auto pb-4">
-        {cards.map((card) => (
-          <div
-            className="inline-flex min-h-[220px] min-w-[300px] snap-center align-middle sm:min-w-[400px]"
-            key={`${card.name}-${card.text}`}
-          >
-            <Testimonials {...card} />
-          </div>
-        ))}
-      </div>
-    );
-  }
-
-  /* {
-      /* This code is needed for the Mentors and Advisors, which will be added later on
-
-    function SliderCard({imgSrc, name, text}) {
-      return (
-          <div className="min-w-sm relative h-full w-full overflow-hidden rounded-lg grayscale saturate-200">
-            <Image src={imgSrc} alt={name} fill objectFit="cover"/>
-            <div className="h-3/8 absolute bottom-0 w-full bg-black bg-opacity-80 p-2 text-white backdrop-blur-sm">
-              <h3 className="font-bold">{name}</h3>
-              <p>{text}</p>
-            </div>
-          </div>
-      );
-    }
-
-
-    } */
 }
