@@ -154,41 +154,41 @@ export default function Page() {
       
       <Section className="flex flex-col items-center justify-center py-20 bg-white w-full">
         <h2 className="text-4xl font-normal mb-12 text-black text-center">Our Alumni are part of</h2>
-        <div className="flex flex-wrap items-center justify-center gap-8 max-w-4xl mx-auto">
-          <div className="flex items-center justify-center w-16 h-16">
+        <div className="flex flex-wrap items-center justify-center gap-16 max-w-5xl mx-auto">
+          <div className="flex items-center justify-center w-24 h-20">
             <Image
               src="/assets/e-lab/partners/YC.png"
               alt="Y Combinator"
-              width={64}
-              height={64}
-              className="object-contain"
+              width={96}
+              height={80}
+              className="object-contain max-h-full max-w-full"
             />
           </div>
-          <div className="flex items-center justify-center w-20 h-16">
+          <div className="flex items-center justify-center w-28 h-20">
             <Image
               src="/assets/e-lab/partners/ewor.png"
               alt="EWOR"
-              width={80}
-              height={64}
-              className="object-contain"
+              width={112}
+              height={80}
+              className="object-contain max-h-full max-w-full"
             />
           </div>
-          <div className="flex items-center justify-center w-16 h-16">
+          <div className="flex items-center justify-center w-24 h-20">
             <Image
               src="/assets/e-lab/partners/Stanford.png"
               alt="Stanford"
-              width={64}
-              height={64}
-              className="object-contain"
+              width={96}
+              height={80}
+              className="object-contain max-h-full max-w-full"
             />
           </div>
-          <div className="flex items-center justify-center w-16 h-16">
+          <div className="flex items-center justify-center w-24 h-20">
             <Image
               src="/assets/e-lab/partners/CDTM.png"
               alt="CDTM"
-              width={64}
-              height={64}
-              className="object-contain"
+              width={96}
+              height={80}
+              className="object-contain max-h-full max-w-full"
             />
           </div>
         </div>
