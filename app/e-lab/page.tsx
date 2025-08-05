@@ -13,7 +13,7 @@ import Link from "next/link";
 import { Hero } from "./hero";
 import { Organization, WithContext } from "schema-dts";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export default function Page() {
   const jsonLd: WithContext<Organization> = {
@@ -100,6 +100,303 @@ export default function Page() {
     }
   ];
 
+  // Animated Statistics Component
+  const AnimatedStatsSection = () => {
+    const [isVisible, setIsVisible] = useState(false);
+    const [venturesCount, setVenturesCount] = useState(0);
+    const [fundingCount, setFundingCount] = useState(0);
+    const [iterationsCount, setIterationsCount] = useState(0);
+    const statsRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting && !isVisible) {
+            setIsVisible(true);
+
+            // Animate ventures count (0 to 38)
+            const venturesAnimation = setInterval(() => {
+              setVenturesCount(prev => {
+                if (prev >= 38) {
+                  clearInterval(venturesAnimation);
+                  return 38;
+                }
+                return prev + 1;
+              });
+            }, 50);
+
+            // Animate funding count (0 to 5,000,000)
+            const fundingAnimation = setInterval(() => {
+              setFundingCount(prev => {
+                if (prev >= 5000000) {
+                  clearInterval(fundingAnimation);
+                  return 5000000;
+                }
+                return prev + 125000; // Increments of 125k to reach 5M in ~40 steps
+              });
+            }, 50);
+
+            // Animate iterations count (0 to 3)
+            const iterationsAnimation = setInterval(() => {
+              setIterationsCount(prev => {
+                if (prev >= 3) {
+                  clearInterval(iterationsAnimation);
+                  return 3;
+                }
+                return prev + 1;
+              });
+            }, 200);
+          }
+        },
+        { threshold: 0.5 }
+      );
+
+      if (statsRef.current) {
+        observer.observe(statsRef.current);
+      }
+
+      return () => observer.disconnect();
+    }, [isVisible]);
+
+    return (
+      <Section className="flex flex-col items-center justify-center pt-0 pb-20 bg-white w-full">
+        <div ref={statsRef} className="w-full max-w-5xl border-t border-gray-200 flex flex-col md:flex-row justify-center items-center divide-y md:divide-y-0 md:divide-x divide-gray-200 mx-auto">
+          <div className="flex-1 flex flex-col items-center py-8">
+            <span className="text-5xl font-bold text-purple-600 mb-2 transition-all duration-300">
+              {Math.floor(venturesCount)}
+            </span>
+            <span className="text-center text-black text-lg">AI E-Lab Ventures<br/>since 2022</span>
+          </div>
+          <div className="flex-1 flex flex-col items-center py-8">
+            <span className="text-5xl font-bold text-purple-600 mb-2 transition-all duration-300">
+              €{(Math.floor(fundingCount) / 1000000).toFixed(1)}M+
+            </span>
+            <span className="text-center text-black text-lg">raised by AI E-Lab ventures</span>
+          </div>
+          <div className="flex-1 flex flex-col items-center py-8">
+            <span className="text-5xl font-bold text-purple-600 mb-2 transition-all duration-300">
+              {Math.floor(iterationsCount)}
+            </span>
+            <span className="text-center text-black text-lg">AI E-Lab<br/>Iterations</span>
+          </div>
+        </div>
+      </Section>
+    );
+  };
+
+  // Interactive Timeline Component
+  const InteractiveTimeline = () => {
+    const [scrollProgress, setScrollProgress] = useState(0);
+    const timelineRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+      const handleScroll = () => {
+        if (timelineRef.current) {
+          const rect = timelineRef.current.getBoundingClientRect();
+          const timelineTop = rect.top;
+          const timelineHeight = rect.height;
+          const windowHeight = window.innerHeight;
+
+          // Calculate progress based on how much of the timeline is visible
+          const visibleTop = Math.max(0, windowHeight - timelineTop);
+          const visibleHeight = Math.min(visibleTop, timelineHeight);
+          const progress = Math.min(1, Math.max(0, visibleHeight / timelineHeight));
+
+          setScrollProgress(progress);
+        }
+      };
+
+      window.addEventListener('scroll', handleScroll);
+      handleScroll(); // Initial calculation
+
+      return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    const timelineItems = [
+      { title: "Start", description: "October", side: "right" },
+      { title: "Onboarding Weekend", description: "3 days intensive", side: "left" },
+      { title: "Education Sessions", description: "Weekly sessions", side: "right" },
+      { title: "Build & Iterate I", description: "4 weeks", side: "left" },
+      { title: "Litmus Test", description: "Pitch event", side: "right" },
+      { title: "Build & Iterate II", description: "5 weeks", side: "left" },
+      { title: "Pre-Demo Day Pitch", description: "Selection Day", side: "right" },
+      { title: "Demo Day", description: "Final Presentation", side: "left" }
+    ];
+
+    return (
+      <Section className="flex flex-col items-center justify-center py-32 bg-white w-full">
+        <h2 className="text-5xl font-normal mb-20 text-black text-center">Program</h2>
+        <div ref={timelineRef} className="relative max-w-4xl mx-auto w-full">
+          {/* Vertical line with gradient animation */}
+          <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gray-300 rounded-full">
+            <div
+              className="absolute top-0 left-0 w-full bg-gradient-to-b from-purple-600 to-purple-400 rounded-full transition-all duration-300 ease-out"
+              style={{
+                height: `${scrollProgress * 100}%`,
+                boxShadow: scrollProgress > 0 ? '0 0 20px rgba(168, 85, 247, 0.5)' : 'none'
+              }}
+            />
+          </div>
+
+          {/* Timeline items */}
+          <div className="relative space-y-20">
+            {timelineItems.map((item, index) => {
+              const itemProgress = Math.max(0, Math.min(1, (scrollProgress * timelineItems.length) - index));
+              const isActive = itemProgress > 0;
+
+              return (
+                <div key={index} className="flex items-center relative">
+                  {item.side === "left" ? (
+                    <>
+                      <div className="w-1/2 pr-12 text-right">
+                        <div className={`transition-all duration-500 ${isActive ? 'translate-x-0 opacity-100' : 'translate-x-8 opacity-60'}`}>
+                          <h3 className={`font-semibold text-2xl mb-2 transition-colors duration-300 ${isActive ? 'text-purple-700' : 'text-gray-800'}`}>
+                            {item.title}
+                          </h3>
+                          <p className={`text-base transition-colors duration-300 ${isActive ? 'text-purple-600' : 'text-gray-600'}`}>
+                            {item.description}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="absolute left-1/2 transform -translate-x-1/2 z-10">
+                        <div
+                          className={`w-8 h-8 rounded-full border-4 transition-all duration-300 ${
+                            isActive
+                              ? 'bg-purple-600 border-purple-300 shadow-lg shadow-purple-300/50 scale-110'
+                              : 'bg-white border-gray-400 scale-100'
+                          }`}
+                        >
+                          {isActive && (
+                            <div className="absolute inset-0 rounded-full bg-purple-600 animate-ping opacity-30" />
+                          )}
+                        </div>
+                      </div>
+                      <div className="w-1/2"></div>
+                    </>
+                  ) : (
+                    <>
+                      <div className="w-1/2"></div>
+                      <div className="absolute left-1/2 transform -translate-x-1/2 z-10">
+                        <div
+                          className={`w-8 h-8 rounded-full border-4 transition-all duration-300 ${
+                            isActive
+                              ? 'bg-purple-600 border-purple-300 shadow-lg shadow-purple-300/50 scale-110'
+                              : 'bg-white border-gray-400 scale-100'
+                          }`}
+                        >
+                          {isActive && (
+                            <div className="absolute inset-0 rounded-full bg-purple-600 animate-ping opacity-30" />
+                          )}
+                        </div>
+                      </div>
+                      <div className="w-1/2 pl-12">
+                        <div className={`transition-all duration-500 ${isActive ? 'translate-x-0 opacity-100' : '-translate-x-8 opacity-60'}`}>
+                          <h3 className={`font-semibold text-2xl mb-2 transition-colors duration-300 ${isActive ? 'text-purple-700' : 'text-gray-800'}`}>
+                            {item.title}
+                          </h3>
+                          <p className={`text-base transition-colors duration-300 ${isActive ? 'text-purple-600' : 'text-gray-600'}`}>
+                            {item.description}
+                          </p>
+                        </div>
+                      </div>
+                    </>
+                  )}
+                </div>
+              );
+            })}
+
+            {/* Branching Paths Section - After Demo Day */}
+            <div className="relative mt-20 pt-8">
+
+
+              {/* Branching lines */}
+              <svg className="absolute left-1/2 top-3 transform -translate-x-1/2 w-96 h-32" viewBox="0 0 400 120">
+                {/* Left branch - VC Funding */}
+                <path
+                  d="M200 0 Q120 40 60 80"
+                  stroke="url(#gradient1)"
+                  strokeWidth="3"
+                  fill="none"
+                  className="opacity-70"
+                  style={{
+                    strokeDasharray: '5,5',
+                    animation: 'dash 2s linear infinite'
+                  }}
+                />
+                {/* Center branch - Accelerators */}
+                <path
+                  d="M200 0 L200 80"
+                  stroke="url(#gradient2)"
+                  strokeWidth="3"
+                  fill="none"
+                  className="opacity-70"
+                  style={{
+                    strokeDasharray: '5,5',
+                    animation: 'dash 2s linear infinite',
+                    animationDelay: '0.3s'
+                  }}
+                />
+                {/* Right branch - Corporate Partnerships */}
+                <path
+                  d="M200 0 Q280 40 340 80"
+                  stroke="url(#gradient3)"
+                  strokeWidth="3"
+                  fill="none"
+                  className="opacity-70"
+                  style={{
+                    strokeDasharray: '5,5',
+                    animation: 'dash 2s linear infinite',
+                    animationDelay: '0.6s'
+                  }}
+                />
+
+                <defs>
+                  <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#a855f7" />
+                    <stop offset="100%" stopColor="#3b82f6" />
+                  </linearGradient>
+                  <linearGradient id="gradient2" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stopColor="#a855f7" />
+                    <stop offset="100%" stopColor="#ec4899" />
+                  </linearGradient>
+                  <linearGradient id="gradient3" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#a855f7" />
+                    <stop offset="100%" stopColor="#10b981" />
+                  </linearGradient>
+                </defs>
+              </svg>
+
+              {/* Path options */}
+              <div className="flex justify-between items-end mt-20 px-8">
+                {/* VC Funding Path */}
+                <div className="flex flex-col items-center text-center max-w-32 group cursor-pointer">
+
+                </div>
+
+                {/* Accelerator Path */}
+                <div className="flex flex-col items-center text-center max-w-32 group cursor-pointer">
+
+                </div>
+
+                {/* Corporate Partnership Path */}
+                <div className="flex flex-col items-center text-center max-w-32 group cursor-pointer">
+
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+
+        </div>
+        {/* Subtitle */}
+        <div className="text-center mt-8">
+                <p className="text-lg text-gray-700 font-medium">Your journey continues...</p>
+              </div>
+      </Section>
+    );
+  };
+
   return (
     <>
       <section>
@@ -110,10 +407,10 @@ export default function Page() {
         />
       </section>
       <Hero />
-      <Section className="flex flex-col items-center justify-center py-20 bg-white w-full">
+      <Section className="flex flex-col items-center justify-center pt-20 pb-0 bg-white w-full">
         <h2 className="text-4xl font-normal mb-12 text-black text-center w-full">What to expect</h2>
         <div className="w-full max-w-5xl mx-auto">
-          <div className="flex flex-col md:flex-row items-center justify-center gap-12 mb-16">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-12 mb-8">
             <div className="flex items-center justify-center">
               {/* AI text already cut out with Munich image */}
               <Image
@@ -134,216 +431,184 @@ export default function Page() {
           </div>
         </div>
       </Section>
-      
-      <Section className="flex flex-col items-center justify-center py-20 bg-white w-full">
-        <div className="w-full max-w-5xl border-t border-gray-200 flex flex-col md:flex-row justify-center items-center divide-y md:divide-y-0 md:divide-x divide-gray-200 mx-auto">
-          <div className="flex-1 flex flex-col items-center py-8">
-            <span className="text-5xl font-bold text-purple-600 mb-2">38</span>
-            <span className="text-center text-black text-lg">AI E-Lab Ventures<br/>since 2022</span>
-          </div>
-          <div className="flex-1 flex flex-col items-center py-8">
-            <span className="text-5xl font-bold text-purple-600 mb-2">€5M+</span>
-            <span className="text-center text-black text-lg">raised by AI E-Lab ventures</span>
-          </div>
-          <div className="flex-1 flex flex-col items-center py-8">
-            <span className="text-5xl font-bold text-purple-600 mb-2">3</span>
-            <span className="text-center text-black text-lg">AI E-Lab<br/>Iterations</span>
-          </div>
-        </div>
-      </Section>
-      
-      <Section className="flex flex-col items-center justify-center py-20 bg-white w-full">
-        <h2 className="text-4xl font-normal mb-12 text-black text-center">Our Alumni are part of</h2>
-        <div className="flex flex-wrap items-center justify-center gap-16 max-w-5xl mx-auto">
-          <div className="flex items-center justify-center w-24 h-20">
-            <Image
-              src="/assets/e-lab/partners/YC.png"
-              alt="Y Combinator"
-              width={96}
-              height={80}
-              className="object-contain max-h-full max-w-full"
-            />
-          </div>
-          <div className="flex items-center justify-center w-28 h-20">
-            <Image
-              src="/assets/e-lab/partners/ewor.png"
-              alt="EWOR"
-              width={112}
-              height={80}
-              className="object-contain max-h-full max-w-full"
-            />
-          </div>
-          <div className="flex items-center justify-center w-24 h-20">
-            <Image
-              src="/assets/e-lab/partners/Stanford.png"
-              alt="Stanford"
-              width={96}
-              height={80}
-              className="object-contain max-h-full max-w-full"
-            />
-          </div>
-          <div className="flex items-center justify-center w-24 h-20">
-            <Image
-              src="/assets/e-lab/partners/CDTM.png"
-              alt="CDTM"
-              width={96}
-              height={80}
-              className="object-contain max-h-full max-w-full"
-            />
-          </div>
-        </div>
-      </Section>
-      
-      <Section className="flex flex-col items-center justify-center py-20 bg-white w-full">
-        <h2 className="text-4xl font-normal mb-12 text-black text-center">Hear more from the community</h2>
-        <div className="flex flex-col gap-8 max-w-4xl mx-auto">
-          <div className="flex items-start gap-4">
-            <div className="w-16 h-16 flex-shrink-0">
-              <Image
-                src="/assets/e-lab/testimonials/benedikt_wieser.png"
-                alt="Benedikt Wieser"
-                width={64}
-                height={64}
-                className="w-16 h-16 object-cover"
-              />
-            </div>
-            <div>
-              <p className="text-gray-800 mb-1 text-lg">"The AI E-Lab is the best program for creating top-end entrepreneurs that has ever existed."</p>
-              <p className="text-sm text-gray-600"><strong>Benedikt Wieser</strong>, CDTM, Winner AI E-lab 2.0</p>
-            </div>
-          </div>
-          
-          <div className="flex items-start gap-4">
-            <div className="w-16 h-16 flex-shrink-0">
-              <Image
-                src="/assets/e-lab/testimonials/leon_hergert.png"
-                alt="Leon Hergert"
-                width={64}
-                height={64}
-                className="w-16 h-16 object-cover"
-              />
-            </div>
-            <div>
-              <p className="text-gray-800 mb-1 text-lg">"The AI E-Lab is the best program for creating top-end entrepreneurs that has ever existed."</p>
-              <p className="text-sm text-gray-600"><strong>Leon Hergert</strong>, Co-Founder @ Spherecast (YC S24), AI E-Lab 1.0</p>
-            </div>
-          </div>
-          
-          <div className="flex items-start gap-4">
-            <div className="w-16 h-16 flex-shrink-0">
-              <Image
-                src="/assets/e-lab/testimonials/leonardo_benini.png"
-                alt="Leonardo Benini"
-                width={64}
-                height={64}
-                className="w-16 h-16 object-cover"
-              />
-            </div>
-            <div>
-              <p className="text-gray-800 mb-1 text-lg">"The AI E-Lab is the best program for creating top-end entrepreneurs that has ever existed."</p>
-              <p className="text-sm text-gray-600"><strong>Leonardo Benini</strong>, Founder Stealth, EWOR, AI E-Lab 3.0</p>
-            </div>
-          </div>
-          
-          <div className="flex items-start gap-4">
-            <div className="w-16 h-16 flex-shrink-0">
-              <Image
-                src="/assets/e-lab/testimonials/oliver_schoppe.png"
-                alt="Oliver Schoppe"
-                width={64}
-                height={64}
-                className="w-16 h-16 object-cover"
-              />
-            </div>
-            <div>
-              <p className="text-gray-800 mb-1 text-lg">"The AI E-Lab is the best program for creating top-end entrepreneurs that has ever existed."</p>
-              <p className="text-sm text-gray-600"><strong>Oliver Schoppe</strong>, Principal, UVC Partners</p>
-            </div>
-          </div>
-        </div>
-      </Section>
-      
-      <Section className="flex flex-col items-center justify-center py-20 bg-white w-full">
-        <h2 className="text-4xl font-normal mb-12 text-black text-center">Program</h2>
-        <div className="relative max-w-2xl mx-auto">
-          {/* Vertical line */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-black"></div>
-          
-          {/* Timeline items */}
-          <div className="relative space-y-12">
-            {/* Start - Right side */}
-            <div className="flex items-center">
-              <div className="w-1/2"></div>
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-black rounded-full z-10"></div>
-              <div className="w-1/2 pl-8">
-                <h3 className="font-normal text-lg">Start</h3>
-                <p className="text-sm text-gray-600">October</p>
+
+      {/* Animated Statistics Section */}
+      <AnimatedStatsSection />
+
+      {/* Alumni Testimonials Carousel */}
+      <Section className="flex flex-col items-center justify-center py-20 bg-gradient-to-br from-gray-50 to-white w-full overflow-hidden">
+        <h2 className="text-4xl font-normal mb-4 text-black text-center">Our Alumni Community</h2>
+        <p className="text-lg text-gray-600 mb-12 text-center">Hear from founders building the next generation of AI companies</p>
+
+        {/* Animated Cards Container */}
+        <div className="relative w-full">
+          <div className="flex animate-scroll-left space-x-6">
+            {/* Card 1 - Leon Hergert */}
+            <div className="flex-shrink-0 w-80 bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-shadow duration-300 flex flex-col h-72">
+              <div className="flex items-start gap-4 mb-4">
+                <div className="w-16 h-16 flex-shrink-0 rounded-full overflow-hidden">
+                  <Image
+                    src="/assets/e-lab/testimonials/leon_hergert.png"
+                    alt="Leon Hergert"
+                    width={64}
+                    height={64}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-semibold text-lg text-gray-900">Leon Hergert</h3>
+                  <p className="text-sm text-gray-600">Co-Founder @ Spherecast</p>
+                  <p className="text-xs text-purple-600 font-medium">AI E-Lab 1.0</p>
+                </div>
+              </div>
+              <p className="text-gray-700 text-sm leading-relaxed flex-1">"The AI E-Lab gave us the foundation to build Spherecast from idea to YC. The community and mentorship were game-changing."</p>
+              <div className="flex items-center gap-3 mt-4 pt-4 border-t border-gray-100">
+                <div className="w-8 h-8 flex items-center justify-center">
+                  <Image src="/assets/e-lab/partners/YC.png" alt="Y Combinator" width={32} height={24} className="object-contain" />
+                </div>
+                <span className="text-xs text-gray-500">Y Combinator S24</span>
               </div>
             </div>
-            
-            {/* Onboarding Weekend - Left side */}
-            <div className="flex items-center">
-              <div className="w-1/2 pr-8 text-right">
-                <h3 className="font-normal text-lg">Onboarding Weekend</h3>
-                <p className="text-sm text-gray-600">3 days intensive</p>
+
+            {/* Card 2 - Benedikt Wieser */}
+            <div className="flex-shrink-0 w-80 bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-shadow duration-300 flex flex-col h-72">
+              <div className="flex items-start gap-4 mb-4">
+                <div className="w-16 h-16 flex-shrink-0 rounded-full overflow-hidden">
+                  <Image
+                    src="/assets/e-lab/testimonials/benedikt_wieser.png"
+                    alt="Benedikt Wieser"
+                    width={64}
+                    height={64}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-semibold text-lg text-gray-900">Benedikt Wieser</h3>
+                  <p className="text-sm text-gray-600">Winner AI E-Lab 2.0</p>
+                  <p className="text-xs text-purple-600 font-medium">AI E-Lab 2.0</p>
+                </div>
               </div>
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-black rounded-full z-10"></div>
-              <div className="w-1/2"></div>
-            </div>
-            
-            {/* Execution Sessions - Right side */}
-            <div className="flex items-center">
-              <div className="w-1/2"></div>
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-black rounded-full z-10"></div>
-              <div className="w-1/2 pl-8">
-                <h3 className="font-normal text-lg">Execution Sessions</h3>
-                <p className="text-sm text-gray-600">Weekly sessions</p>
-              </div>
-            </div>
-            
-            {/* Build & Iterate - Left side */}
-            <div className="flex items-center">
-              <div className="w-1/2 pr-8 text-right">
-                <h3 className="font-normal text-lg">Build & Iterate</h3>
-                <p className="text-sm text-gray-600">4 weeks</p>
-              </div>
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-black rounded-full z-10"></div>
-              <div className="w-1/2"></div>
-            </div>
-            
-            {/* Litmus Test - Right side */}
-            <div className="flex items-center">
-              <div className="w-1/2"></div>
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-black rounded-full z-10"></div>
-              <div className="w-1/2 pl-8">
-                <h3 className="font-normal text-lg">Litmus Test</h3>
-                <p className="text-sm text-gray-600">Pitch event</p>
+              <p className="text-gray-700 text-sm leading-relaxed flex-1">"The AI E-Lab is the best program for creating top-end entrepreneurs that has ever existed. The network is incredible."</p>
+              <div className="flex items-center gap-3 mt-4 pt-4 border-t border-gray-100">
+                <div className="w-8 h-8 flex items-center justify-center">
+                  <Image src="/assets/e-lab/partners/CDTM.png" alt="CDTM" width={32} height={24} className="object-contain" />
+                </div>
+                <span className="text-xs text-gray-500">CDTM Alumni</span>
               </div>
             </div>
-            
-            {/* Build Sprint 2 - Left side */}
-            <div className="flex items-center">
-              <div className="w-1/2 pr-8 text-right">
-                <h3 className="font-normal text-lg">Build Sprint 2</h3>
-                <p className="text-sm text-gray-600">Stress Test</p>
+
+            {/* Card 3 - Leonardo Benini */}
+            <div className="flex-shrink-0 w-80 bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-shadow duration-300 flex flex-col h-72">
+              <div className="flex items-start gap-4 mb-4">
+                <div className="w-16 h-16 flex-shrink-0 rounded-full overflow-hidden">
+                  <Image
+                    src="/assets/e-lab/testimonials/leonardo_benini.png"
+                    alt="Leonardo Benini"
+                    width={64}
+                    height={64}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-semibold text-lg text-gray-900">Leonardo Benini</h3>
+                  <p className="text-sm text-gray-600">Founder @ Stealth Startup</p>
+                  <p className="text-xs text-purple-600 font-medium">AI E-Lab 3.0</p>
+                </div>
               </div>
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-black rounded-full z-10"></div>
-              <div className="w-1/2"></div>
+              <p className="text-gray-700 text-sm leading-relaxed flex-1">"From zero to funded startup - the AI E-Lab accelerated our journey beyond what we thought possible."</p>
+              <div className="flex items-center gap-3 mt-4 pt-4 border-t border-gray-100">
+                <div className="w-8 h-8 flex items-center justify-center">
+                  <Image src="/assets/e-lab/partners/ewor.png" alt="EWOR" width={32} height={24} className="object-contain" />
+                </div>
+                <span className="text-xs text-gray-500">EWOR Fellow</span>
+              </div>
             </div>
-            
-            {/* Demo Day - Right side */}
-            <div className="flex items-center">
-              <div className="w-1/2"></div>
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-black rounded-full z-10"></div>
-              <div className="w-1/2 pl-8">
-                <h3 className="font-normal text-lg">Demo Day</h3>
-                <p className="text-sm text-gray-600">Final presentation</p>
+
+            {/* Card 4 - Oliver Schoppe */}
+            <div className="flex-shrink-0 w-80 bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-shadow duration-300 flex flex-col h-72">
+              <div className="flex items-start gap-4 mb-4">
+                <div className="w-16 h-16 flex-shrink-0 rounded-full overflow-hidden">
+                  <Image
+                    src="/assets/e-lab/testimonials/oliver_schoppe.png"
+                    alt="Oliver Schoppe"
+                    width={64}
+                    height={64}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-semibold text-lg text-gray-900">Oliver Schoppe</h3>
+                  <p className="text-sm text-gray-600">Principal @ UVC Partners</p>
+                  <p className="text-xs text-purple-600 font-medium">Mentor & Investor</p>
+                </div>
+              </div>
+              <p className="text-gray-700 text-sm leading-relaxed flex-1">"The quality of founders coming out of AI E-Lab is exceptional. We're proud to support this community."</p>
+              <div className="flex items-center gap-3 mt-4 pt-4 border-t border-gray-100">
+                <div className="w-8 h-8 flex items-center justify-center">
+                  <Image src="/assets/e-lab/partners/uvc_b.png" alt="UVC Partners" width={32} height={24} className="object-contain" />
+                </div>
+                <span className="text-xs text-gray-500">UVC Partners</span>
+              </div>
+            </div>
+
+            {/* Duplicate cards for seamless loop */}
+            <div className="flex-shrink-0 w-80 bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-shadow duration-300 flex flex-col h-72">
+              <div className="flex items-start gap-4 mb-4">
+                <div className="w-16 h-16 flex-shrink-0 rounded-full overflow-hidden">
+                  <Image
+                    src="/assets/e-lab/testimonials/leon_hergert.png"
+                    alt="Leon Hergert"
+                    width={64}
+                    height={64}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-semibold text-lg text-gray-900">Leon Hergert</h3>
+                  <p className="text-sm text-gray-600">Co-Founder @ Spherecast</p>
+                  <p className="text-xs text-purple-600 font-medium">AI E-Lab 1.0</p>
+                </div>
+              </div>
+              <p className="text-gray-700 text-sm leading-relaxed flex-1">"The AI E-Lab gave us the foundation to build Spherecast from idea to YC. The community and mentorship were game-changing."</p>
+              <div className="flex items-center gap-3 mt-4 pt-4 border-t border-gray-100">
+                <div className="w-8 h-8 flex items-center justify-center">
+                  <Image src="/assets/e-lab/partners/YC.png" alt="Y Combinator" width={32} height={24} className="object-contain" />
+                </div>
+                <span className="text-xs text-gray-500">Y Combinator S24</span>
+              </div>
+            </div>
+
+            <div className="flex-shrink-0 w-80 bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-shadow duration-300 flex flex-col h-72">
+              <div className="flex items-start gap-4 mb-4">
+                <div className="w-16 h-16 flex-shrink-0 rounded-full overflow-hidden">
+                  <Image
+                    src="/assets/e-lab/testimonials/benedikt_wieser.png"
+                    alt="Benedikt Wieser"
+                    width={64}
+                    height={64}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-semibold text-lg text-gray-900">Benedikt Wieser</h3>
+                  <p className="text-sm text-gray-600">Winner AI E-Lab 2.0</p>
+                  <p className="text-xs text-purple-600 font-medium">AI E-Lab 2.0</p>
+                </div>
+              </div>
+              <p className="text-gray-700 text-sm leading-relaxed flex-1">"The AI E-Lab is the best program for creating top-end entrepreneurs that has ever existed. The network is incredible."</p>
+              <div className="flex items-center gap-3 mt-4 pt-4 border-t border-gray-100">
+                <div className="w-8 h-8 flex items-center justify-center">
+                  <Image src="/assets/e-lab/partners/CDTM.png" alt="CDTM" width={32} height={24} className="object-contain" />
+                </div>
+                <span className="text-xs text-gray-500">CDTM Alumni</span>
               </div>
             </div>
           </div>
         </div>
       </Section>
-      
+
+      <InteractiveTimeline />
+
       <Section className="flex flex-col items-center justify-center py-20 bg-white w-full">
         <h2 className="text-4xl font-normal mb-12 text-black text-center">Community is created by working together</h2>
         <div className="flex flex-col md:flex-row items-center justify-center gap-12 max-w-5xl mx-auto">
@@ -363,24 +628,36 @@ export default function Page() {
           </div>
         </div>
       </Section>
-      
+
       <Section className="flex flex-col items-center justify-center py-20 bg-white w-full">
         <h2 className="text-4xl font-normal mb-8 text-black text-center">
           Applications for <span className="underline">AI E-Lab 4.0</span> are open!
         </h2>
         <div className="flex justify-center">
-          <button className="bg-purple-600 text-white px-8 py-4 rounded font-normal hover:bg-purple-700 transition-colors text-lg">
-            Apply Now
-          </button>
+          <a
+            href="https://forms.tum-ai.com/ai-e-lab-3.0-application"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative inline-flex items-center justify-center px-8 py-2 text-lg font-semibold text-white transition-all duration-300 ease-out"
+          >
+            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-600 to-purple-500 shadow-lg shadow-purple-500/25 transition-all duration-300 group-hover:shadow-purple-500/40 group-hover:scale-105"></div>
+            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-500 to-purple-400 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+            <span className="relative flex items-center space-x-2">
+              <span>Apply Now</span>
+              <svg className="w-5 h-5 transform transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </span>
+          </a>
         </div>
       </Section>
-      
+
       <Section className="flex flex-col items-center justify-center py-20 bg-white w-full">
         <h2 className="text-4xl font-normal mb-12 text-black text-center">Frequently Asked Questions</h2>
         <div className="w-full max-w-4xl mx-auto space-y-4">
           {faqItems.map((item, index) => (
             <div key={index} className="border-b border-gray-200 pb-4">
-              <div 
+              <div
                 className="flex justify-between items-center cursor-pointer"
                 onClick={() => toggleFAQ(index)}
               >
