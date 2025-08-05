@@ -63,6 +63,29 @@
       stroke-dashoffset: -20;
     }
   }
+
+  @keyframes floatingPulse {
+    0% {
+      opacity: 0.1;
+      transform: translate(0, 0) scale(1);
+    }
+    25% {
+      opacity: 0.3;
+      transform: translate(10px, -15px) scale(1.1);
+    }
+    50% {
+      opacity: 0.2;
+      transform: translate(-5px, -25px) scale(0.9);
+    }
+    75% {
+      opacity: 0.25;
+      transform: translate(-15px, -10px) scale(1.05);
+    }
+    100% {
+      opacity: 0.1;
+      transform: translate(0, 0) scale(1);
+    }
+  }
 }
 
 /*

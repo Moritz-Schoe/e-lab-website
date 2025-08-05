@@ -159,7 +159,7 @@ export default function Page() {
     }, [isVisible]);
 
     return (
-      <Section className="flex flex-col items-center justify-center py-20 bg-white w-full">
+      <Section className="flex flex-col items-center justify-center pt-0 pb-20 bg-white w-full">
         <div ref={statsRef} className="w-full max-w-5xl border-t border-gray-200 flex flex-col md:flex-row justify-center items-center divide-y md:divide-y-0 md:divide-x divide-gray-200 mx-auto">
           <div className="flex-1 flex flex-col items-center py-8">
             <span className="text-5xl font-bold text-purple-600 mb-2 transition-all duration-300">
@@ -407,10 +407,10 @@ export default function Page() {
         />
       </section>
       <Hero />
-      <Section className="flex flex-col items-center justify-center py-20 bg-white w-full">
+      <Section className="flex flex-col items-center justify-center pt-20 pb-0 bg-white w-full">
         <h2 className="text-4xl font-normal mb-12 text-black text-center w-full">What to expect</h2>
         <div className="w-full max-w-5xl mx-auto">
-          <div className="flex flex-col md:flex-row items-center justify-center gap-12 mb-16">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-12 mb-8">
             <div className="flex items-center justify-center">
               {/* AI text already cut out with Munich image */}
               <Image
@@ -638,9 +638,16 @@ export default function Page() {
             href="https://forms.tum-ai.com/ai-e-lab-3.0-application"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-purple-600 text-white px-8 py-4 rounded font-normal hover:bg-purple-700 transition-colors text-lg inline-block text-center"
+            className="group relative inline-flex items-center justify-center px-8 py-2 text-lg font-semibold text-white transition-all duration-300 ease-out"
           >
-            Apply Now
+            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-600 to-purple-500 shadow-lg shadow-purple-500/25 transition-all duration-300 group-hover:shadow-purple-500/40 group-hover:scale-105"></div>
+            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-500 to-purple-400 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+            <span className="relative flex items-center space-x-2">
+              <span>Apply Now</span>
+              <svg className="w-5 h-5 transform transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </span>
           </a>
         </div>
       </Section>
