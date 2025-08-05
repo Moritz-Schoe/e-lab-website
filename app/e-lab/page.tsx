@@ -14,6 +14,7 @@ import { Hero } from "./hero";
 import { Organization, WithContext } from "schema-dts";
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
+import { archivoSemiExpandedBold } from "../../styles/fonts";
 
 export default function Page() {
   const jsonLd: WithContext<Organization> = {
@@ -162,19 +163,19 @@ export default function Page() {
       <Section className="flex flex-col items-center justify-center pt-0 pb-20 bg-white w-full">
         <div ref={statsRef} className="w-full max-w-5xl border-t border-gray-200 flex flex-col md:flex-row justify-center items-center divide-y md:divide-y-0 md:divide-x divide-gray-200 mx-auto">
           <div className="flex-1 flex flex-col items-center py-8">
-            <span className="text-5xl font-bold text-purple-600 mb-2 transition-all duration-300">
+            <span className={`text-5xl font-bold text-purple-600 mb-2 transition-all duration-300 ${archivoSemiExpandedBold.className}`}>
               {Math.floor(venturesCount)}
             </span>
             <span className="text-center text-black text-lg">AI E-Lab Ventures<br/>since 2022</span>
           </div>
           <div className="flex-1 flex flex-col items-center py-8">
-            <span className="text-5xl font-bold text-purple-600 mb-2 transition-all duration-300">
+            <span className={`text-5xl font-bold text-purple-600 mb-2 transition-all duration-300 ${archivoSemiExpandedBold.className}`}>
               €{(Math.floor(fundingCount) / 1000000).toFixed(1)}M+
             </span>
             <span className="text-center text-black text-lg">raised by AI E-Lab ventures</span>
           </div>
           <div className="flex-1 flex flex-col items-center py-8">
-            <span className="text-5xl font-bold text-purple-600 mb-2 transition-all duration-300">
+            <span className={`text-5xl font-bold text-purple-600 mb-2 transition-all duration-300 ${archivoSemiExpandedBold.className}`}>
               {Math.floor(iterationsCount)}
             </span>
             <span className="text-center text-black text-lg">AI E-Lab<br/>Iterations</span>
@@ -225,7 +226,7 @@ export default function Page() {
 
     return (
       <Section className="flex flex-col items-center justify-center py-32 bg-white w-full">
-        <h2 className="text-5xl font-normal mb-20 text-black text-center">Program</h2>
+        <h2 className={`text-5xl font-normal mb-20 text-black text-center uppercase ${archivoSemiExpandedBold.className}`}>Program</h2>
         <div ref={timelineRef} className="relative max-w-4xl mx-auto w-full">
           {/* Vertical line with gradient animation */}
           <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gray-300 rounded-full">
@@ -408,7 +409,7 @@ export default function Page() {
       </section>
       <Hero />
       <Section className="flex flex-col items-center justify-center pt-20 pb-0 bg-white w-full">
-        <h2 className="text-4xl font-normal mb-12 text-black text-center w-full">What to expect</h2>
+        <h2 className={`text-4xl font-normal mb-12 text-black text-center w-full uppercase ${archivoSemiExpandedBold.className}`}>What to expect</h2>
         <div className="w-full max-w-5xl mx-auto">
           <div className="flex flex-col md:flex-row items-center justify-center gap-12 mb-8">
             <div className="flex items-center justify-center">
@@ -437,7 +438,7 @@ export default function Page() {
 
       {/* Alumni Testimonials Carousel */}
       <Section className="flex flex-col items-center justify-center py-20 bg-gradient-to-br from-gray-50 to-white w-full overflow-hidden">
-        <h2 className="text-4xl font-normal mb-4 text-black text-center">Our Alumni Community</h2>
+        <h2 className={`text-4xl font-normal mb-4 text-black text-center uppercase ${archivoSemiExpandedBold.className}`}>Our Alumni Community</h2>
         <p className="text-lg text-gray-600 mb-12 text-center">Hear from founders building the next generation of AI companies</p>
 
         {/* Animated Cards Container */}
@@ -610,7 +611,7 @@ export default function Page() {
       <InteractiveTimeline />
 
       <Section className="flex flex-col items-center justify-center py-20 bg-white w-full">
-        <h2 className="text-4xl font-normal mb-12 text-black text-center">Community is created by working together</h2>
+        <h2 className={`text-4xl font-normal mb-12 text-black text-center uppercase ${archivoSemiExpandedBold.className}`}>Community is created by working together</h2>
         <div className="flex flex-col md:flex-row items-center justify-center gap-12 max-w-5xl mx-auto">
           <div className="w-full md:w-1/2">
             <Image
@@ -630,9 +631,9 @@ export default function Page() {
       </Section>
 
       <Section className="flex flex-col items-center justify-center py-20 bg-white w-full">
-        <h2 className="text-4xl font-normal mb-8 text-black text-center">
-          Applications for <span className="underline">AI E-Lab 4.0</span> are open!
-        </h2>
+                <h2 className={`text-4xl font-normal mb-8 text-black text-center uppercase ${archivoSemiExpandedBold.className}`}>
+            Applications for <span className="underline">AI E-Lab 4.0</span> are open!
+          </h2>
         <div className="flex justify-center">
           <a
             href="https://forms.tum-ai.com/ai-e-lab-3.0-application"
@@ -653,7 +654,7 @@ export default function Page() {
       </Section>
 
       <Section className="flex flex-col items-center justify-center py-20 bg-white w-full">
-        <h2 className="text-4xl font-normal mb-12 text-black text-center">Frequently Asked Questions</h2>
+        <h2 className={`text-4xl font-normal mb-12 text-black text-center uppercase ${archivoSemiExpandedBold.className}`}>Frequently Asked Questions</h2>
         <div className="w-full max-w-4xl mx-auto space-y-4">
           {faqItems.map((item, index) => (
             <div key={index} className="border-b border-gray-200 pb-4">

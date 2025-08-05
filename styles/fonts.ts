@@ -1,4 +1,4 @@
-import { Bitter, Inter } from "next/font/google";
+import { Bitter, Inter, Archivo } from "next/font/google";
 
 const inter = Inter({
   weight: "variable",
@@ -8,5 +8,9 @@ const bitter = Bitter({
   weight: "variable",
   subsets: ["latin"],
 });
+const archivoSemiExpandedBold = Archivo({
+  weight: "700",
+  subsets: ["latin"],
+});
 
-export { inter, bitter };
+export { inter, bitter, archivoSemiExpandedBold };

@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import Person from "@components/Person";
+import { archivoSemiExpandedBold } from "../styles/fonts";
 import { Startup } from "@data/e-lab-startups";
 import SocialMediaLinks from "@components/SocialMediaLinks";
 
@@ -15,7 +16,7 @@ const StartupDetails = ({ startup }: { startup: Startup }) => {
       <div className="mx-auto max-w-4xl">
         <div className="mb-8 flex flex-col sm:flex-row sm:items-center">
           <div className="flex items-center">
-            <h1 className="mr-4 text-4xl font-bold">{startup.name}</h1>
+            <h1 className={`mr-4 text-4xl font-bold ${archivoSemiExpandedBold.className}`}>{startup.name}</h1>
             {!imageError && (
               <Image
                 src={startup.logo}
