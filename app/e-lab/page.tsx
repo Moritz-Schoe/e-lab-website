@@ -576,33 +576,52 @@ export default function Page() {
                     </p>
 
                     <div className="flex justify-center">
-                      <a
-                        href="https://forms.tum-ai.com/ai-e-lab-3.0-application"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="relative overflow-hidden backdrop-blur-2xl border border-purple-400/30 hover:border-purple-300/40 transition-all duration-300 inline-flex items-center justify-center rounded-md px-6 py-3 text-base font-medium text-white"
-                        style={{
-                          background: 'linear-gradient(135deg, rgba(147, 51, 234, 0.3) 0%, rgba(126, 34, 206, 0.2) 100%)',
-                          boxShadow: '0 8px 32px rgba(147, 51, 234, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 -1px 0 rgba(255, 255, 255, 0.05)',
-                        }}
-                      >
-                        <span className="flex items-center gap-2">
-                          <span>Apply Now</span>
-                          <svg
-                            className="h-5 w-5 transition-transform duration-300 hover:translate-x-1"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M14 5l7 7m0 0l-7 7m7-7H3"
-                            />
-                          </svg>
-                        </span>
-                      </a>
+                      <div className="relative">
+                        {/* Radiating glow effect - always visible */}
+                        <div className="absolute -inset-2 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-lg opacity-50 blur-xl"></div>
+                        
+                        {/* Sparkling effects - always visible */}
+                        <div className="absolute -inset-4 opacity-100">
+                          {/* Sparkle 1 */}
+                          <div className="absolute top-0 left-1/4 w-2 h-2 bg-yellow-300 rounded-full animate-ping" style={{ animationDelay: '0s' }}></div>
+                          {/* Sparkle 2 */}
+                          <div className="absolute top-1/4 right-0 w-1.5 h-1.5 bg-purple-300 rounded-full animate-ping" style={{ animationDelay: '0.5s' }}></div>
+                          {/* Sparkle 3 */}
+                          <div className="absolute bottom-0 left-1/2 w-1 h-1 bg-pink-300 rounded-full animate-ping" style={{ animationDelay: '1s' }}></div>
+                          {/* Sparkle 4 */}
+                          <div className="absolute top-1/2 left-0 w-1.5 h-1.5 bg-blue-300 rounded-full animate-ping" style={{ animationDelay: '1.5s' }}></div>
+                          {/* Sparkle 5 */}
+                          <div className="absolute bottom-1/4 right-1/4 w-1 h-1 bg-green-300 rounded-full animate-ping" style={{ animationDelay: '2s' }}></div>
+                        </div>
+
+                        <a
+                          href="https://forms.tum-ai.com/ai-e-lab-3.0-application"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="relative overflow-hidden backdrop-blur-2xl border border-purple-400/30 inline-flex items-center justify-center rounded-md px-6 py-3 text-base font-medium text-white"
+                          style={{
+                            background: 'linear-gradient(135deg, rgba(147, 51, 234, 0.3) 0%, rgba(126, 34, 206, 0.2) 100%)',
+                            boxShadow: '0 8px 32px rgba(147, 51, 234, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 -1px 0 rgba(255, 255, 255, 0.05)',
+                          }}
+                        >
+                          <span className="flex items-center gap-2">
+                            <span>Apply Now</span>
+                            <svg
+                              className="h-5 w-5"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M14 5l7 7m0 0l-7 7m7-7H3"
+                              />
+                            </svg>
+                          </span>
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </div>
