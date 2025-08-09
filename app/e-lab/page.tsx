@@ -14,6 +14,7 @@ import { Hero } from "./hero";
 import { Organization, WithContext } from "schema-dts";
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
+import { archivoSemiExpandedBold } from "../../styles/fonts";
 
 export default function Page() {
   const jsonLd: WithContext<Organization> = {
@@ -159,22 +160,22 @@ export default function Page() {
     }, [isVisible]);
 
     return (
-      <Section className="flex flex-col items-center justify-center py-20 bg-white w-full">
+      <Section className="flex flex-col items-center justify-center pt-0 pb-20 bg-white w-full">
         <div ref={statsRef} className="w-full max-w-5xl border-t border-gray-200 flex flex-col md:flex-row justify-center items-center divide-y md:divide-y-0 md:divide-x divide-gray-200 mx-auto">
           <div className="flex-1 flex flex-col items-center py-8">
-            <span className="text-5xl font-bold text-purple-600 mb-2 transition-all duration-300">
+            <span className={`text-5xl font-bold text-purple-600 mb-2 transition-all duration-300 ${archivoSemiExpandedBold.className}`}>
               {Math.floor(venturesCount)}
             </span>
             <span className="text-center text-black text-lg">AI E-Lab Ventures<br/>since 2022</span>
           </div>
           <div className="flex-1 flex flex-col items-center py-8">
-            <span className="text-5xl font-bold text-purple-600 mb-2 transition-all duration-300">
+            <span className={`text-5xl font-bold text-purple-600 mb-2 transition-all duration-300 ${archivoSemiExpandedBold.className}`}>
               €{(Math.floor(fundingCount) / 1000000).toFixed(1)}M+
             </span>
             <span className="text-center text-black text-lg">raised by AI E-Lab ventures</span>
           </div>
           <div className="flex-1 flex flex-col items-center py-8">
-            <span className="text-5xl font-bold text-purple-600 mb-2 transition-all duration-300">
+            <span className={`text-5xl font-bold text-purple-600 mb-2 transition-all duration-300 ${archivoSemiExpandedBold.className}`}>
               {Math.floor(iterationsCount)}
             </span>
             <span className="text-center text-black text-lg">AI E-Lab<br/>Iterations</span>
@@ -220,12 +221,12 @@ export default function Page() {
       { title: "Litmus Test", description: "Pitch event", side: "right" },
       { title: "Build & Iterate II", description: "5 weeks", side: "left" },
       { title: "Pre-Demo Day Pitch", description: "Selection Day", side: "right" },
-      { title: "Demo Day", description: "Final Presentation", side: "left" }
+      { title: "Demo Day", description: "January", side: "left" }
     ];
 
     return (
       <Section className="flex flex-col items-center justify-center py-32 bg-white w-full">
-        <h2 className="text-5xl font-normal mb-20 text-black text-center">Program</h2>
+        <h2 className={`text-4xl font-normal mb-12 text-black text-center uppercase ${archivoSemiExpandedBold.className}`}>Program</h2>
         <div ref={timelineRef} className="relative max-w-4xl mx-auto w-full">
           {/* Vertical line with gradient animation */}
           <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gray-300 rounded-full">
@@ -305,92 +306,11 @@ export default function Page() {
               );
             })}
 
-            {/* Branching Paths Section - After Demo Day */}
-            <div className="relative mt-20 pt-8">
-
-
-              {/* Branching lines */}
-              <svg className="absolute left-1/2 top-3 transform -translate-x-1/2 w-96 h-32" viewBox="0 0 400 120">
-                {/* Left branch - VC Funding */}
-                <path
-                  d="M200 0 Q120 40 60 80"
-                  stroke="url(#gradient1)"
-                  strokeWidth="3"
-                  fill="none"
-                  className="opacity-70"
-                  style={{
-                    strokeDasharray: '5,5',
-                    animation: 'dash 2s linear infinite'
-                  }}
-                />
-                {/* Center branch - Accelerators */}
-                <path
-                  d="M200 0 L200 80"
-                  stroke="url(#gradient2)"
-                  strokeWidth="3"
-                  fill="none"
-                  className="opacity-70"
-                  style={{
-                    strokeDasharray: '5,5',
-                    animation: 'dash 2s linear infinite',
-                    animationDelay: '0.3s'
-                  }}
-                />
-                {/* Right branch - Corporate Partnerships */}
-                <path
-                  d="M200 0 Q280 40 340 80"
-                  stroke="url(#gradient3)"
-                  strokeWidth="3"
-                  fill="none"
-                  className="opacity-70"
-                  style={{
-                    strokeDasharray: '5,5',
-                    animation: 'dash 2s linear infinite',
-                    animationDelay: '0.6s'
-                  }}
-                />
-
-                <defs>
-                  <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#a855f7" />
-                    <stop offset="100%" stopColor="#3b82f6" />
-                  </linearGradient>
-                  <linearGradient id="gradient2" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stopColor="#a855f7" />
-                    <stop offset="100%" stopColor="#ec4899" />
-                  </linearGradient>
-                  <linearGradient id="gradient3" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#a855f7" />
-                    <stop offset="100%" stopColor="#10b981" />
-                  </linearGradient>
-                </defs>
-              </svg>
-
-              {/* Path options */}
-              <div className="flex justify-between items-end mt-20 px-8">
-                {/* VC Funding Path */}
-                <div className="flex flex-col items-center text-center max-w-32 group cursor-pointer">
-
-                </div>
-
-                {/* Accelerator Path */}
-                <div className="flex flex-col items-center text-center max-w-32 group cursor-pointer">
-
-                </div>
-
-                {/* Corporate Partnership Path */}
-                <div className="flex flex-col items-center text-center max-w-32 group cursor-pointer">
-
-                </div>
-              </div>
-
-
-            </div>
           </div>
 
         </div>
         {/* Subtitle */}
-        <div className="text-center mt-8">
+        <div className="text-center mt-20">
                 <p className="text-lg text-gray-700 font-medium">Your journey continues...</p>
               </div>
       </Section>
@@ -407,10 +327,10 @@ export default function Page() {
         />
       </section>
       <Hero />
-      <Section className="flex flex-col items-center justify-center py-20 bg-white w-full">
-        <h2 className="text-4xl font-normal mb-12 text-black text-center w-full">What to expect</h2>
+      <Section className="flex flex-col items-center justify-center pt-20 pb-0 bg-white w-full">
+        <h2 className={`text-4xl font-normal mb-12 text-black text-center uppercase ${archivoSemiExpandedBold.className}`}>What to expect</h2>
         <div className="w-full max-w-5xl mx-auto">
-          <div className="flex flex-col md:flex-row items-center justify-center gap-12 mb-16">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-12 mb-8">
             <div className="flex items-center justify-center">
               {/* AI text already cut out with Munich image */}
               <Image
@@ -426,7 +346,7 @@ export default function Page() {
               <p>The AI E Lab is built by founders, for founders — with speed, agility, and real impact at its core.</p>
               <p>In 12 weeks, we give you what actually matters: your own workspace, direct access to top VCs, weekly sessions with operators, and a team of peers who move as fast as you do.</p>
               <p>Whether you have an idea, a prototype, or just motivation — you'll build it here. No equity. No theory. Just traction.</p>
-              <p className="text-sm text-gray-500">Backed by TUM.ai and supported by leading VCs.</p>
+              <p>Backed by TUM.ai and supported by leading VCs.</p>
             </div>
           </div>
         </div>
@@ -437,11 +357,19 @@ export default function Page() {
 
       {/* Alumni Testimonials Carousel */}
       <Section className="flex flex-col items-center justify-center py-20 bg-gradient-to-br from-gray-50 to-white w-full overflow-hidden">
-        <h2 className="text-4xl font-normal mb-4 text-black text-center">Our Alumni Community</h2>
+        <h2 className={`text-4xl font-normal mb-12 text-black text-center uppercase ${archivoSemiExpandedBold.className}`}>Our Alumni Community</h2>
         <p className="text-lg text-gray-600 mb-12 text-center">Hear from founders building the next generation of AI companies</p>
 
         {/* Animated Cards Container */}
-        <div className="relative w-full">
+        <div
+          className="relative w-full overflow-hidden"
+          style={{
+            WebkitMaskImage:
+              "linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%)",
+            maskImage:
+              "linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%)",
+          }}
+        >
           <div className="flex animate-scroll-left space-x-6">
             {/* Card 1 - Leon Hergert */}
             <div className="flex-shrink-0 w-80 bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-shadow duration-300 flex flex-col h-72">
@@ -604,13 +532,14 @@ export default function Page() {
               </div>
             </div>
           </div>
+          {/* Edge fade handled purely by mask-image (opacity fade) for smooth appearance/disappearance */}
         </div>
       </Section>
 
       <InteractiveTimeline />
 
       <Section className="flex flex-col items-center justify-center py-20 bg-white w-full">
-        <h2 className="text-4xl font-normal mb-12 text-black text-center">Community is created by working together</h2>
+        <h2 className={`text-4xl font-normal mb-12 text-black text-center uppercase ${archivoSemiExpandedBold.className}`}>Community is created by working together</h2>
         <div className="flex flex-col md:flex-row items-center justify-center gap-12 max-w-5xl mx-auto">
           <div className="w-full md:w-1/2">
             <Image
@@ -629,24 +558,90 @@ export default function Page() {
         </div>
       </Section>
 
-      <Section className="flex flex-col items-center justify-center py-20 bg-white w-full">
-        <h2 className="text-4xl font-normal mb-8 text-black text-center">
-          Applications for <span className="underline">AI E-Lab 4.0</span> are open!
-        </h2>
-        <div className="flex justify-center">
-          <a
-            href="https://forms.tum-ai.com/ai-e-lab-3.0-application"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-purple-600 text-white px-8 py-4 rounded font-normal hover:bg-purple-700 transition-colors text-lg inline-block text-center"
-          >
-            Apply Now
-          </a>
+      <Section className="relative overflow-hidden py-20 bg-white w-full">
+
+        <div className="container mx-auto">
+          <div className="relative z-10 mx-auto max-w-7xl px-4">
+            <div className="flex flex-col items-center">
+              {/* Main card */}
+              <div className="relative mx-auto w-full max-w-3xl overflow-hidden rounded-2xl border border-white/60 bg-gradient-to-br from-white/80 to-white/40 shadow-xl backdrop-blur-sm">
+                {/* Inner glow effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-blue-500/5"></div>
+
+                {/* Top highlight */}
+                <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-purple-300/50 to-transparent"></div>
+
+                {/* Left highlight */}
+                <div className="absolute inset-y-0 left-0 w-[1px] bg-gradient-to-b from-transparent via-white/80 to-transparent"></div>
+
+                <div className="relative px-8 py-14 md:px-14">
+                  <div className="text-center">
+                    <h2 className={`mb-6 text-4xl font-bold text-black ${archivoSemiExpandedBold.className}`}>
+                      Applications for <span className="underline">AI E-Lab 4.0</span> are open!
+                    </h2>
+
+                    <p className="mx-auto mb-10 max-w-xl text-lg leading-relaxed text-slate-600">
+                      Be among the first to be informed about upcoming events, job opportunities, and workshops in our vibrant AI community.
+                    </p>
+
+                    <div className="flex justify-center">
+                      <div className="relative">
+                        {/* Radiating glow effect - always visible */}
+                        <div className="absolute -inset-2 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-lg opacity-50 blur-xl"></div>
+
+                        {/* Sparkling effects - always visible */}
+                        <div className="absolute -inset-4 opacity-100">
+                          {/* Sparkle 1 */}
+                          <div className="absolute top-0 left-1/4 w-2 h-2 bg-yellow-300 rounded-full animate-ping" style={{ animationDelay: '0s' }}></div>
+                          {/* Sparkle 2 */}
+                          <div className="absolute top-1/4 right-0 w-1.5 h-1.5 bg-purple-300 rounded-full animate-ping" style={{ animationDelay: '0.5s' }}></div>
+                          {/* Sparkle 3 */}
+                          <div className="absolute bottom-0 left-1/2 w-1 h-1 bg-pink-300 rounded-full animate-ping" style={{ animationDelay: '1s' }}></div>
+                          {/* Sparkle 4 */}
+                          <div className="absolute top-1/2 left-0 w-1.5 h-1.5 bg-blue-300 rounded-full animate-ping" style={{ animationDelay: '1.5s' }}></div>
+                          {/* Sparkle 5 */}
+                          <div className="absolute bottom-1/4 right-1/4 w-1 h-1 bg-green-300 rounded-full animate-ping" style={{ animationDelay: '2s' }}></div>
+                        </div>
+
+                        <a
+                          href="https://forms.tum-ai.com/ai-e-lab-3.0-application"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="relative overflow-hidden backdrop-blur-2xl border border-purple-400/30 inline-flex items-center justify-center rounded-md px-6 py-3 text-base font-medium text-white"
+                          style={{
+                            background: 'linear-gradient(135deg, rgba(147, 51, 234, 0.3) 0%, rgba(126, 34, 206, 0.2) 100%)',
+                            boxShadow: '0 8px 32px rgba(147, 51, 234, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 -1px 0 rgba(255, 255, 255, 0.05)',
+                          }}
+                        >
+                          <span className="flex items-center gap-2">
+                            <span>Apply Now</span>
+                            <svg
+                              className="h-5 w-5"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M14 5l7 7m0 0l-7 7m7-7H3"
+                              />
+                            </svg>
+                          </span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </Section>
 
       <Section className="flex flex-col items-center justify-center py-20 bg-white w-full">
-        <h2 className="text-4xl font-normal mb-12 text-black text-center">Frequently Asked Questions</h2>
+        <h2 className={`text-4xl font-normal mb-12 text-black text-center uppercase ${archivoSemiExpandedBold.className}`}>Frequently Asked Questions</h2>
         <div className="w-full max-w-4xl mx-auto space-y-4">
           {faqItems.map((item, index) => (
             <div key={index} className="border-b border-gray-200 pb-4">

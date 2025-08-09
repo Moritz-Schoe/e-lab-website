@@ -4,6 +4,7 @@ import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import Image from "next/image";
+import { archivoSemiExpandedBold } from "../../styles/fonts";
 
 export const Hero = () => {
   return (
@@ -26,14 +27,31 @@ export const Hero = () => {
             {/* Logo and Title */}
             <div className="flex flex-col items-center space-y-2">
               <div className="flex justify-center">
-                <Image
+                {/* <Image
                   src="/assets/e-lab/ai e-lab - glowing.png"
                   alt="AI E-Lab"
                   width={300}
                   height={100}
                   priority
                   className="w-auto h-8 md:h-10 lg:h-12 object-contain max-w-full"
-                />
+                /> */}
+                <h1 className={`relative inline-block text-7xl font-round mb-6 text-white text-center uppercase ${archivoSemiExpandedBold.className}`}>
+                  AI E-Lab
+                  <span className="relative">
+                    <span
+                      className="absolute -top-3 -right-6 text-base font-bold"
+                      style={{
+                        fontSize: '1.15rem',
+                        lineHeight: 1,
+                        letterSpacing: 0,
+                        fontFamily: archivoSemiExpandedBold.style.fontFamily,
+                      }}
+                    >
+                      4.0
+                    </span>
+                  </span>
+                </h1>
+
               </div>
               <div className="flex items-center justify-center space-x-2">
                 <span className="text-sm md:text-base text-gray-300">by</span>
