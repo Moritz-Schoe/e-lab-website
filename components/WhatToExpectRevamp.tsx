@@ -23,11 +23,6 @@ import {
 export function WhatToExpectRevamp() {
   return (
     <Section className="relative w-full bg-white py-20">
-      {/* Ambient gradient shapes */}
-      <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute -top-24 -right-24 h-80 w-80 rounded-full bg-gradient-to-br from-purple-300/40 to-fuchsia-300/40 blur-3xl" />
-        <div className="absolute -bottom-32 -left-32 h-96 w-96 rounded-full bg-gradient-to-br from-indigo-300/30 to-sky-300/30 blur-3xl" />
-      </div>
 
       <div className="relative mx-auto max-w-4xl px-6">
         {/* Content only */}
@@ -40,7 +35,7 @@ export function WhatToExpectRevamp() {
           </p>
 
           {/* Feature cards */}
-          <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-2 max-w-3xl mx-auto">
+          <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-2">
             <FeatureCard
               title="Your own workspace"
               body="Desks, monitors, whiteboards; a home base inside TUM.ai."
@@ -79,19 +74,19 @@ export function WhatToExpectRevamp() {
             />
           </div>
 
-          <p className={`mt-6 text-center text-base text-gray-600 max-w-2xl mx-auto ${archivoRegular.className}`}>
+          <p className={`mt-6 text-center text-base text-gray-600 ${archivoRegular.className}`}>
             Have an idea, a prototype, or just relentless drive? Build it here. No equity. No theory. Just traction.
             Backed by TUM.ai and supported by leading VCs.
           </p>
-        </div>
-      </div>
 
-      {/* Simple stats */}
-      <div className="relative mx-auto mt-16 max-w-6xl px-6">
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-3">
-          <Stat title={"AI E‑Lab ventures since 2022"} from={0} to={38} suffix="" />
-          <Stat title={"raised by AI E‑Lab ventures"} from={0} to={5} suffix="M+" isMoney />
-          <Stat title={"AI E‑Lab iterations"} from={0} to={3} suffix="" />
+          {/* Simple stats */}
+          <div className="mt-16">
+            <div className="grid grid-cols-1 gap-8 sm:grid-cols-3">
+              <Stat title={"AI E-Lab Startups since 2022"} from={0} to={38} suffix="" />
+              <Stat title={"raised by AI E-lab lab ventures"} from={0} to={5} suffix="M+" isMoney />
+              <Stat title={"AI E-Lab Iterations"} from={0} to={3} suffix="" />
+            </div>
+          </div>
         </div>
       </div>
     </Section>
@@ -151,7 +146,7 @@ function Stat({ title, from = 0, to, suffix = "", isMoney = false }: { title: st
         className={`text-6xl font-bold text-purple-600 ${archivoBold.className}`}
       >
         {isMoney ? (
-          <AnimatedText value={rounded} prefix="€" suffix={suffix} decimals={isMoney ? 1 : 0} />
+          <AnimatedText value={rounded} prefix="€" suffix={suffix} decimals={0} />
         ) : (
           <AnimatedText value={rounded} suffix={suffix} />
         )}
