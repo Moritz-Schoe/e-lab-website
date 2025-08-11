@@ -285,7 +285,7 @@ export default function Page() {
 
         {/* Animated Cards Container */}
         <div className="relative w-full overflow-hidden">
-          <div className="flex animate-scroll-left space-x-6 whitespace-nowrap">
+          <div className="flex animate-scroll-left space-x-6">
             {/* Card 1 - Leon Hergert */}
             <div className="flex-shrink-0 w-80 bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-shadow duration-300 flex flex-col h-72">
               <div className="flex items-start gap-4 mb-4">
@@ -298,13 +298,13 @@ export default function Page() {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="flex-1">
-                  <h3 className={`font-semibold text-lg text-gray-900`}>Leon Hergert</h3>
-                  <p className={`text-sm text-gray-600`}>Co-Founder @ Spherecast</p>
+                <div className="flex-1 min-w-0">
+                  <h3 className={`font-semibold text-lg text-gray-900 truncate`}>Leon Hergert</h3>
+                  <p className={`text-sm text-gray-600 truncate`}>Co-Founder @ Spherecast</p>
                   <p className={`text-xs text-purple-600 font-medium`}>AI E-Lab 1.0</p>
                 </div>
               </div>
-              <p className={`text-gray-700 text-sm leading-relaxed flex-1`}>"The AI E-Lab gave us the foundation to build Spherecast from idea to YC. The community and mentorship were game-changing."</p>
+              <p className={`text-gray-700 text-sm leading-relaxed flex-1 overflow-hidden`}>"The AI E-Lab gave us the foundation to build Spherecast from idea to YC. The community and mentorship were game-changing."</p>
               <div className="flex items-center gap-3 mt-4 pt-4 border-t border-gray-100">
                 <div className="w-8 h-8 flex items-center justify-center">
                   <Image src="/assets/e-lab/partners/YC.png" alt="Y Combinator" width={32} height={24} className="object-contain" />
@@ -325,13 +325,13 @@ export default function Page() {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="flex-1">
-                  <h3 className={`font-semibold text-lg text-gray-900`}>Benedikt Wieser</h3>
-                  <p className={`text-sm text-gray-600`}>Winner AI E-Lab 2.0</p>
+                <div className="flex-1 min-w-0">
+                  <h3 className={`font-semibold text-lg text-gray-900 truncate`}>Benedikt Wieser</h3>
+                  <p className={`text-sm text-gray-600 truncate`}>Winner AI E-Lab 2.0</p>
                   <p className={`text-xs text-purple-600 font-medium`}>AI E-Lab 2.0</p>
                 </div>
               </div>
-              <p className={`text-gray-700 text-sm leading-relaxed flex-1`}>"The AI E-Lab is the best program for creating top-end entrepreneurs that has ever existed. The network is incredible."</p>
+              <p className={`text-gray-700 text-sm leading-relaxed flex-1 overflow-hidden`}>"The AI E-Lab is the best program for creating top-end entrepreneurs that has ever existed. The network is incredible."</p>
               <div className="flex items-center gap-3 mt-4 pt-4 border-t border-gray-100">
                 <div className="w-8 h-8 flex items-center justify-center">
                   <Image src="/assets/e-lab/partners/CDTM.png" alt="CDTM" width={32} height={24} className="object-contain" />
@@ -352,13 +352,13 @@ export default function Page() {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="flex-1">
-                  <h3 className={`font-semibold text-lg text-gray-900`}>Leonardo Benini</h3>
-                  <p className={`text-sm text-gray-600`}>Founder @ Stealth Startup</p>
+                <div className="flex-1 min-w-0">
+                  <h3 className={`font-semibold text-lg text-gray-900 truncate`}>Leonardo Benini</h3>
+                  <p className={`text-sm text-gray-600 truncate`}>Founder @ Stealth Startup</p>
                   <p className={`text-xs text-purple-600 font-medium`}>AI E-Lab 3.0</p>
                 </div>
               </div>
-              <p className={`text-gray-700 text-sm leading-relaxed flex-1`}>"From zero to funded startup - the AI E-Lab accelerated our journey beyond what we thought possible."</p>
+              <p className={`text-gray-700 text-sm leading-relaxed flex-1 overflow-hidden`}>"From zero to funded startup - the AI E-Lab accelerated our journey beyond what we thought possible."</p>
               <div className="flex items-center gap-3 mt-4 pt-4 border-t border-gray-100">
                 <div className="w-8 h-8 flex items-center justify-center">
                   <Image src="/assets/e-lab/partners/ewor.png" alt="EWOR" width={32} height={24} className="object-contain" />
@@ -379,13 +379,13 @@ export default function Page() {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="flex-1">
-                  <h3 className={`font-semibold text-lg text-gray-900`}>Oliver Schoppe</h3>
-                  <p className={`text-sm text-gray-600`}>Principal @ UVC Partners</p>
+                <div className="flex-1 min-w-0">
+                  <h3 className={`font-semibold text-lg text-gray-900 truncate`}>Oliver Schoppe</h3>
+                  <p className={`text-sm text-gray-600 truncate`}>Principal @ UVC Partners</p>
                   <p className={`text-xs text-purple-600 font-medium`}>Mentor & Investor</p>
                 </div>
               </div>
-              <p className={`text-gray-700 text-sm leading-relaxed flex-1`}>"The quality of founders coming out of AI E-Lab is exceptional. We're proud to support this community."</p>
+              <p className={`text-gray-700 text-sm leading-relaxed flex-1 overflow-hidden`}>"The quality of founders coming out of AI E-Lab is exceptional. We're proud to support this community."</p>
               <div className="flex items-center gap-3 mt-4 pt-4 border-t border-gray-100">
                 <div className="w-8 h-8 flex items-center justify-center">
                   <Image src="/assets/e-lab/partners/uvc_b.png" alt="UVC Partners" width={32} height={24} className="object-contain" />
@@ -406,13 +406,13 @@ export default function Page() {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="flex-1">
-                  <h3 className={`font-semibold text-lg text-gray-900`}>Leon Hergert</h3>
-                  <p className={`text-sm text-gray-600`}>Co-Founder @ Spherecast</p>
+                <div className="flex-1 min-w-0">
+                  <h3 className={`font-semibold text-lg text-gray-900 truncate`}>Leon Hergert</h3>
+                  <p className={`text-sm text-gray-600 truncate`}>Co-Founder @ Spherecast</p>
                   <p className={`text-xs text-purple-600 font-medium`}>AI E-Lab 1.0</p>
                 </div>
               </div>
-              <p className={`text-gray-700 text-sm leading-relaxed flex-1`}>"The AI E-Lab gave us the foundation to build Spherecast from idea to YC. The community and mentorship were game-changing."</p>
+              <p className={`text-gray-700 text-sm leading-relaxed flex-1 overflow-hidden`}>"The AI E-Lab gave us the foundation to build Spherecast from idea to YC. The community and mentorship were game-changing."</p>
               <div className="flex items-center gap-3 mt-4 pt-4 border-t border-gray-100">
                 <div className="w-8 h-8 flex items-center justify-center">
                   <Image src="/assets/e-lab/partners/YC.png" alt="Y Combinator" width={32} height={24} className="object-contain" />
@@ -432,13 +432,13 @@ export default function Page() {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="flex-1">
-                  <h3 className={`font-semibold text-lg text-gray-900`}>Benedikt Wieser</h3>
-                  <p className={`text-sm text-gray-600`}>Winner AI E-Lab 2.0</p>
+                <div className="flex-1 min-w-0">
+                  <h3 className={`font-semibold text-lg text-gray-900 truncate`}>Benedikt Wieser</h3>
+                  <p className={`text-sm text-gray-600 truncate`}>Winner AI E-Lab 2.0</p>
                   <p className={`text-xs text-purple-600 font-medium`}>AI E-Lab 2.0</p>
                 </div>
               </div>
-              <p className={`text-gray-700 text-sm leading-relaxed flex-1`}>"The AI E-Lab is the best program for creating top-end entrepreneurs that has ever existed. The network is incredible."</p>
+              <p className={`text-gray-700 text-sm leading-relaxed flex-1 overflow-hidden`}>"The AI E-Lab is the best program for creating top-end entrepreneurs that has ever existed. The network is incredible."</p>
               <div className="flex items-center gap-3 mt-4 pt-4 border-t border-gray-100">
                 <div className="w-8 h-8 flex items-center justify-center">
                   <Image src="/assets/e-lab/partners/CDTM.png" alt="CDTM" width={32} height={24} className="object-contain" />
@@ -458,13 +458,13 @@ export default function Page() {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="flex-1">
-                  <h3 className={`font-semibold text-lg text-gray-900`}>Leonardo Benini</h3>
-                  <p className={`text-sm text-gray-600`}>Founder @ Stealth Startup</p>
+                <div className="flex-1 min-w-0">
+                  <h3 className={`font-semibold text-lg text-gray-900 truncate`}>Leonardo Benini</h3>
+                  <p className={`text-sm text-gray-600 truncate`}>Founder @ Stealth Startup</p>
                   <p className={`text-xs text-purple-600 font-medium`}>AI E-Lab 3.0</p>
                 </div>
               </div>
-              <p className={`text-gray-700 text-sm leading-relaxed flex-1`}>"From zero to funded startup - the AI E-Lab accelerated our journey beyond what we thought possible."</p>
+              <p className={`text-gray-700 text-sm leading-relaxed flex-1 overflow-hidden`}>"From zero to funded startup - the AI E-Lab accelerated our journey beyond what we thought possible."</p>
               <div className="flex items-center gap-3 mt-4 pt-4 border-t border-gray-100">
                 <div className="w-8 h-8 flex items-center justify-center">
                   <Image src="/assets/e-lab/partners/ewor.png" alt="EWOR" width={32} height={24} className="object-contain" />
@@ -484,13 +484,13 @@ export default function Page() {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="flex-1">  
-                  <h3 className={`font-semibold text-lg text-gray-900`}>Oliver Schoppe</h3>
-                  <p className={`text-sm text-gray-600`}>Principal @ UVC Partners</p>
+                <div className="flex-1 min-w-0">  
+                  <h3 className={`font-semibold text-lg text-gray-900 truncate`}>Oliver Schoppe</h3>
+                  <p className={`text-sm text-gray-600 truncate`}>Principal @ UVC Partners</p>
                   <p className={`text-xs text-purple-600 font-medium`}>Mentor & Investor</p>
                 </div>
               </div>
-              <p className={`text-gray-700 text-sm leading-relaxed flex-1`}>"The quality of founders coming out of AI E-Lab is exceptional. We're proud to support this community."</p>
+              <p className={`text-gray-700 text-sm leading-relaxed flex-1 overflow-hidden`}>"The quality of founders coming out of AI E-Lab is exceptional. We're proud to support this community."</p>
               <div className="flex items-center gap-3 mt-4 pt-4 border-t border-gray-100">
                 <div className="w-8 h-8 flex items-center justify-center">
                   <Image src="/assets/e-lab/partners/uvc_b.png" alt="UVC Partners" width={32} height={24} className="object-contain" />
