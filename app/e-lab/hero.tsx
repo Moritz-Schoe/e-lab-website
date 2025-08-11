@@ -48,7 +48,7 @@ export const Hero = () => {
         <div className="max-w-6xl mx-auto text-center p-8 flex flex-col justify-between h-full">
           
           {/* Main content area */}
-          <div className="flex-1 flex flex-col justify-center space-y-8">
+          <div className="flex-1 flex flex-col justify-center space-y-6">
             {/* Sphere and Title */}
             <div className="flex flex-col items-center space-y-4 pt-8">
               {/* <div className="relative">
@@ -76,7 +76,7 @@ export const Hero = () => {
                     alt="AI E-Lab Logo"
                     width={405}
                     height={122}
-                    className="h-24 md:h-32 w-auto"
+                    className="h-20 md:h-28 w-auto"
                     priority
                   />
                 </div>
@@ -87,7 +87,7 @@ export const Hero = () => {
                     alt="TUM.ai Logo"
                     width={100}
                     height={35}
-                    className="h-7 w-auto"
+                    className="h-6 w-auto"
                   />
                 </div>
               </div>
@@ -95,10 +95,10 @@ export const Hero = () => {
 
                          {/* Tagline */}
              <div className="max-w-2xl mx-auto space-y-2">
-               <p className="text-lg md:text-xl text-gray-200 leading-relaxed">
+               <p className="text-base md:text-lg text-gray-200 leading-relaxed">
                  Build the next generation of <span className="text-purple-400 font-semibold">AI startups</span> in 12 weeks
                </p>
-               <p className="text-base text-gray-400">
+               <p className="text-sm text-gray-400">
                  Equity-free • Munich-based • Founder-focused
                </p>
              </div>
@@ -109,7 +109,7 @@ export const Hero = () => {
                 href="https://forms.tum-ai.com/ai-e-lab-3.0-application"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative inline-flex items-center justify-center px-7 py-2 text-base font-normal text-white transition-all duration-300 ease-out"
+                 className="group relative inline-flex items-center justify-center px-6 py-2 text-sm md:text-base font-normal text-white transition-all duration-300 ease-out"
               >
                 <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-600 to-purple-500 shadow-lg shadow-purple-500/25 transition-all duration-300 group-hover:shadow-purple-500/40 group-hover:scale-105"></div>
                 <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-500 to-purple-400 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
@@ -125,33 +125,33 @@ export const Hero = () => {
 
           {/* Sponsor section - positioned at bottom */}
           <div className="mb-12 pt-5">
-            <p className="text-sm text-gray-400 mb-4">Sponsored by</p>
+            <p className="text-xs text-gray-400 mb-4">Sponsored by</p>
             <div className="flex items-center justify-center space-x-6 opacity-70">
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/10 hover:bg-white/20 transition-all duration-300">
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-2.5 border border-white/10 hover:bg-white/20 transition-all duration-300">
                 <Image
                   src="/assets/e-lab/partners/uvc_w.svg"
                   alt="UVC Partners"
                   width={70}
                   height={35}
-                  className="h-7 w-auto object-contain"
+                  className="h-6 w-auto object-contain"
                 />
               </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/10 hover:bg-white/20 transition-all duration-300">
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-2.5 border border-white/10 hover:bg-white/20 transition-all duration-300">
                 <Image
                   src="/assets/e-lab/partners/cherry_w.png"
                   alt="UVC Partners"
                   width={70}
                   height={35}
-                  className="h-7 w-auto object-contain"
+                  className="h-6 w-auto object-contain"
                 />
               </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/10 hover:bg-white/20 transition-all duration-300">
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-2.5 border border-white/10 hover:bg-white/20 transition-all duration-300">
                 <Image
                   src="/assets/e-lab/partners/hv_w.png"
                   alt="UVC Partners"
                   width={70}
                   height={35}
-                  className="h-7 w-auto object-contain"
+                  className="h-6 w-auto object-contain"
                 />
               </div>
             </div>
