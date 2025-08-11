@@ -587,9 +587,6 @@ export default function Page() {
                 <a href="https://www.helmit.org/" target="_blank" rel="noopener noreferrer" className="h-10 md:h-12 w-22 md:w-28 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300">
                   <Image src="/assets/e-lab/startups/helmit.svg" alt="Helmit" width={40} height={40} className="h-8 md:h-10 w-auto object-contain" />
                 </a>
-                <a href="https://www.helmit.org/" target="_blank" rel="noopener noreferrer" className="h-10 md:h-12 w-22 md:w-28 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300">
-                  <Image src="/assets/e-lab/startups/helmit.svg" alt="Helmit" width={40} height={40} className="h-8 md:h-10 w-auto object-contain" />
-                </a>
               </div>
 
               {/* Duplicate set for seamless loop */}
@@ -611,9 +608,6 @@ export default function Page() {
                     <Image src="/assets/e-lab/startups/TauRobotics.svg" alt="Tau Robotics" width={40} height={40} className="h-8 md:h-10 w-auto object-contain mr-2 sm:mr-4" />
                     <span className={`text-sm md:text-base font-bold text-black ${archivoSemiExpandedBold.className}`}>Tau Robotics</span>
                   </div>
-                </a>
-                <a href="https://www.helmit.org/" target="_blank" rel="noopener noreferrer" className="h-10 md:h-12 w-22 md:w-28 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300">
-                  <Image src="/assets/e-lab/startups/helmit.svg" alt="Helmit" width={40} height={40} className="h-8 md:h-10 w-auto object-contain" />
                 </a>
                 <a href="https://www.helmit.org/" target="_blank" rel="noopener noreferrer" className="h-10 md:h-12 w-22 md:w-28 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300">
                   <Image src="/assets/e-lab/startups/helmit.svg" alt="Helmit" width={40} height={40} className="h-8 md:h-10 w-auto object-contain" />

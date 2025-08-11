@@ -92,69 +92,69 @@ export const Hero = () => {
         </a>
       </div>
 
-          {/* Sponsor section - positioned at bottom */}
-          <div className="mb-12 pt-5">
-            <p className="text-sm text-gray-400 mb-4">Sponsored by</p>
-            <div className="flex items-center justify-center space-x-6 opacity-70">
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-2 border border-white/10 hover:bg-white/20 transition-all duration-300">
-                <Image
-                  src="/assets/e-lab/partners/picus_w.png"
-                  alt="Picus"
-                  width={60}
-                  height={30}
-                  className="h-5 w-auto object-contain"
-                  quality={100}
-                  unoptimized={true}
-                />
-              </div>
-              <div className="flex items-center space-x-6">
-                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-2 border border-white/10 hover:bg-white/20 transition-all duration-300">
-                  <Image
-                    src="/assets/e-lab/partners/uvc_w.svg"
-                    alt="UVC Partners"
-                    width={60}
-                    height={30}
-                    className="h-5 w-auto object-contain"
-                    quality={100}
-                    unoptimized={true}
-                  />
-                </div>
-                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-2 border border-white/10 hover:bg-white/20 transition-all duration-300">
-                  <Image
-                    src="/assets/e-lab/partners/cherry_w.png"
-                    alt="Cherry Ventures"
-                    width={60}
-                    height={30}
-                    className="h-5 w-auto object-contain"
-                    quality={100}
-                    unoptimized={true}
-                  />
-                </div>
-                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-2 border border-white/10 hover:bg-white/20 transition-all duration-300">
-                  <Image
-                    src="/assets/e-lab/partners/hv_w.png"
-                    alt="HV Capital"
-                    width={60}
-                    height={30}
-                    className="h-5 w-auto object-contain"
-                    quality={100}
-                    unoptimized={true}
-                  />
-                </div>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-2 border border-white/10 hover:bg-white/20 transition-all duration-300">
-                <Image
-                  src="/assets/e-lab/partners/lovable_w.png"
-                  alt="Lovable"
-                  width={60}
-                  height={30}
-                  className="h-5 w-auto object-contain"
-                  quality={100}
-                  unoptimized={true}
-                />
-              </div>
-            </div>
+      {/* Sponsor section - positioned at bottom */}
+      <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 z-15 w-full max-w-5xl px-8">
+        <div className="text-center">
+        <p className="text-sm text-gray-400 mb-4">Sponsored by</p>
+        <div className="flex items-center justify-center space-x-6 opacity-70">
+          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-2 border border-white/10 hover:bg-white/20 transition-all duration-300">
+            <Image
+              src="/assets/e-lab/partners/picus_w.png"
+              alt="Picus"
+              width={60}
+              height={30}
+              className="h-5 w-auto object-contain"
+              quality={100}
+              unoptimized={true}
+            />
           </div>
+          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-2 border border-white/10 hover:bg-white/20 transition-all duration-300">
+            <Image
+              src="/assets/e-lab/partners/uvc_w.svg"
+              alt="UVC Partners"
+              width={60}
+              height={30}
+              className="h-5 w-auto object-contain"
+              quality={100}
+              unoptimized={true}
+            />
+          </div>
+          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-2 border border-white/10 hover:bg-white/20 transition-all duration-300">
+            <Image
+              src="/assets/e-lab/partners/cherry_w.png"
+              alt="Cherry Ventures"
+              width={60}
+              height={30}
+              className="h-5 w-auto object-contain"
+              quality={100}
+              unoptimized={true}
+            />
+          </div>
+          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-2 border border-white/10 hover:bg-white/20 transition-all duration-300">
+            <Image
+              src="/assets/e-lab/partners/hv_w.png"
+              alt="HV Capital"
+              width={60}
+              height={30}
+              className="h-5 w-auto object-contain"
+              quality={100}
+              unoptimized={true}
+            />
+          </div>
+          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-2 border border-white/10 hover:bg-white/20 transition-all duration-300">
+          <Image
+            src="/assets/e-lab/partners/lovable_w.png"
+            alt="Lovable"
+            width={60}
+            height={30}
+            className="h-5 w-auto object-contain"
+            quality={100}
+            unoptimized={true}
+          />
+          </div>
+        </div>
+        </div>
+      </div>
 
       {/* Scroll indicator */}
       <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20">
