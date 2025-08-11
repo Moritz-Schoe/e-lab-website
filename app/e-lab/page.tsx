@@ -6,13 +6,14 @@ import { WhatToExpectRevamp } from "@components/WhatToExpectRevamp";
 import { Organization, WithContext } from "schema-dts";
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
-import { 
-  archivoRegular, 
-  archivoMedium, 
-  archivoSemiBold, 
-  archivoBold, 
-  archivoSemiExpandedBold 
+import {
+  archivoRegular,
+  archivoMedium,
+  archivoSemiBold,
+  archivoBold,
+  archivoSemiExpandedBold
 } from "../../styles/fonts";
+import { faq as additionalFaqs } from "../../data/e-lab";
 
 export default function Page() {
   const jsonLd: WithContext<Organization> = {
@@ -50,6 +51,36 @@ export default function Page() {
     },
   };
 
+  const hardcodedFaqItems = [
+    {
+      question: "Can I apply as a solo founder?",
+      answer:
+        "Yes, you can absolutely apply as a solo founder! We welcome individual applicants who are passionate about building AI startups. During the program, you'll have opportunities to find co-founders through our team-building activities and networking events.",
+    },
+    {
+      question: "Do I need an idea to apply?",
+      answer:
+        "No, you don't need a fully formed idea to apply. The AI E-Lab is designed to help you develop and validate ideas during the program. We provide ideation workshops and guidance to help you discover the right opportunity to pursue.",
+    },
+    {
+      question: "Does the AI E Lab require me to work from Munich?",
+      answer:
+        "Yes, the AI E-Lab is an in-person program based in Munich. You'll be working from our headquarters at TUM.ai, collaborating with other founders and having access to our physical workspace, mentors, and the local startup ecosystem.",
+    },
+    {
+      question: "What is the time commitment for the program?",
+      answer:
+        "The AI E-Lab is a 12-week intensive program that requires significant time commitment. We expect participants to dedicate substantial time each week to building their startups, attending workshops, and participating in program activities.",
+    },
+    {
+      question: "Do you take equity in my startup?",
+      answer:
+        "No, the AI E-Lab is completely equity-free! We don't take any equity stake in your venture. Our mission is to make AI entrepreneurship accessible to everyone, which is why we provide all support and resources without any financial investment or equity requirements.",
+    },
+  ];
+
+  const allFaqItems = [...hardcodedFaqItems, ...additionalFaqs];
+
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
 
   const toggleFAQ = (index: number) => {
@@ -57,31 +88,6 @@ export default function Page() {
   };
 
   // Removed legacy Notable Startups dataset and state; logos now link directly in the rotating strip
-
-  const faqItems = [
-    {
-      question: "Can I apply as a solo founder?",
-      answer: "Yes, you can absolutely apply as a solo founder! We welcome individual applicants who are passionate about building AI startups. During the program, you'll have opportunities to find co-founders through our team-building activities and networking events."
-    },
-    {
-      question: "Do I need an idea to apply?",
-      answer: "No, you don't need a fully formed idea to apply. The AI E-Lab is designed to help you develop and validate ideas during the program. We provide ideation workshops and guidance to help you discover the right opportunity to pursue."
-    },
-    {
-      question: "Does the AI E Lab require me to work from Munich?",
-      answer: "Yes, the AI E-Lab is an in-person program based in Munich. You'll be working from our headquarters at TUM.ai, collaborating with other founders and having access to our physical workspace, mentors, and the local startup ecosystem."
-    },
-    {
-      question: "What is the time commitment for the program?",
-      answer: "The AI E-Lab is a 12-week intensive program that requires significant time commitment. We expect participants to dedicate substantial time each week to building their startups, attending workshops, and participating in program activities."
-    },
-    {
-      question: "Do you take equity in my startup?",
-      answer: "No, the AI E-Lab is completely equity-free! We don't take any equity stake in your venture. Our mission is to make AI entrepreneurship accessible to everyone, which is why we provide all support and resources without any financial investment or equity requirements."
-    }
-  ];
-
-
 
   // Interactive Timeline Component
   const InteractiveTimeline = () => {
@@ -225,13 +231,13 @@ export default function Page() {
         />
       </section>
       <Hero />
-      
+
       <WhatToExpectRevamp />
 
       {/* Alumni Testimonials Carousel */}
       <Section className="flex flex-col items-center justify-center py-12 sm:py-12 lg:py-16 bg-gradient-to-br from-gray-50 to-white w-full">
         <h2 className={`text-3xl md:text-4xl tracking-tight font-normal mb-4 text-black text-center uppercase ${archivoSemiExpandedBold.className}`}>Our Community</h2>
-        <p className={`text-base text-gray-600 mt-4 mb-10 text-center`}>Hear from founders building the next generation of AI companies</p>
+        <p className={`text-base text-gray-600 mt-4 mb-10 text-center`}>Hear more from voices from our network</p>
 
         {/* Animated Cards Container */}
         <div className="relative w-full overflow-hidden py-4">
@@ -285,7 +291,7 @@ export default function Page() {
                   <p className={`text-xs text-purple-600 font-medium`}>AI E-Lab 2.0</p>
                 </div>
               </div>
-              <p className={`text-gray-700 text-sm leading-relaxed flex-1 overflow-hidden`}>"The AI E-Lab is the best program for creating top-end entrepreneurs that has ever existed. The network is incredible."</p>
+              <p className={`text-gray-700 text-sm leading-relaxed flex-1 overflow-hidden`}>"The AI E-Lab is probably the best program for creating top-end entrepreneurs out there. It's simply incredible."</p>
               <div className="flex items-center gap-3 mt-4 pt-4 border-t border-gray-100">
                 <div className="w-8 h-8 flex items-center justify-center">
                   <Image src="/assets/e-lab/partners/CDTM.png" alt="CDTM" width={32} height={24} className="object-contain" />
@@ -312,7 +318,7 @@ export default function Page() {
                   <p className={`text-xs text-purple-600 font-medium`}>AI E-Lab 3.0</p>
                 </div>
               </div>
-              <p className={`text-gray-700 text-sm leading-relaxed flex-1 overflow-hidden`}>"From zero to funded startup - the AI E-Lab accelerated our journey beyond what we thought possible."</p>
+              <p className={`text-gray-700 text-sm leading-relaxed flex-1 overflow-hidden`}>"Structured, fast, and insanely effective. Every founder should experience this."</p>
               <div className="flex items-center gap-3 mt-4 pt-4 border-t border-gray-100">
                 <div className="w-8 h-8 flex items-center justify-center">
                   <Image src="/assets/e-lab/partners/ewor.png" alt="EWOR" width={32} height={24} className="object-contain" />
@@ -339,12 +345,39 @@ export default function Page() {
                   <p className={`text-xs text-purple-600 font-medium`}>Mentor & Investor</p>
                 </div>
               </div>
-              <p className={`text-gray-700 text-sm leading-relaxed flex-1 overflow-hidden`}>"The quality of founders coming out of AI E-Lab is exceptional. We're proud to support this community."</p>
+              <p className={`text-gray-700 text-sm leading-relaxed flex-1 overflow-hidden`}>"The quality of founders coming out of AI E-Lab is exceptional. We're proud to be part of this community."</p>
               <div className="flex items-center gap-3 mt-4 pt-4 border-t border-gray-100">
                 <div className="w-8 h-8 flex items-center justify-center">
                   <Image src="/assets/e-lab/partners/uvc_b.png" alt="UVC Partners" width={32} height={24} className="object-contain" />
                 </div>
                 <span className={`text-xs text-gray-500`}>UVC Partners</span>
+              </div>
+            </div>
+
+            {/* Card 5 - Viktor Shen */}
+            <div className="flex-shrink-0 w-80 bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-shadow duration-300 flex flex-col h-72">
+              <div className="flex items-start gap-4 mb-4">
+                <div className="w-16 h-16 flex-shrink-0 rounded-full overflow-hidden">
+                  <Image
+                    src="/assets/e-lab/testimonials/viktor_shen.jpeg"
+                    alt="Viktor Shen"
+                    width={64}
+                    height={64}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h3 className={`font-semibold text-lg text-gray-900 truncate`}>Viktor Shen</h3>
+                  <p className={`text-sm text-gray-600 truncate`}>Founder of Tenmin</p>
+                  <p className={`text-xs text-purple-600 font-medium`}>AI E-Lab 3.0</p>
+                </div>
+              </div>
+              <p className={`text-gray-700 text-sm leading-relaxed flex-1 overflow-hidden`}>"We went from zero to being a funded startup - the AI E-Lab accelerated our journey far beyond what we thought was possible."</p>
+              <div className="flex items-center gap-3 mt-4 pt-4 border-t border-gray-100">
+                <div className="w-8 h-8 flex items-center justify-center">
+                  <Image src="/assets/e-lab/startups/Tenmin.svg" alt="Tenmin" width={32} height={24} className="object-contain" />
+                </div>
+                <span className={`text-xs text-gray-500`}>Tenmin</span>
               </div>
             </div>
 
@@ -392,7 +425,7 @@ export default function Page() {
                   <p className={`text-xs text-purple-600 font-medium`}>AI E-Lab 2.0</p>
                 </div>
               </div>
-              <p className={`text-gray-700 text-sm leading-relaxed flex-1 overflow-hidden`}>"The AI E-Lab is the best program for creating top-end entrepreneurs that has ever existed. The network is incredible."</p>
+              <p className={`text-gray-700 text-sm leading-relaxed flex-1 overflow-hidden`}>"The AI E-Lab is probably the best program for creating top-end entrepreneurs out there. It's simply incredible."</p>
               <div className="flex items-center gap-3 mt-4 pt-4 border-t border-gray-100">
                 <div className="w-8 h-8 flex items-center justify-center">
                   <Image src="/assets/e-lab/partners/CDTM.png" alt="CDTM" width={32} height={24} className="object-contain" />
@@ -418,7 +451,7 @@ export default function Page() {
                   <p className={`text-xs text-purple-600 font-medium`}>AI E-Lab 3.0</p>
                 </div>
               </div>
-              <p className={`text-gray-700 text-sm leading-relaxed flex-1 overflow-hidden`}>"From zero to funded startup - the AI E-Lab accelerated our journey beyond what we thought possible."</p>
+              <p className={`text-gray-700 text-sm leading-relaxed flex-1 overflow-hidden`}>"We went from zero to being a funded startup - the AI E-Lab accelerated our journey far beyond what we thought was possible."</p>
               <div className="flex items-center gap-3 mt-4 pt-4 border-t border-gray-100">
                 <div className="w-8 h-8 flex items-center justify-center">
                   <Image src="/assets/e-lab/partners/ewor.png" alt="EWOR" width={32} height={24} className="object-contain" />
@@ -438,18 +471,45 @@ export default function Page() {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="flex-1 min-w-0">  
+                <div className="flex-1 min-w-0">
                   <h3 className={`font-semibold text-lg text-gray-900 truncate`}>Oliver Schoppe</h3>
                   <p className={`text-sm text-gray-600 truncate`}>Principal @ UVC Partners</p>
                   <p className={`text-xs text-purple-600 font-medium`}>Mentor & Investor</p>
                 </div>
               </div>
-              <p className={`text-gray-700 text-sm leading-relaxed flex-1 overflow-hidden`}>"The quality of founders coming out of AI E-Lab is exceptional. We're proud to support this community."</p>
+              <p className={`text-gray-700 text-sm leading-relaxed flex-1 overflow-hidden`}>"The quality of founders coming out of AI E-Lab is exceptional. We're proud to be part of this community."</p>
               <div className="flex items-center gap-3 mt-4 pt-4 border-t border-gray-100">
                 <div className="w-8 h-8 flex items-center justify-center">
                   <Image src="/assets/e-lab/partners/uvc_b.png" alt="UVC Partners" width={32} height={24} className="object-contain" />
                 </div>
                   <span className={`text-xs text-gray-500`}>UVC Partners</span>
+              </div>
+            </div>
+
+            {/* Card 5 - Viktor Shen */}
+            <div className="flex-shrink-0 w-80 bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-shadow duration-300 flex flex-col h-72">
+              <div className="flex items-start gap-4 mb-4">
+                <div className="w-16 h-16 flex-shrink-0 rounded-full overflow-hidden">
+                  <Image
+                    src="/assets/e-lab/testimonials/viktor_shen.jpeg"
+                    alt="Viktor Shen"
+                    width={64}
+                    height={64}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h3 className={`font-semibold text-lg text-gray-900 truncate`}>Viktor Shen</h3>
+                  <p className={`text-sm text-gray-600 truncate`}>Founder of Tenmin</p>
+                  <p className={`text-xs text-purple-600 font-medium`}>AI E-Lab 3.0</p>
+                </div>
+              </div>
+              <p className={`text-gray-700 text-sm leading-relaxed flex-1 overflow-hidden`}>"We went from zero to being a funded startup - the AI E-Lab accelerated our journey far beyond what we thought was possible."</p>
+              <div className="flex items-center gap-3 mt-4 pt-4 border-t border-gray-100">
+                <div className="w-8 h-8 flex items-center justify-center">
+                  <Image src="/assets/e-lab/startups/Tenmin.svg" alt="Tenmin" width={32} height={24} className="object-contain" />
+                </div>
+                <span className={`text-xs text-gray-500`}>Tenmin</span>
               </div>
             </div>
           </div>
@@ -549,7 +609,7 @@ export default function Page() {
           <p className={`text-sm text-gray-500 mb-8 uppercase tracking-wider`}>
             Notable AI E-Lab Startups from previous iterations
           </p>
-          
+
           {/* Rotating startup logos */}
           <div className="relative w-full overflow-hidden">
             <div className="flex animate-scroll-left space-x-8 md:space-x-12 items-center whitespace-nowrap">
@@ -574,7 +634,7 @@ export default function Page() {
                   </div>
                 </a>
               </div>
-              
+
               {/* Duplicate set for seamless loop */}
               <div className="flex space-x-8 md:space-x-12 items-center shrink-0">
                 <a href="https://tenmin.ai/" target="_blank" rel="noopener noreferrer" className="h-10 md:h-12 w-20 md:w-24 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300">
@@ -604,8 +664,8 @@ export default function Page() {
       <Section className="flex flex-col items-center justify-center py-12 sm:py-12 lg:py-16 bg-white w-full">
         <h2 className={`text-3xl md:text-4xl tracking-tight font-normal mb-8 text-black text-center uppercase ${archivoSemiExpandedBold.className}`}>Frequently Asked Questions</h2>
         <div className="w-full max-w-4xl mx-auto space-y-4">
-          {faqItems.map((item, index) => (
-            <div key={index} className="border-b border-gray-200 pb-4">
+          {allFaqItems.map((item, index) => (
+            <div key={`${item.question}-${index}`} className="border-b border-gray-200 pb-4">
               <div
                 className="flex justify-between items-center cursor-pointer"
                 onClick={() => toggleFAQ(index)}
