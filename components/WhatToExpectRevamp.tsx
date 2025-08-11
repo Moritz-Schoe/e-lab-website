@@ -22,20 +22,20 @@ import {
 
 export function WhatToExpectRevamp() {
   return (
-    <Section className="relative w-full bg-white py-20">
+    <Section className="relative w-full bg-white py-12 sm:py-12 lg:py-16">
 
       <div className="relative mx-auto max-w-4xl px-6">
         {/* Content only */}
         <div className="w-full">
-          <h2 className={`text-center text-4xl md:text-5xl uppercase tracking-tight text-black ${archivoSemiExpandedBold.className}`}>
+          <h2 className={`text-center text-3xl md:text-4xl uppercase tracking-tight text-black ${archivoSemiExpandedBold.className}`}>
             What to expect
           </h2>
-          <p className={`mt-6 text-center text-lg leading-relaxed text-gray-700 ${archivoRegular.className}`}>
+          <p className={`mt-4 text-center text-base leading-relaxed text-gray-700 ${archivoRegular.className}`}>
             Built by founders, for founders — optimized for speed, learning, and real traction.
           </p>
 
           {/* Feature cards */}
-          <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-2">
+          <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-2">
             <FeatureCard
               title="Your own workspace"
               body="Desks, monitors, whiteboards; a home base inside TUM.ai."

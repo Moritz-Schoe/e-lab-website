@@ -51,62 +51,12 @@ export default function Page() {
   };
 
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
-  const [selectedStartup, setSelectedStartup] = useState('spherecast');
 
   const toggleFAQ = (index: number) => {
     setOpenFAQ(openFAQ === index ? null : index);
   };
 
-  const startupData = {
-    spherecast: {
-      name: 'Spherecast',
-      description: 'Spherecast is pioneering the future of AI-powered content creation and distribution. Our platform enables creators to produce, optimize, and distribute content across multiple channels using intelligent automation and data-driven insights.',
-      website: 'https://www.spherecast.ai/',
-      icon: 'M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z',
-      tagline: 'AI Content Creation Platform',
-      image: '/assets/home_img4.jpg'
-    },
-    'get-ikigai': {
-      name: 'Get-Ikigai',
-      description: 'Get-Ikigai is helping individuals discover their purpose and achieve personal fulfillment through AI-driven coaching and guidance. Our platform combines psychological insights with machine learning to provide personalized life coaching and career guidance.',
-      website: 'https://www.get-ikigai.com/',
-      icon: 'M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z',
-      tagline: 'AI-Powered Life Coaching',
-      image: '/assets/home_img5.jpeg'
-    },
-    'tau-robotics': {
-      name: 'Tau Robotics',
-      description: 'Tau Robotics is advancing the future of autonomous robotics through cutting-edge AI and machine learning. Our robots are designed to work alongside humans in manufacturing, healthcare, and service industries, combining precision, safety, and intelligence.',
-      website: 'https://www.tau-robotics.com/',
-      icon: 'M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2 2v10a2 2 0 002 2z',
-      tagline: 'Autonomous Robotics Solutions',
-      image: '/assets/office_space.png'
-    },
-    tenmin: {
-      name: 'Tenmin',
-      description: 'Tenmin is transforming how teams collaborate and communicate through intelligent AI assistants. Our platform streamlines workflows, automates routine tasks, and enhances productivity by providing contextual insights and smart recommendations.',
-      website: 'https://tenmin.ai/',
-      icon: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z',
-      tagline: 'AI-Powered Team Collaboration',
-      image: '/assets/home_img3.png'
-    },
-    helmit: {
-      name: 'Helmit',
-      description: 'Helmit is building the future of AI-powered cybersecurity. Our platform uses advanced machine learning to detect and prevent cyber threats in real-time, protecting businesses from evolving security risks. We combine cutting-edge AI with deep security expertise to keep organizations safe.',
-      website: 'https://www.helmit.org/de/',
-      icon: 'M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z',
-      tagline: 'AI-Powered Cybersecurity',
-      image: '/assets/home_img2.png'
-    },
-    explaino: {
-      name: 'Explaino',
-      description: 'Explaino is revolutionizing how businesses understand and communicate complex AI decisions. Our platform provides transparent, interpretable explanations for AI models, helping companies build trust with customers and comply with regulatory requirements.',
-      website: 'https://explaino.ai/',
-      icon: 'M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z',
-      tagline: 'AI Explainability Platform',
-      image: '/assets/home_img1.jpg'
-    }
-  };
+  // Removed legacy Notable Startups dataset and state; logos now link directly in the rotating strip
 
   const faqItems = [
     {
@@ -173,8 +123,8 @@ export default function Page() {
     ];
 
     return (
-      <Section className="flex flex-col items-center justify-center py-32 bg-white w-full">
-        <h2 className={`text-4xl font-normal mb-12 text-black text-center uppercase ${archivoSemiExpandedBold.className}`}>Program</h2>
+      <Section className="flex flex-col items-center justify-center py-12 sm:py-12 lg:py-16 bg-white w-full">
+        <h2 className={`text-3xl md:text-4xl tracking-tight font-normal mb-8 text-black text-center uppercase ${archivoSemiExpandedBold.className}`}>Program</h2>
         <div ref={timelineRef} className="relative max-w-4xl mx-auto w-full">
           {/* Vertical line with gradient animation */}
           <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gray-300 rounded-full">
@@ -188,7 +138,7 @@ export default function Page() {
           </div>
 
           {/* Timeline items */}
-          <div className="relative space-y-20">
+          <div className="relative space-y-16">
             {timelineItems.map((item, index) => {
               const itemProgress = Math.max(0, Math.min(1, (scrollProgress * timelineItems.length) - index));
               const isActive = itemProgress > 0;
@@ -199,10 +149,10 @@ export default function Page() {
                     <>
                       <div className="w-1/2 pr-12 text-right">
                         <div className={`transition-all duration-500 ${isActive ? 'translate-x-0 opacity-100' : 'translate-x-8 opacity-60'}`}>
-                          <h3 className={`font-semibold text-2xl mb-2 transition-colors duration-300 ${isActive ? 'text-purple-700' : 'text-gray-800'}`}>
+                          <h3 className={`font-semibold text-xl mb-2 transition-colors duration-300 ${isActive ? 'text-purple-700' : 'text-gray-800'} ${archivoSemiBold.className}`}>
                             {item.title}
                           </h3>
-                          <p className={`text-base transition-colors duration-300 ${isActive ? 'text-purple-600' : 'text-gray-600'}`}>
+                          <p className={`text-sm transition-colors duration-300 ${isActive ? 'text-purple-600' : 'text-gray-600'}`}>
                             {item.description}
                           </p>
                         </div>
@@ -240,10 +190,10 @@ export default function Page() {
                       </div>
                       <div className="w-1/2 pl-12">
                         <div className={`transition-all duration-500 ${isActive ? 'translate-x-0 opacity-100' : '-translate-x-8 opacity-60'}`}>
-                          <h3 className={`font-semibold text-2xl mb-2 transition-colors duration-300 ${isActive ? 'text-purple-700' : 'text-gray-800'} ${archivoSemiBold.className}`}>
+                          <h3 className={`font-semibold text-xl mb-2 transition-colors duration-300 ${isActive ? 'text-purple-700' : 'text-gray-800'} ${archivoSemiBold.className}`}>
                             {item.title}
                           </h3>
-                          <p className={`text-base transition-colors duration-300 ${isActive ? 'text-purple-600' : 'text-gray-600'}`}>
+                          <p className={`text-sm transition-colors duration-300 ${isActive ? 'text-purple-600' : 'text-gray-600'}`}>
                             {item.description}
                           </p>
                         </div>
@@ -258,8 +208,8 @@ export default function Page() {
 
         </div>
         {/* Subtitle */}
-        <div className="text-center mt-20">
-                <p className={`text-lg text-gray-700 font-medium`}>Your journey continues...</p>
+        <div className="text-center mt-12">
+                <p className={`text-base text-gray-700 font-medium`}>Your journey continues...</p>
               </div>
       </Section>
     );
@@ -279,13 +229,13 @@ export default function Page() {
       <WhatToExpectRevamp />
 
       {/* Alumni Testimonials Carousel */}
-      <Section className="flex flex-col items-center justify-center py-20 bg-gradient-to-br from-gray-50 to-white w-full overflow-hidden">
-        <h2 className={`text-4xl font-normal mb-12 text-black text-center uppercase ${archivoSemiExpandedBold.className}`}>Our Community</h2>
-        <p className={`text-lg text-gray-600 mb-12 text-center`}>Hear from founders building the next generation of AI companies</p>
+      <Section className="flex flex-col items-center justify-center py-12 sm:py-12 lg:py-16 bg-gradient-to-br from-gray-50 to-white w-full overflow-hidden">
+        <h2 className={`text-3xl md:text-4xl tracking-tight font-normal mb-4 text-black text-center uppercase ${archivoSemiExpandedBold.className}`}>Our Community</h2>
+        <p className={`text-base text-gray-600 mt-4 mb-10 text-center`}>Hear from founders building the next generation of AI companies</p>
 
         {/* Animated Cards Container */}
         <div className="relative w-full overflow-hidden">
-          <div className="flex animate-scroll-left space-x-6 whitespace-nowrap">
+          <div className="flex animate-scroll-left space-x-6">
             {/* Card 1 - Leon Hergert */}
             <div className="flex-shrink-0 w-80 bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-shadow duration-300 flex flex-col h-72">
               <div className="flex items-start gap-4 mb-4">
@@ -298,13 +248,13 @@ export default function Page() {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="flex-1">
-                  <h3 className={`font-semibold text-lg text-gray-900`}>Leon Hergert</h3>
-                  <p className={`text-sm text-gray-600`}>Co-Founder @ Spherecast</p>
+                <div className="flex-1 min-w-0">
+                  <h3 className={`font-semibold text-lg text-gray-900 truncate`}>Leon Hergert</h3>
+                  <p className={`text-sm text-gray-600 truncate`}>Co-Founder @ Spherecast</p>
                   <p className={`text-xs text-purple-600 font-medium`}>AI E-Lab 1.0</p>
                 </div>
               </div>
-              <p className={`text-gray-700 text-sm leading-relaxed flex-1`}>"The AI E-Lab gave us the foundation to build Spherecast from idea to YC. The community and mentorship were game-changing."</p>
+              <p className={`text-gray-700 text-sm leading-relaxed flex-1 overflow-hidden`}>"The AI E-Lab gave us the foundation to build Spherecast from idea to YC. The community and mentorship were game-changing."</p>
               <div className="flex items-center gap-3 mt-4 pt-4 border-t border-gray-100">
                 <div className="w-8 h-8 flex items-center justify-center">
                   <Image src="/assets/e-lab/partners/YC.png" alt="Y Combinator" width={32} height={24} className="object-contain" />
@@ -325,13 +275,13 @@ export default function Page() {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="flex-1">
-                  <h3 className={`font-semibold text-lg text-gray-900`}>Benedikt Wieser</h3>
-                  <p className={`text-sm text-gray-600`}>Winner AI E-Lab 2.0</p>
+                <div className="flex-1 min-w-0">
+                  <h3 className={`font-semibold text-lg text-gray-900 truncate`}>Benedikt Wieser</h3>
+                  <p className={`text-sm text-gray-600 truncate`}>Winner AI E-Lab 2.0</p>
                   <p className={`text-xs text-purple-600 font-medium`}>AI E-Lab 2.0</p>
                 </div>
               </div>
-              <p className={`text-gray-700 text-sm leading-relaxed flex-1`}>"The AI E-Lab is the best program for creating top-end entrepreneurs that has ever existed. The network is incredible."</p>
+              <p className={`text-gray-700 text-sm leading-relaxed flex-1 overflow-hidden`}>"The AI E-Lab is the best program for creating top-end entrepreneurs that has ever existed. The network is incredible."</p>
               <div className="flex items-center gap-3 mt-4 pt-4 border-t border-gray-100">
                 <div className="w-8 h-8 flex items-center justify-center">
                   <Image src="/assets/e-lab/partners/CDTM.png" alt="CDTM" width={32} height={24} className="object-contain" />
@@ -352,13 +302,13 @@ export default function Page() {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="flex-1">
-                  <h3 className={`font-semibold text-lg text-gray-900`}>Leonardo Benini</h3>
-                  <p className={`text-sm text-gray-600`}>Founder @ Stealth Startup</p>
+                <div className="flex-1 min-w-0">
+                  <h3 className={`font-semibold text-lg text-gray-900 truncate`}>Leonardo Benini</h3>
+                  <p className={`text-sm text-gray-600 truncate`}>Founder @ Stealth Startup</p>
                   <p className={`text-xs text-purple-600 font-medium`}>AI E-Lab 3.0</p>
                 </div>
               </div>
-              <p className={`text-gray-700 text-sm leading-relaxed flex-1`}>"From zero to funded startup - the AI E-Lab accelerated our journey beyond what we thought possible."</p>
+              <p className={`text-gray-700 text-sm leading-relaxed flex-1 overflow-hidden`}>"From zero to funded startup - the AI E-Lab accelerated our journey beyond what we thought possible."</p>
               <div className="flex items-center gap-3 mt-4 pt-4 border-t border-gray-100">
                 <div className="w-8 h-8 flex items-center justify-center">
                   <Image src="/assets/e-lab/partners/ewor.png" alt="EWOR" width={32} height={24} className="object-contain" />
@@ -379,13 +329,13 @@ export default function Page() {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="flex-1">
-                  <h3 className={`font-semibold text-lg text-gray-900`}>Oliver Schoppe</h3>
-                  <p className={`text-sm text-gray-600`}>Principal @ UVC Partners</p>
+                <div className="flex-1 min-w-0">
+                  <h3 className={`font-semibold text-lg text-gray-900 truncate`}>Oliver Schoppe</h3>
+                  <p className={`text-sm text-gray-600 truncate`}>Principal @ UVC Partners</p>
                   <p className={`text-xs text-purple-600 font-medium`}>Mentor & Investor</p>
                 </div>
               </div>
-              <p className={`text-gray-700 text-sm leading-relaxed flex-1`}>"The quality of founders coming out of AI E-Lab is exceptional. We're proud to support this community."</p>
+              <p className={`text-gray-700 text-sm leading-relaxed flex-1 overflow-hidden`}>"The quality of founders coming out of AI E-Lab is exceptional. We're proud to support this community."</p>
               <div className="flex items-center gap-3 mt-4 pt-4 border-t border-gray-100">
                 <div className="w-8 h-8 flex items-center justify-center">
                   <Image src="/assets/e-lab/partners/uvc_b.png" alt="UVC Partners" width={32} height={24} className="object-contain" />
@@ -406,13 +356,13 @@ export default function Page() {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="flex-1">
-                  <h3 className={`font-semibold text-lg text-gray-900`}>Leon Hergert</h3>
-                  <p className={`text-sm text-gray-600`}>Co-Founder @ Spherecast</p>
+                <div className="flex-1 min-w-0">
+                  <h3 className={`font-semibold text-lg text-gray-900 truncate`}>Leon Hergert</h3>
+                  <p className={`text-sm text-gray-600 truncate`}>Co-Founder @ Spherecast</p>
                   <p className={`text-xs text-purple-600 font-medium`}>AI E-Lab 1.0</p>
                 </div>
               </div>
-              <p className={`text-gray-700 text-sm leading-relaxed flex-1`}>"The AI E-Lab gave us the foundation to build Spherecast from idea to YC. The community and mentorship were game-changing."</p>
+              <p className={`text-gray-700 text-sm leading-relaxed flex-1 overflow-hidden`}>"The AI E-Lab gave us the foundation to build Spherecast from idea to YC. The community and mentorship were game-changing."</p>
               <div className="flex items-center gap-3 mt-4 pt-4 border-t border-gray-100">
                 <div className="w-8 h-8 flex items-center justify-center">
                   <Image src="/assets/e-lab/partners/YC.png" alt="Y Combinator" width={32} height={24} className="object-contain" />
@@ -432,13 +382,13 @@ export default function Page() {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="flex-1">
-                  <h3 className={`font-semibold text-lg text-gray-900`}>Benedikt Wieser</h3>
-                  <p className={`text-sm text-gray-600`}>Winner AI E-Lab 2.0</p>
+                <div className="flex-1 min-w-0">
+                  <h3 className={`font-semibold text-lg text-gray-900 truncate`}>Benedikt Wieser</h3>
+                  <p className={`text-sm text-gray-600 truncate`}>Winner AI E-Lab 2.0</p>
                   <p className={`text-xs text-purple-600 font-medium`}>AI E-Lab 2.0</p>
                 </div>
               </div>
-              <p className={`text-gray-700 text-sm leading-relaxed flex-1`}>"The AI E-Lab is the best program for creating top-end entrepreneurs that has ever existed. The network is incredible."</p>
+              <p className={`text-gray-700 text-sm leading-relaxed flex-1 overflow-hidden`}>"The AI E-Lab is the best program for creating top-end entrepreneurs that has ever existed. The network is incredible."</p>
               <div className="flex items-center gap-3 mt-4 pt-4 border-t border-gray-100">
                 <div className="w-8 h-8 flex items-center justify-center">
                   <Image src="/assets/e-lab/partners/CDTM.png" alt="CDTM" width={32} height={24} className="object-contain" />
@@ -458,13 +408,13 @@ export default function Page() {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="flex-1">
-                  <h3 className={`font-semibold text-lg text-gray-900`}>Leonardo Benini</h3>
-                  <p className={`text-sm text-gray-600`}>Founder @ Stealth Startup</p>
+                <div className="flex-1 min-w-0">
+                  <h3 className={`font-semibold text-lg text-gray-900 truncate`}>Leonardo Benini</h3>
+                  <p className={`text-sm text-gray-600 truncate`}>Founder @ Stealth Startup</p>
                   <p className={`text-xs text-purple-600 font-medium`}>AI E-Lab 3.0</p>
                 </div>
               </div>
-              <p className={`text-gray-700 text-sm leading-relaxed flex-1`}>"From zero to funded startup - the AI E-Lab accelerated our journey beyond what we thought possible."</p>
+              <p className={`text-gray-700 text-sm leading-relaxed flex-1 overflow-hidden`}>"From zero to funded startup - the AI E-Lab accelerated our journey beyond what we thought possible."</p>
               <div className="flex items-center gap-3 mt-4 pt-4 border-t border-gray-100">
                 <div className="w-8 h-8 flex items-center justify-center">
                   <Image src="/assets/e-lab/partners/ewor.png" alt="EWOR" width={32} height={24} className="object-contain" />
@@ -484,13 +434,13 @@ export default function Page() {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="flex-1">  
-                  <h3 className={`font-semibold text-lg text-gray-900`}>Oliver Schoppe</h3>
-                  <p className={`text-sm text-gray-600`}>Principal @ UVC Partners</p>
+                <div className="flex-1 min-w-0">  
+                  <h3 className={`font-semibold text-lg text-gray-900 truncate`}>Oliver Schoppe</h3>
+                  <p className={`text-sm text-gray-600 truncate`}>Principal @ UVC Partners</p>
                   <p className={`text-xs text-purple-600 font-medium`}>Mentor & Investor</p>
                 </div>
               </div>
-              <p className={`text-gray-700 text-sm leading-relaxed flex-1`}>"The quality of founders coming out of AI E-Lab is exceptional. We're proud to support this community."</p>
+              <p className={`text-gray-700 text-sm leading-relaxed flex-1 overflow-hidden`}>"The quality of founders coming out of AI E-Lab is exceptional. We're proud to support this community."</p>
               <div className="flex items-center gap-3 mt-4 pt-4 border-t border-gray-100">
                 <div className="w-8 h-8 flex items-center justify-center">
                   <Image src="/assets/e-lab/partners/uvc_b.png" alt="UVC Partners" width={32} height={24} className="object-contain" />
@@ -504,196 +454,68 @@ export default function Page() {
 
       <InteractiveTimeline />
 
-      <Section className="flex flex-col items-center justify-center py-20 bg-white w-full">
-        <h2 className={`text-4xl font-normal mb-12 text-black text-center uppercase ${archivoSemiExpandedBold.className}`}>Notable Startups</h2>
-        <div className="w-full max-w-6xl mx-auto">
-          <div className="flex flex-col lg:flex-row gap-8 items-start">
-            {/* Left Navigation */}
-            <div className="w-full lg:w-1/3">
-              <div className="space-y-3">
-                {Object.entries(startupData).map(([id, startup]) => (
-                  <div key={id} className="space-y-3 lg:space-y-0">
-                    <button
-                      onClick={() => setSelectedStartup(id)}
-                      className={`w-full p-4 rounded-lg text-left transition-all duration-300 flex items-center justify-between ${
-                        selectedStartup === id
-                          ? 'bg-purple-600 text-white shadow-lg shadow-purple-500/25' 
-                          : 'bg-gray-100 text-gray-800 hover:bg-gray-200'
-                      }`}
-                    >
-                      <span className="font-medium">{startup.name}</span>
-                      <svg className={`w-4 h-4 transition-transform ${selectedStartup === id ? 'rotate-90 lg:rotate-0' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </button>
-                    
-                    {/* Mobile Expanded Content - only show on mobile */}
-                    {selectedStartup === id && (
-                      <div className="lg:hidden bg-gradient-to-br from-purple-600 to-purple-500 rounded-xl p-6 text-white shadow-xl shadow-purple-500/25 animate-in slide-in-from-top-2 duration-300">
-                        <div className="flex flex-col gap-6">
-                          {/* Image */}
-                          <div className="w-full h-64">
-                            <div className="w-full h-full bg-gray-800 rounded-lg overflow-hidden">
-                              <Image
-                                src={startupData[selectedStartup as keyof typeof startupData].image}
-                                alt={startupData[selectedStartup as keyof typeof startupData].name}
-                                width={400}
-                                height={320}
-                                className="w-full h-full object-cover"
-                              />
-                            </div>
-                          </div>
-                          
-                          {/* Text Content */}
-                          <div className="space-y-4">
-                            <p className="text-base leading-relaxed">
-                              {startupData[selectedStartup as keyof typeof startupData].description}
-                            </p>
-                            <a 
-                              href={startupData[selectedStartup as keyof typeof startupData].website}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="bg-white text-purple-600 px-6 py-3 rounded-lg font-medium flex items-center justify-center gap-2 hover:bg-gray-100 transition-colors w-full"
-                            >
-                              <span>FIND OUT MORE</span>
-                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                              </svg>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </div>
+      {/* Removed Notable Startups interactive panel */}
 
-            {/* Right Content Panel - Desktop Only */}
-            <div className="hidden lg:block lg:w-2/3">
-              <div className="bg-gradient-to-br from-purple-600 to-purple-500 rounded-xl p-8 text-white shadow-xl shadow-purple-500/25 h-[480px]">
-                <div className="flex flex-col lg:flex-row gap-8 items-start h-full">
-                  {/* Text Content */}
-                  <div className="lg:w-1/2 flex flex-col justify-between h-full">
-                    <div>
-                      <h3 className="text-3xl font-bold mb-4">
-                        {startupData[selectedStartup as keyof typeof startupData].name}
-                      </h3>
-                      <p className="text-lg leading-relaxed mb-6">
-                        {startupData[selectedStartup as keyof typeof startupData].description}
-                      </p>
-                    </div>
-                    <a 
-                      href={startupData[selectedStartup as keyof typeof startupData].website}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="bg-white text-purple-600 px-8 py-3 rounded-lg font-medium flex items-center justify-center gap-2 hover:bg-gray-100 transition-colors w-full"
-                    >
-                      <span>FIND OUT MORE</span>
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </a>
-                  </div>
+      {/* Removed: Community is created by working together section */}
 
-                  {/* Image */}
-                  <div className="lg:w-1/2 h-full">
-                    <div className="w-full h-full bg-gray-800 rounded-lg overflow-hidden">
-                      <Image
-                        src={startupData[selectedStartup as keyof typeof startupData].image}
-                        alt={startupData[selectedStartup as keyof typeof startupData].name}
-                        width={400}
-                        height={320}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </Section>
+      <Section className="relative overflow-hidden py-12 sm:py-12 lg:py-16 w-full bg-gradient-to-br from-purple-50 via-white to-blue-50">
 
-      <Section className="flex flex-col items-center justify-center py-20 bg-white w-full">
-        <h2 className={`text-4xl font-normal mb-12 text-black text-center uppercase ${archivoSemiExpandedBold.className}`}>Community is created by working together</h2>
-        <div className="flex flex-col md:flex-row items-center justify-center gap-12 max-w-5xl mx-auto">
-          <div className="w-full md:w-1/2">
-            <Image
-              src="/assets/office_space.png"
-              alt="TUM.ai Office Space"
-              width={500}
-              height={300}
-              className="w-full h-64 object-cover rounded"
-            />
-          </div>
-            <div className={`w-full md:w-1/2 space-y-4`}>
-            <p className="text-gray-800 text-lg">Work from the TUM.ai headquarters, the home base of Europe's leading student AI initiatives.</p>
-            <p className="text-gray-800 text-lg">You'll share the space with founders, builders, and AI talents from the TUM.ai network.</p>
-            <p className="text-gray-800 text-lg">Get your designated Desks, monitors, whiteboards — and a community that's building every day.</p>
-          </div>
-        </div>
-      </Section>
-
-      <Section className="relative overflow-hidden py-20 bg-white w-full">
+        {/* Decorative gradient blobs for depth */}
+        <div className="pointer-events-none absolute -top-24 -left-24 h-72 w-72 rounded-full bg-gradient-to-br from-purple-400/40 to-fuchsia-400/30 blur-3xl"></div>
+        <div className="pointer-events-none absolute -bottom-24 -right-16 h-80 w-80 rounded-full bg-gradient-to-br from-indigo-400/30 to-sky-400/30 blur-3xl"></div>
+        <div className="pointer-events-none absolute top-1/3 -right-24 h-64 w-64 rounded-full bg-gradient-to-br from-pink-400/20 to-purple-400/20 blur-3xl"></div>
 
         <div className="container mx-auto">
           <div className="relative z-10 mx-auto max-w-7xl px-4">
             <div className="flex flex-col items-center">
               {/* Main card */}
-              <div className="relative mx-auto w-full max-w-3xl overflow-hidden rounded-2xl border border-white/60 bg-gradient-to-br from-white/80 to-white/40 shadow-xl backdrop-blur-sm">
-                {/* Inner glow effect */}
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-blue-500/5"></div>
+              <div className="relative mx-auto w-full max-w-3xl overflow-hidden rounded-[28px] border-2 border-white/40 bg-white/10 shadow-2xl backdrop-blur-2xl backdrop-saturate-150 transition-transform duration-300 ease-out hover:scale-[1.01] md:hover:scale-[1.02]">
+                {/* Liquid glass tint and inner gradient */}
+                <div className="absolute inset-0 rounded-[28px] bg-gradient-to-br from-purple-200/25 via-white/10 to-indigo-200/15"></div>
+                {/* Inner subtle bevel */}
+                <div className="pointer-events-none absolute inset-0 rounded-[28px] shadow-[inset_0_1px_0_rgba(255,255,255,0.55),inset_0_-1px_0_rgba(255,255,255,0.12)]"></div>
 
                 {/* Top highlight */}
-                <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-purple-300/50 to-transparent"></div>
+                <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/70 to-transparent"></div>
 
                 {/* Left highlight */}
-                <div className="absolute inset-y-0 left-0 w-[1px] bg-gradient-to-b from-transparent via-white/80 to-transparent"></div>
+                <div className="absolute inset-y-0 left-0 w-[1px] bg-gradient-to-b from-transparent via-white/60 to-transparent"></div>
 
-                <div className="relative px-8 py-14 md:px-14">
+                {/* Specular reflections */}
+                <div className="pointer-events-none absolute -top-20 left-1/4 h-40 w-1/2 rotate-6 rounded-full bg-gradient-to-r from-white/60 to-transparent blur-2xl"></div>
+                <div className="pointer-events-none absolute top-1/3 -right-10 h-24 w-72 -rotate-12 rounded-full bg-gradient-to-r from-white/25 to-transparent blur-xl"></div>
+                {/* Top-left highlight bubble */}
+                <div className="pointer-events-none absolute -top-6 -left-6 h-24 w-32 rounded-full bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.9),_rgba(255,255,255,0.35)_60%,_transparent_70%)] blur-md"></div>
+                <div className="pointer-events-none absolute bottom-0 inset-x-0 h-24 bg-gradient-to-t from-slate-900/5 to-transparent"></div>
+
+                <div className="relative px-12 py-18 md:px-18 md:py-20">
                   <div className="text-center">
-                    <h2 className={`mb-6 text-4xl font-bold text-black ${archivoBold.className}`}>
+                    <h2 className={`mb-5 text-3xl md:text-4xl font-bold text-black ${archivoBold.className}`}>
                       Applications for AI E-Lab 4.0 are open!
                     </h2>
 
-                    <p className={`mx-auto mb-10 max-w-xl text-lg leading-relaxed text-slate-600`}>
-                      Be among the first to be informed about upcoming events, job opportunities, and workshops in our vibrant AI community.
+                    <p className={`mx-auto mb-10 max-w-2xl text-base leading-relaxed text-slate-700`}>
+                      Secure your spot in Europe’s leading AI incubator and join a network of top founders, mentors, and investors.
                     </p>
 
                     <div className="flex justify-center">
                       <div className="relative">
-                        {/* Radiating glow effect - always visible */}
-                        <div className="absolute -inset-2 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-lg opacity-50 blur-xl"></div>
-                        
-                        {/* Sparkling effects - always visible */}
-                        <div className="absolute -inset-4 opacity-100">
-                          {/* Sparkle 1 */}
-                          <div className="absolute top-0 left-1/4 w-2 h-2 bg-yellow-300 rounded-full animate-ping" style={{ animationDelay: '0s' }}></div>
-                          {/* Sparkle 2 */}
-                          <div className="absolute top-1/4 right-0 w-1.5 h-1.5 bg-purple-300 rounded-full animate-ping" style={{ animationDelay: '0.5s' }}></div>
-                          {/* Sparkle 3 */}
-                          <div className="absolute bottom-0 left-1/2 w-1 h-1 bg-pink-300 rounded-full animate-ping" style={{ animationDelay: '1s' }}></div>
-                          {/* Sparkle 4 */}
-                          <div className="absolute top-1/2 left-0 w-1.5 h-1.5 bg-blue-300 rounded-full animate-ping" style={{ animationDelay: '1.5s' }}></div>
-                          {/* Sparkle 5 */}
-                          <div className="absolute bottom-1/4 right-1/4 w-1 h-1 bg-green-300 rounded-full animate-ping" style={{ animationDelay: '2s' }}></div>
-                        </div>
-
                         <a
                           href="https://forms.tum-ai.com/ai-e-lab-3.0-application"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className={`relative overflow-hidden backdrop-blur-2xl border border-purple-400/30 inline-flex items-center justify-center rounded-md px-6 py-3 text-base font-medium text-white`}
-                          style={{
-                            background: 'linear-gradient(135deg, rgba(147, 51, 234, 0.3) 0%, rgba(126, 34, 206, 0.2) 100%)',
-                            boxShadow: '0 8px 32px rgba(147, 51, 234, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 -1px 0 rgba(255, 255, 255, 0.05)',
-                          }}
+                          className={`group relative inline-flex items-center justify-center overflow-hidden rounded-2xl px-6 py-3 text-base font-semibold text-white shadow-xl transition-[background-position,transform] duration-500 ease-out hover:scale-[1.02]
+                          bg-[linear-gradient(135deg,#7C3AED_0%,#A855F7_33%,#EC4899_66%,#6366F1_100%)] bg-[length:200%_200%] bg-[position:0%_50%] hover:bg-[position:100%_50%]`}
                         >
-                          <span className="flex items-center gap-2">
-                            <span>Apply Now</span>
+                          {/* Soft glow behind button */}
+                          <div className="pointer-events-none absolute -inset-x-8 -bottom-6 h-16 rounded-full bg-gradient-to-r from-purple-500/40 via-fuchsia-500/40 to-indigo-500/40 blur-2xl"></div>
+                          {/* Border and shine */}
+                          <div className="absolute inset-0 rounded-2xl ring-1 ring-white/30"></div>
+                          <div className="absolute inset-0 rounded-2xl bg-[radial-gradient(ellipse_at_top_left,_rgba(255,255,255,0.35),_transparent_60%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+                          <span className="relative z-10 flex items-center gap-2">
+                            <span>Apply until 01.09.2025</span>
                             <svg
-                              className="h-5 w-5"
+                              className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1"
                               fill="none"
                               viewBox="0 0 24 24"
                               stroke="currentColor"
@@ -718,10 +540,10 @@ export default function Page() {
       </Section>
 
       {/* Notable Startups Section */}
-      <Section className="py-12 md:py-16 bg-gray-50 w-full overflow-hidden">
+      <Section className="py-12 sm:py-12 lg:py-16 bg-gray-50 w-full overflow-hidden">
         <div className="max-w-6xl mx-auto text-center px-4">
           <p className={`text-sm text-gray-500 mb-8 uppercase tracking-wider`}>
-            Notable AI E-Lab Startups
+            Notable AI E-Lab Startups from previous iterations
           </p>
           
           {/* Rotating startup logos */}
@@ -729,108 +551,48 @@ export default function Page() {
             <div className="flex animate-scroll-left space-x-8 md:space-x-12 items-center whitespace-nowrap">
               {/* First set of logos */}
               <div className="flex space-x-8 md:space-x-12 items-center shrink-0">
-                <div className="h-10 md:h-12 w-20 md:w-24 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300">
-                  <Image
-                    src="/assets/e-lab/startups/Tenmin.svg"
-                    alt="Tenmin"
-                    width={120}
-                    height={48}
-                    className="h-8 md:h-10 w-auto object-contain"
-                  />
-                </div>
-                <div className="h-10 md:h-12 w-24 md:w-32 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300">
-                  <Image
-                    src="/assets/e-lab/startups/LogoExplaino.svg"
-                    alt="Explaino"
-                    width={160}
-                    height={48}
-                    className="h-6 md:h-8 w-auto object-contain"
-                  />
-                </div>
-                <div className="h-10 md:h-12 w-22 md:w-28 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300">
-                  <Image
-                    src="/assets/e-lab/startups/Spherecast.webp"
-                    alt="Spherecast"
-                    width={140}
-                    height={48}
-                    className="h-8 md:h-10 w-auto object-contain"
-                  />
-                </div>
-                <div className="h-10 md:h-12 w-24 md:w-32 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300">
-                  <Image
-                    src="/assets/e-lab/startups/get-ilkigai.svg"
-                    alt="Get Ikigai"
-                    width={135}
-                    height={25}
-                    className="h-6 md:h-8 w-auto object-contain"
-                  />
-                </div>
-                <div className="h-10 md:h-12 w-22 md:w-28 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300">
-                  <Image
-                    src="/assets/e-lab/startups/TauRobotics.svg"
-                    alt="Tau Robotics"
-                    width={40}
-                    height={40}
-                    className="h-8 md:h-10 w-auto object-contain"
-                  />
-                </div>
+                <a href="https://tenmin.ai/" target="_blank" rel="noopener noreferrer" className="h-10 md:h-12 w-20 md:w-24 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300">
+                  <Image src="/assets/e-lab/startups/Tenmin.svg" alt="Tenmin" width={120} height={48} className="h-8 md:h-10 w-auto object-contain" />
+                </a>
+                <a href="https://explaino.ai/" target="_blank" rel="noopener noreferrer" className="h-10 md:h-12 w-24 md:w-32 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300">
+                  <Image src="/assets/e-lab/startups/LogoExplaino.svg" alt="Explaino" width={160} height={48} className="h-6 md:h-8 w-auto object-contain" />
+                </a>
+                <a href="https://www.spherecast.ai/" target="_blank" rel="noopener noreferrer" className="h-10 md:h-12 w-22 md:w-28 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300">
+                  <Image src="/assets/e-lab/startups/Spherecast.webp" alt="Spherecast" width={140} height={48} className="h-8 md:h-10 w-auto object-contain" />
+                </a>
+                <a href="https://www.get-ikigai.com/" target="_blank" rel="noopener noreferrer" className="h-10 md:h-12 w-24 md:w-32 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300">
+                  <Image src="/assets/e-lab/startups/get-ilkigai.svg" alt="Get Ikigai" width={135} height={25} className="h-6 md:h-8 w-auto object-contain" />
+                </a>
+                <a href="https://www.tau-robotics.com/" target="_blank" rel="noopener noreferrer" className="h-10 md:h-12 w-22 md:w-28 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300">
+                  <Image src="/assets/e-lab/startups/TauRobotics.svg" alt="Tau Robotics" width={40} height={40} className="h-8 md:h-10 w-auto object-contain" />
+                </a>
               </div>
               
               {/* Duplicate set for seamless loop */}
               <div className="flex space-x-8 md:space-x-12 items-center shrink-0">
-                <div className="h-10 md:h-12 w-20 md:w-24 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300">
-                  <Image
-                    src="/assets/e-lab/startups/Tenmin.svg"
-                    alt="Tenmin"
-                    width={120}
-                    height={48}
-                    className="h-8 md:h-10 w-auto object-contain"
-                  />
-                </div>
-                <div className="h-10 md:h-12 w-24 md:w-32 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300">
-                  <Image
-                    src="/assets/e-lab/startups/LogoExplaino.svg"
-                    alt="Explaino"
-                    width={160}
-                    height={48}
-                    className="h-6 md:h-8 w-auto object-contain"
-                  />
-                </div>
-                <div className="h-10 md:h-12 w-22 md:w-28 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300">
-                  <Image
-                    src="/assets/e-lab/startups/Spherecast.webp"
-                    alt="Spherecast"
-                    width={140}
-                    height={48}
-                    className="h-8 md:h-10 w-auto object-contain"
-                  />
-                </div>
-                <div className="h-10 md:h-12 w-24 md:w-32 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300">
-                  <Image
-                    src="/assets/e-lab/startups/get-ilkigai.svg"
-                    alt="Get Ikigai"
-                    width={135}
-                    height={25}
-                    className="h-6 md:h-8 w-auto object-contain"
-                  />
-                </div>
-                <div className="h-10 md:h-12 w-22 md:w-28 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300">
-                  <Image
-                    src="/assets/e-lab/startups/TauRobotics.svg"
-                    alt="Tau Robotics"
-                    width={40}
-                    height={40}
-                    className="h-8 md:h-10 w-auto object-contain"
-                  />
-                </div>
+                <a href="https://tenmin.ai/" target="_blank" rel="noopener noreferrer" className="h-10 md:h-12 w-20 md:w-24 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300">
+                  <Image src="/assets/e-lab/startups/Tenmin.svg" alt="Tenmin" width={120} height={48} className="h-8 md:h-10 w-auto object-contain" />
+                </a>
+                <a href="https://explaino.ai/" target="_blank" rel="noopener noreferrer" className="h-10 md:h-12 w-24 md:w-32 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300">
+                  <Image src="/assets/e-lab/startups/LogoExplaino.svg" alt="Explaino" width={160} height={48} className="h-6 md:h-8 w-auto object-contain" />
+                </a>
+                <a href="https://www.spherecast.ai/" target="_blank" rel="noopener noreferrer" className="h-10 md:h-12 w-22 md:w-28 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300">
+                  <Image src="/assets/e-lab/startups/Spherecast.webp" alt="Spherecast" width={140} height={48} className="h-8 md:h-10 w-auto object-contain" />
+                </a>
+                <a href="https://www.get-ikigai.com/" target="_blank" rel="noopener noreferrer" className="h-10 md:h-12 w-24 md:w-32 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300">
+                  <Image src="/assets/e-lab/startups/get-ilkigai.svg" alt="Get Ikigai" width={135} height={25} className="h-6 md:h-8 w-auto object-contain" />
+                </a>
+                <a href="https://www.tau-robotics.com/" target="_blank" rel="noopener noreferrer" className="h-10 md:h-12 w-22 md:w-28 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300">
+                  <Image src="/assets/e-lab/startups/TauRobotics.svg" alt="Tau Robotics" width={40} height={40} className="h-8 md:h-10 w-auto object-contain" />
+                </a>
               </div>
             </div>
           </div>
         </div>
       </Section>
 
-      <Section className="flex flex-col items-center justify-center py-20 bg-white w-full">
-        <h2 className={`text-4xl font-normal mb-12 text-black text-center uppercase ${archivoSemiExpandedBold.className}`}>Frequently Asked Questions</h2>
+      <Section className="flex flex-col items-center justify-center py-12 sm:py-12 lg:py-16 bg-white w-full">
+        <h2 className={`text-3xl md:text-4xl tracking-tight font-normal mb-8 text-black text-center uppercase ${archivoSemiExpandedBold.className}`}>Frequently Asked Questions</h2>
         <div className="w-full max-w-4xl mx-auto space-y-4">
           {faqItems.map((item, index) => (
             <div key={index} className="border-b border-gray-200 pb-4">
@@ -838,13 +600,13 @@ export default function Page() {
                 className="flex justify-between items-center cursor-pointer"
                 onClick={() => toggleFAQ(index)}
               >
-                <h3 className={`text-lg font-normal text-gray-800`}>{item.question}</h3>
+                <h3 className={`text-base font-normal text-gray-800`}>{item.question}</h3>
                 <span className={`text-2xl text-gray-400 transition-transform ${openFAQ === index ? 'rotate-45' : ''}`}>
                   +
                 </span>
               </div>
               {openFAQ === index && (
-                <div className={`mt-4 text-gray-600 text-lg animate-in slide-in-from-top-2 duration-200`}>
+                <div className={`mt-4 text-gray-600 text-base animate-in slide-in-from-top-2 duration-200`}>
                   {item.answer}
                 </div>
               )}
