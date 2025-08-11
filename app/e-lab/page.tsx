@@ -229,13 +229,17 @@ export default function Page() {
       <WhatToExpectRevamp />
 
       {/* Alumni Testimonials Carousel */}
-      <Section className="flex flex-col items-center justify-center py-12 sm:py-12 lg:py-16 bg-gradient-to-br from-gray-50 to-white w-full overflow-hidden">
+      <Section className="flex flex-col items-center justify-center py-12 sm:py-12 lg:py-16 bg-gradient-to-br from-gray-50 to-white w-full">
         <h2 className={`text-3xl md:text-4xl tracking-tight font-normal mb-4 text-black text-center uppercase ${archivoSemiExpandedBold.className}`}>Our Community</h2>
         <p className={`text-base text-gray-600 mt-4 mb-10 text-center`}>Hear from founders building the next generation of AI companies</p>
 
         {/* Animated Cards Container */}
-        <div className="relative w-full overflow-hidden">
-          <div className="flex animate-scroll-left space-x-6">
+        <div className="relative w-full overflow-hidden py-4">
+          {/* Left fade gradient */}
+          <div className="absolute left-0 top-0 bottom-0 w-32 sm:w-40 md:w-48 lg:w-56 xl:w-64 bg-gradient-to-r from-gray-50 via-gray-50/70 to-transparent z-10 pointer-events-none"></div>
+          {/* Right fade gradient */}
+          <div className="absolute right-0 top-0 bottom-0 w-32 sm:w-40 md:w-48 lg:w-56 xl:w-64 bg-gradient-to-l from-white via-gray-50/70 to-transparent z-10 pointer-events-none"></div>
+          <div className="flex animate-scroll-left space-x-6 px-4">
             {/* Card 1 - Leon Hergert */}
             <div className="flex-shrink-0 w-80 bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-shadow duration-300 flex flex-col h-72">
               <div className="flex items-start gap-4 mb-4">
@@ -563,8 +567,11 @@ export default function Page() {
                 <a href="https://www.get-ikigai.com/" target="_blank" rel="noopener noreferrer" className="h-10 md:h-12 w-24 md:w-32 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300">
                   <Image src="/assets/e-lab/startups/get-ilkigai.svg" alt="Get Ikigai" width={135} height={25} className="h-6 md:h-8 w-auto object-contain" />
                 </a>
-                <a href="https://www.tau-robotics.com/" target="_blank" rel="noopener noreferrer" className="h-10 md:h-12 w-22 md:w-28 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300">
-                  <Image src="/assets/e-lab/startups/TauRobotics.svg" alt="Tau Robotics" width={40} height={40} className="h-8 md:h-10 w-auto object-contain" />
+                <a href="https://www.tau-robotics.com/" target="_blank" rel="noopener noreferrer" className="h-10 md:h-12 w-auto flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300">
+                  <div className="flex items-center">
+                    <Image src="/assets/e-lab/startups/TauRobotics.svg" alt="Tau Robotics" width={40} height={40} className="h-8 md:h-10 w-auto object-contain mr-2 sm:mr-4" />
+                    <span className={`text-sm md:text-base font-bold text-black ${archivoSemiExpandedBold.className}`}>Tau Robotics</span>
+                  </div>
                 </a>
               </div>
               
@@ -582,8 +589,11 @@ export default function Page() {
                 <a href="https://www.get-ikigai.com/" target="_blank" rel="noopener noreferrer" className="h-10 md:h-12 w-24 md:w-32 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300">
                   <Image src="/assets/e-lab/startups/get-ilkigai.svg" alt="Get Ikigai" width={135} height={25} className="h-6 md:h-8 w-auto object-contain" />
                 </a>
-                <a href="https://www.tau-robotics.com/" target="_blank" rel="noopener noreferrer" className="h-10 md:h-12 w-22 md:w-28 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300">
-                  <Image src="/assets/e-lab/startups/TauRobotics.svg" alt="Tau Robotics" width={40} height={40} className="h-8 md:h-10 w-auto object-contain" />
+                <a href="https://www.tau-robotics.com/" target="_blank" rel="noopener noreferrer" className="h-10 md:h-12 w-auto flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300">
+                  <div className="flex items-center">
+                    <Image src="/assets/e-lab/startups/TauRobotics.svg" alt="Tau Robotics" width={40} height={40} className="h-8 md:h-10 w-auto object-contain mr-2 sm:mr-4" />
+                    <span className={`text-sm md:text-base font-bold text-black ${archivoSemiExpandedBold.className}`}>Tau Robotics</span>
+                  </div>
                 </a>
               </div>
             </div>
