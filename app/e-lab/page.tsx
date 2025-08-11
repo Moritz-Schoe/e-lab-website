@@ -243,7 +243,7 @@ export default function Page() {
                           <h3 className={`font-semibold text-2xl mb-2 transition-colors duration-300 ${isActive ? 'text-purple-700' : 'text-gray-800'} ${archivoSemiBold.className}`}>
                             {item.title}
                           </h3>
-                          <p className={`text-base transition-colors duration-300 ${isActive ? 'text-purple-600' : 'text-gray-600'} ${archivoRegular.className}`}>
+                          <p className={`text-base transition-colors duration-300 ${isActive ? 'text-purple-600' : 'text-gray-600'}`}>
                             {item.description}
                           </p>
                         </div>
@@ -259,7 +259,7 @@ export default function Page() {
         </div>
         {/* Subtitle */}
         <div className="text-center mt-20">
-                <p className={`text-lg text-gray-700 font-medium ${archivoMedium.className}`}>Your journey continues...</p>
+                <p className={`text-lg text-gray-700 font-medium`}>Your journey continues...</p>
               </div>
       </Section>
     );
@@ -657,7 +657,7 @@ export default function Page() {
                       Applications for AI E-Lab 4.0 are open!
                     </h2>
 
-                    <p className={`mx-auto mb-10 max-w-xl text-lg leading-relaxed text-slate-600 ${archivoRegular.className}`}>
+                    <p className={`mx-auto mb-10 max-w-xl text-lg leading-relaxed text-slate-600`}>
                       Be among the first to be informed about upcoming events, job opportunities, and workshops in our vibrant AI community.
                     </p>
 
@@ -684,7 +684,7 @@ export default function Page() {
                           href="https://forms.tum-ai.com/ai-e-lab-3.0-application"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className={`relative overflow-hidden backdrop-blur-2xl border border-purple-400/30 inline-flex items-center justify-center rounded-md px-6 py-3 text-base font-medium text-white ${archivoMedium.className}`}
+                          className={`relative overflow-hidden backdrop-blur-2xl border border-purple-400/30 inline-flex items-center justify-center rounded-md px-6 py-3 text-base font-medium text-white`}
                           style={{
                             background: 'linear-gradient(135deg, rgba(147, 51, 234, 0.3) 0%, rgba(126, 34, 206, 0.2) 100%)',
                             boxShadow: '0 8px 32px rgba(147, 51, 234, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 -1px 0 rgba(255, 255, 255, 0.05)',
@@ -844,7 +844,7 @@ export default function Page() {
                 </span>
               </div>
               {openFAQ === index && (
-                <div className={`mt-4 text-gray-600 text-lg animate-in slide-in-from-top-2 duration-200 ${archivoRegular.className}`}>
+                <div className={`mt-4 text-gray-600 text-lg animate-in slide-in-from-top-2 duration-200`}>
                   {item.answer}
                 </div>
               )}
