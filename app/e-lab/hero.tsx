@@ -4,6 +4,7 @@ import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import Image from "next/image";
+import { archivoSemiExpandedBold } from "../../styles/fonts";
 
 export const Hero = () => {
   return (
@@ -71,14 +72,11 @@ export const Hero = () => {
 
               <div className="space-y-3">
                 <div className="flex justify-center">
-                  <Image
-                    src="/assets/e-lab/e-lab-logo-new.png"
-                    alt="AI E-Lab Logo"
-                    width={405}
-                    height={122}
-                    className="h-24 md:h-32 w-auto"
-                    priority
-                  />
+                  <div className="h-28 md:h-40 flex items-center">
+                    <h1 className={`uppercase font-bold leading-none tracking-tight text-white ${archivoSemiExpandedBold.className} text-[80px] md:text-[128px]`}>
+                      AI E-LAB<sup className="align-super text-[0.3em]">4.0</sup>
+                    </h1>
+                  </div>
                 </div>
                 <div className="flex items-center justify-center space-x-3">
                   <span className="text-lg text-gray-300">by</span>
@@ -88,6 +86,8 @@ export const Hero = () => {
                     width={100}
                     height={35}
                     className="h-7 w-auto"
+                    quality={100}
+                    unoptimized={true}
                   />
                 </div>
               </div>
@@ -127,31 +127,61 @@ export const Hero = () => {
           <div className="mb-12 pt-5">
             <p className="text-sm text-gray-400 mb-4">Sponsored by</p>
             <div className="flex items-center justify-center space-x-6 opacity-70">
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/10 hover:bg-white/20 transition-all duration-300">
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-2 border border-white/10 hover:bg-white/20 transition-all duration-300">
                 <Image
-                  src="/assets/e-lab/partners/uvc_w.svg"
-                  alt="UVC Partners"
-                  width={70}
-                  height={35}
-                  className="h-7 w-auto object-contain"
+                  src="/assets/e-lab/partners/picus_w.png"
+                  alt="Picus"
+                  width={60}
+                  height={30}
+                  className="h-5 w-auto object-contain"
+                  quality={100}
+                  unoptimized={true}
                 />
               </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/10 hover:bg-white/20 transition-all duration-300">
-                <Image
-                  src="/assets/e-lab/partners/cherry_w.png"
-                  alt="UVC Partners"
-                  width={70}
-                  height={35}
-                  className="h-7 w-auto object-contain"
-                />
+              <div className="flex items-center space-x-6">
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-2 border border-white/10 hover:bg-white/20 transition-all duration-300">
+                  <Image
+                    src="/assets/e-lab/partners/uvc_w.svg"
+                    alt="UVC Partners"
+                    width={60}
+                    height={30}
+                    className="h-5 w-auto object-contain"
+                    quality={100}
+                    unoptimized={true}
+                  />
+                </div>
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-2 border border-white/10 hover:bg-white/20 transition-all duration-300">
+                  <Image
+                    src="/assets/e-lab/partners/cherry_w.png"
+                    alt="Cherry Ventures"
+                    width={60}
+                    height={30}
+                    className="h-5 w-auto object-contain"
+                    quality={100}
+                    unoptimized={true}
+                  />
+                </div>
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-2 border border-white/10 hover:bg-white/20 transition-all duration-300">
+                  <Image
+                    src="/assets/e-lab/partners/hv_w.png"
+                    alt="HV Capital"
+                    width={60}
+                    height={30}
+                    className="h-5 w-auto object-contain"
+                    quality={100}
+                    unoptimized={true}
+                  />
+                </div>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/10 hover:bg-white/20 transition-all duration-300">
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-2 border border-white/10 hover:bg-white/20 transition-all duration-300">
                 <Image
-                  src="/assets/e-lab/partners/hv_w.png"
-                  alt="UVC Partners"
-                  width={70}
-                  height={35}
-                  className="h-7 w-auto object-contain"
+                  src="/assets/e-lab/partners/lovable_w.png"
+                  alt="Lovable"
+                  width={60}
+                  height={30}
+                  className="h-5 w-auto object-contain"
+                  quality={100}
+                  unoptimized={true}
                 />
               </div>
             </div>
