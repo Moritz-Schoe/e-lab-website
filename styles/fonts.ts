@@ -32,5 +32,9 @@ const archivoSemiExpandedBold = Archivo({
   weight: "700",
   subsets: ["latin"],
 });
+const archivoExpandedBlack = Archivo({
+  weight: "900",
+  subsets: ["latin"],
+});
 
-export { inter, bitter, archivoLight, archivoRegular, archivoMedium, archivoSemiBold, archivoBold, archivoSemiExpandedBold };
+export { inter, bitter, archivoLight, archivoRegular, archivoMedium, archivoSemiBold, archivoBold, archivoSemiExpandedBold, archivoExpandedBlack };

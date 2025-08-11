@@ -7,7 +7,8 @@ import {
   archivoRegular, 
   archivoSemiBold, 
   archivoBold, 
-  archivoSemiExpandedBold 
+  archivoSemiExpandedBold,
+  archivoExpandedBlack 
 } from "../styles/fonts";
 
 /**
@@ -80,11 +81,33 @@ export function WhatToExpectRevamp() {
           </p>
 
           {/* Simple stats */}
-          <div className="mt-16">
-            <div className="grid grid-cols-1 gap-8 sm:grid-cols-3">
-              <Stat title={"AI E-Lab Startups since 2022"} from={0} to={38} suffix="" />
-              <Stat title={"raised by AI E-lab lab ventures"} from={0} to={5} suffix="M+" isMoney />
-              <Stat title={"AI E-Lab Iterations"} from={0} to={3} suffix="" />
+          <div className="mt-20 mb-8">
+            <div className="relative mx-auto w-full max-w-5xl overflow-hidden rounded-[28px] border-2 border-white/40 bg-white/10 shadow-2xl backdrop-blur-2xl backdrop-saturate-150 transition-transform duration-300 ease-out hover:scale-[1.01] md:hover:scale-[1.02]">
+              {/* Liquid glass tint and inner gradient */}
+              <div className="absolute inset-0 rounded-[28px] bg-gradient-to-br from-purple-200/25 via-white/10 to-indigo-200/15"></div>
+              {/* Inner subtle bevel */}
+              <div className="pointer-events-none absolute inset-0 rounded-[28px] shadow-[inset_0_1px_0_rgba(255,255,255,0.55),inset_0_-1px_0_rgba(255,255,255,0.12)]"></div>
+
+              {/* Top highlight */}
+              <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/70 to-transparent"></div>
+
+              {/* Left highlight */}
+              <div className="absolute inset-y-0 left-0 w-[1px] bg-gradient-to-b from-transparent via-white/60 to-transparent"></div>
+
+              {/* Specular reflections */}
+              <div className="pointer-events-none absolute -top-20 left-1/4 h-40 w-1/2 rotate-6 rounded-full bg-gradient-to-r from-white/60 to-transparent blur-2xl"></div>
+              <div className="pointer-events-none absolute top-1/3 -right-10 h-24 w-72 -rotate-12 rounded-full bg-gradient-to-r from-white/25 to-transparent blur-xl"></div>
+              {/* Top-left highlight bubble */}
+              <div className="pointer-events-none absolute -top-6 -left-6 h-24 w-32 rounded-full bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.9),_rgba(255,255,255,0.35)_60%,_transparent_70%)] blur-md"></div>
+              <div className="pointer-events-none absolute bottom-0 inset-x-0 h-24 bg-gradient-to-t from-slate-900/5 to-transparent"></div>
+
+              <div className="relative px-6 py-8 md:px-8 md:py-12">
+                <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
+                  <Stat title={"AI E-Lab Startups since 2022"} from={0} to={38} suffix="" />
+                  <Stat title={"raised by AI E-lab lab ventures"} from={0} to={5} suffix="M+" isMoney />
+                  <Stat title={"AI E-Lab Iterations"} from={0} to={3} suffix="" />
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -143,7 +166,7 @@ function Stat({ title, from = 0, to, suffix = "", isMoney = false }: { title: st
     <div ref={ref} className="text-center">
       <motion.div
         style={{ fontVariantNumeric: "tabular-nums" }}
-        className={`text-6xl font-bold text-purple-600 ${archivoBold.className}`}
+        className={`text-3xl md:text-4xl lg:text-5xl font-bold text-purple-600 leading-none tracking-tight ${archivoSemiExpandedBold.className}`}
       >
         {isMoney ? (
           <AnimatedText value={rounded} prefix="€" suffix={suffix} decimals={0} />
@@ -151,7 +174,9 @@ function Stat({ title, from = 0, to, suffix = "", isMoney = false }: { title: st
           <AnimatedText value={rounded} suffix={suffix} />
         )}
       </motion.div>
-      <div className={`mt-2 text-sm text-gray-600 ${archivoRegular.className}`}>{title}</div>
+      <div className={`mt-1 text-sm md:text-base text-gray-700 font-medium ${archivoRegular.className}`}>
+        {title}
+      </div>
     </div>
   );
 }
