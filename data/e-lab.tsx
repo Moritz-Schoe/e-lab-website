@@ -486,4 +486,20 @@ export const faq = [
     answer:
       "The AI E-Lab is a part-time program. Keep in mind that the more you commit, the more you get out of this program.",
   },
+  {
+    question: "Do you provide funding?",
+    answer:
+      "We do not provide direct cash investment. However, teams in the program receive access to valuable perks such as office space, cloud credits, software tools, and introductions to potential investors. Our focus is on helping you validate your idea and become investor-ready.",
+  },
+  {
+    question:
+      "Do I need a co-founder or a fully formed idea to apply?",
+    answer:
+      "No. We accept founders at all stages — whether you have a clear idea, just an area of interest, a full team, or you’re applying solo. Our program is designed to help you explore opportunities, find co-founders, and shape your concept into something fundable.",
+  },
+  {
+    question: "Can I apply if I’m still a student or working full-time?",
+    answer:
+      "Yes. Many of our participants balance studies or jobs alongside the program. The main requirement is that you can commit enough time to make consistent progress, attend key workshops, and engage with mentors.",
+  },
 ];
