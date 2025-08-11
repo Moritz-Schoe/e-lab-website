@@ -240,16 +240,12 @@ export default function Page() {
         <p className={`text-base text-gray-600 mt-4 mb-10 text-center`}>Hear more from voices from our network</p>
 
         {/* Animated Cards Container */}
-        <div
-          className="relative w-full overflow-hidden"
-          style={{
-            WebkitMaskImage:
-              "linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%)",
-            maskImage:
-              "linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%)",
-          }}
-        >
-          <div className="flex animate-scroll-left space-x-6">
+        <div className="relative w-full overflow-hidden py-4">
+          {/* Left fade gradient */}
+          <div className="absolute left-0 top-0 bottom-0 w-32 sm:w-40 md:w-48 lg:w-56 xl:w-64 bg-gradient-to-r from-gray-50 via-gray-50/70 to-transparent z-10 pointer-events-none"></div>
+          {/* Right fade gradient */}
+          <div className="absolute right-0 top-0 bottom-0 w-32 sm:w-40 md:w-48 lg:w-56 xl:w-64 bg-gradient-to-l from-white via-gray-50/70 to-transparent z-10 pointer-events-none"></div>
+          <div className="flex animate-scroll-left space-x-6 px-4">
             {/* Card 1 - Leon Hergert */}
             <div className="flex-shrink-0 w-80 bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-shadow duration-300 flex flex-col h-72">
               <div className="flex items-start gap-4 mb-4">
@@ -379,9 +375,9 @@ export default function Page() {
               <p className={`text-gray-700 text-sm leading-relaxed flex-1 overflow-hidden`}>"We went from zero to being a funded startup - the AI E-Lab accelerated our journey far beyond what we thought was possible."</p>
               <div className="flex items-center gap-3 mt-4 pt-4 border-t border-gray-100">
                 <div className="w-8 h-8 flex items-center justify-center">
-                  <Image src="/assets/e-lab/startups/Tenmin.svg" alt="Tenmin" width={32} height={24} className="object-contain" />
+                  <Image src="/assets/e-lab/partners/tenmin.svg" alt="Tenmin AI" width={32} height={24} className="object-contain" />
                 </div>
-                <span className={`text-xs text-gray-500`}>Tenmin</span>
+                <span className={`text-xs text-gray-500`}>Tenmin AI</span>
               </div>
             </div>
 
@@ -511,13 +507,12 @@ export default function Page() {
               <p className={`text-gray-700 text-sm leading-relaxed flex-1 overflow-hidden`}>"We went from zero to being a funded startup - the AI E-Lab accelerated our journey far beyond what we thought was possible."</p>
               <div className="flex items-center gap-3 mt-4 pt-4 border-t border-gray-100">
                 <div className="w-8 h-8 flex items-center justify-center">
-                  <Image src="/assets/e-lab/startups/Tenmin.svg" alt="Tenmin" width={32} height={24} className="object-contain" />
+                  <Image src="/assets/e-lab/partners/tenmin.svg" alt="Tenmin AI" width={32} height={24} className="object-contain" />
                 </div>
-                <span className={`text-xs text-gray-500`}>Tenmin</span>
+                <span className={`text-xs text-gray-500`}>Tenmin AI</span>
               </div>
             </div>
           </div>
-          {/* Edge fade handled purely by mask-image (opacity fade) for smooth appearance/disappearance */}
         </div>
       </Section>
 
