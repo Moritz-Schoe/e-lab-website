@@ -35,7 +35,7 @@
   --color-purple-950: #11041b;
 
   --animate-fade-in: fadeIn 700ms ease-out;
-  --animate-scroll-left: scrollLeft 30s linear infinite;
+  --animate-scroll-left: scrollLeft 40s linear infinite;
 
   @keyframes fadeIn {
     0% {
