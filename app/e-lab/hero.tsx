@@ -50,9 +50,15 @@ export const Hero = () => {
               <div className="space-y-3">
                 <div className="flex justify-center">
                   <div className="h-28 md:h-40 flex items-center">
-                    <h1 className={`uppercase font-bold leading-none tracking-tight text-white ${archivoSemiExpandedBold.className} text-[80px] md:text-[128px]`}>
-                      AI E-LAB<sup className="align-super text-[0.3em]">4.0</sup>
-                    </h1>
+                    <Image
+                      src="/assets/e-lab/ai-e-lab-logo.png"
+                      alt="AI E-LAB 4.0"
+                      width={400}
+                      height={160}
+                      className="h-28 md:h-40 w-auto object-contain"
+                      quality={100}
+                      unoptimized={true}
+                    />
                   </div>
                 </div>
                 <div className="flex items-center justify-center space-x-3">
