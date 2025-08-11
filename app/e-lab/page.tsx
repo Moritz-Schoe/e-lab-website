@@ -199,10 +199,10 @@ export default function Page() {
                     <>
                       <div className="w-1/2 pr-12 text-right">
                         <div className={`transition-all duration-500 ${isActive ? 'translate-x-0 opacity-100' : 'translate-x-8 opacity-60'}`}>
-                          <h3 className={`font-semibold text-2xl mb-2 transition-colors duration-300 ${isActive ? 'text-purple-700' : 'text-gray-800'} ${archivoSemiBold.className}`}>
+                          <h3 className={`font-semibold text-2xl mb-2 transition-colors duration-300 ${isActive ? 'text-purple-700' : 'text-gray-800'}`}>
                             {item.title}
                           </h3>
-                          <p className={`text-base transition-colors duration-300 ${isActive ? 'text-purple-600' : 'text-gray-600'} ${archivoRegular.className}`}>
+                          <p className={`text-base transition-colors duration-300 ${isActive ? 'text-purple-600' : 'text-gray-600'}`}>
                             {item.description}
                           </p>
                         </div>
@@ -281,7 +281,7 @@ export default function Page() {
       {/* Alumni Testimonials Carousel */}
       <Section className="flex flex-col items-center justify-center py-20 bg-gradient-to-br from-gray-50 to-white w-full overflow-hidden">
         <h2 className={`text-4xl font-normal mb-12 text-black text-center uppercase ${archivoSemiExpandedBold.className}`}>Our Community</h2>
-        <p className={`text-lg text-gray-600 mb-12 text-center ${archivoRegular.className}`}>Hear from founders building the next generation of AI companies</p>
+        <p className={`text-lg text-gray-600 mb-12 text-center`}>Hear from founders building the next generation of AI companies</p>
 
         {/* Animated Cards Container */}
         <div className="relative w-full overflow-hidden">
@@ -299,17 +299,17 @@ export default function Page() {
                   />
                 </div>
                 <div className="flex-1">
-                  <h3 className={`font-semibold text-lg text-gray-900 ${archivoSemiBold.className}`}>Leon Hergert</h3>
-                  <p className={`text-sm text-gray-600 ${archivoRegular.className}`}>Co-Founder @ Spherecast</p>
-                  <p className={`text-xs text-purple-600 font-medium ${archivoMedium.className}`}>AI E-Lab 1.0</p>
+                  <h3 className={`font-semibold text-lg text-gray-900`}>Leon Hergert</h3>
+                  <p className={`text-sm text-gray-600`}>Co-Founder @ Spherecast</p>
+                  <p className={`text-xs text-purple-600 font-medium`}>AI E-Lab 1.0</p>
                 </div>
               </div>
-              <p className={`text-gray-700 text-sm leading-relaxed flex-1 ${archivoRegular.className}`}>"The AI E-Lab gave us the foundation to build Spherecast from idea to YC. The community and mentorship were game-changing."</p>
+              <p className={`text-gray-700 text-sm leading-relaxed flex-1`}>"The AI E-Lab gave us the foundation to build Spherecast from idea to YC. The community and mentorship were game-changing."</p>
               <div className="flex items-center gap-3 mt-4 pt-4 border-t border-gray-100">
                 <div className="w-8 h-8 flex items-center justify-center">
                   <Image src="/assets/e-lab/partners/YC.png" alt="Y Combinator" width={32} height={24} className="object-contain" />
                 </div>
-                <span className={`text-xs text-gray-500 ${archivoRegular.className}`}>Y Combinator S24</span>
+                <span className={`text-xs text-gray-500`}>Y Combinator S24</span>
               </div>
             </div>
 
@@ -326,17 +326,17 @@ export default function Page() {
                   />
                 </div>
                 <div className="flex-1">
-                  <h3 className={`font-semibold text-lg text-gray-900 ${archivoSemiBold.className}`}>Benedikt Wieser</h3>
-                  <p className={`text-sm text-gray-600 ${archivoRegular.className}`}>Winner AI E-Lab 2.0</p>
-                  <p className={`text-xs text-purple-600 font-medium ${archivoMedium.className}`}>AI E-Lab 2.0</p>
+                  <h3 className={`font-semibold text-lg text-gray-900`}>Benedikt Wieser</h3>
+                  <p className={`text-sm text-gray-600`}>Winner AI E-Lab 2.0</p>
+                  <p className={`text-xs text-purple-600 font-medium`}>AI E-Lab 2.0</p>
                 </div>
               </div>
-              <p className={`text-gray-700 text-sm leading-relaxed flex-1 ${archivoRegular.className}`}>"The AI E-Lab is the best program for creating top-end entrepreneurs that has ever existed. The network is incredible."</p>
+              <p className={`text-gray-700 text-sm leading-relaxed flex-1`}>"The AI E-Lab is the best program for creating top-end entrepreneurs that has ever existed. The network is incredible."</p>
               <div className="flex items-center gap-3 mt-4 pt-4 border-t border-gray-100">
                 <div className="w-8 h-8 flex items-center justify-center">
                   <Image src="/assets/e-lab/partners/CDTM.png" alt="CDTM" width={32} height={24} className="object-contain" />
                 </div>
-                <span className={`text-xs text-gray-500 ${archivoRegular.className}`}>CDTM Alumni</span>
+                <span className={`text-xs text-gray-500`}>CDTM Alumni</span>
               </div>
             </div>
 
@@ -353,17 +353,17 @@ export default function Page() {
                   />
                 </div>
                 <div className="flex-1">
-                  <h3 className={`font-semibold text-lg text-gray-900 ${archivoSemiBold.className}`}>Leonardo Benini</h3>
-                  <p className={`text-sm text-gray-600 ${archivoRegular.className}`}>Founder @ Stealth Startup</p>
-                  <p className={`text-xs text-purple-600 font-medium ${archivoMedium.className}`}>AI E-Lab 3.0</p>
+                  <h3 className={`font-semibold text-lg text-gray-900`}>Leonardo Benini</h3>
+                  <p className={`text-sm text-gray-600`}>Founder @ Stealth Startup</p>
+                  <p className={`text-xs text-purple-600 font-medium`}>AI E-Lab 3.0</p>
                 </div>
               </div>
-              <p className={`text-gray-700 text-sm leading-relaxed flex-1 ${archivoRegular.className}`}>"From zero to funded startup - the AI E-Lab accelerated our journey beyond what we thought possible."</p>
+              <p className={`text-gray-700 text-sm leading-relaxed flex-1`}>"From zero to funded startup - the AI E-Lab accelerated our journey beyond what we thought possible."</p>
               <div className="flex items-center gap-3 mt-4 pt-4 border-t border-gray-100">
                 <div className="w-8 h-8 flex items-center justify-center">
                   <Image src="/assets/e-lab/partners/ewor.png" alt="EWOR" width={32} height={24} className="object-contain" />
                 </div>
-                <span className={`text-xs text-gray-500 ${archivoRegular.className}`}>EWOR Fellow</span>
+                <span className={`text-xs text-gray-500`}>EWOR Fellow</span>
               </div>
             </div>
 
@@ -380,17 +380,17 @@ export default function Page() {
                   />
                 </div>
                 <div className="flex-1">
-                  <h3 className={`font-semibold text-lg text-gray-900 ${archivoSemiBold.className}`}>Oliver Schoppe</h3>
-                  <p className={`text-sm text-gray-600 ${archivoRegular.className}`}>Principal @ UVC Partners</p>
-                  <p className={`text-xs text-purple-600 font-medium ${archivoMedium.className}`}>Mentor & Investor</p>
+                  <h3 className={`font-semibold text-lg text-gray-900`}>Oliver Schoppe</h3>
+                  <p className={`text-sm text-gray-600`}>Principal @ UVC Partners</p>
+                  <p className={`text-xs text-purple-600 font-medium`}>Mentor & Investor</p>
                 </div>
               </div>
-              <p className={`text-gray-700 text-sm leading-relaxed flex-1 ${archivoRegular.className}`}>"The quality of founders coming out of AI E-Lab is exceptional. We're proud to support this community."</p>
+              <p className={`text-gray-700 text-sm leading-relaxed flex-1`}>"The quality of founders coming out of AI E-Lab is exceptional. We're proud to support this community."</p>
               <div className="flex items-center gap-3 mt-4 pt-4 border-t border-gray-100">
                 <div className="w-8 h-8 flex items-center justify-center">
                   <Image src="/assets/e-lab/partners/uvc_b.png" alt="UVC Partners" width={32} height={24} className="object-contain" />
                 </div>
-                <span className={`text-xs text-gray-500 ${archivoRegular.className}`}>UVC Partners</span>
+                <span className={`text-xs text-gray-500`}>UVC Partners</span>
               </div>
             </div>
 
@@ -407,17 +407,17 @@ export default function Page() {
                   />
                 </div>
                 <div className="flex-1">
-                  <h3 className={`font-semibold text-lg text-gray-900 ${archivoSemiBold.className}`}>Leon Hergert</h3>
-                  <p className={`text-sm text-gray-600 ${archivoRegular.className}`}>Co-Founder @ Spherecast</p>
-                  <p className={`text-xs text-purple-600 font-medium ${archivoMedium.className}`}>AI E-Lab 1.0</p>
+                  <h3 className={`font-semibold text-lg text-gray-900`}>Leon Hergert</h3>
+                  <p className={`text-sm text-gray-600`}>Co-Founder @ Spherecast</p>
+                  <p className={`text-xs text-purple-600 font-medium`}>AI E-Lab 1.0</p>
                 </div>
               </div>
-              <p className={`text-gray-700 text-sm leading-relaxed flex-1 ${archivoRegular.className}`}>"The AI E-Lab gave us the foundation to build Spherecast from idea to YC. The community and mentorship were game-changing."</p>
+              <p className={`text-gray-700 text-sm leading-relaxed flex-1`}>"The AI E-Lab gave us the foundation to build Spherecast from idea to YC. The community and mentorship were game-changing."</p>
               <div className="flex items-center gap-3 mt-4 pt-4 border-t border-gray-100">
                 <div className="w-8 h-8 flex items-center justify-center">
                   <Image src="/assets/e-lab/partners/YC.png" alt="Y Combinator" width={32} height={24} className="object-contain" />
                 </div>
-                <span className={`text-xs text-gray-500 ${archivoRegular.className}`}>Y Combinator S24</span>
+                <span className={`text-xs text-gray-500`}>Y Combinator S24</span>
               </div>
             </div>
 
@@ -433,17 +433,17 @@ export default function Page() {
                   />
                 </div>
                 <div className="flex-1">
-                  <h3 className={`font-semibold text-lg text-gray-900 ${archivoSemiBold.className}`}>Benedikt Wieser</h3>
-                  <p className={`text-sm text-gray-600 ${archivoRegular.className}`}>Winner AI E-Lab 2.0</p>
-                  <p className={`text-xs text-purple-600 font-medium ${archivoMedium.className}`}>AI E-Lab 2.0</p>
+                  <h3 className={`font-semibold text-lg text-gray-900`}>Benedikt Wieser</h3>
+                  <p className={`text-sm text-gray-600`}>Winner AI E-Lab 2.0</p>
+                  <p className={`text-xs text-purple-600 font-medium`}>AI E-Lab 2.0</p>
                 </div>
               </div>
-              <p className={`text-gray-700 text-sm leading-relaxed flex-1 ${archivoRegular.className}`}>"The AI E-Lab is the best program for creating top-end entrepreneurs that has ever existed. The network is incredible."</p>
+              <p className={`text-gray-700 text-sm leading-relaxed flex-1`}>"The AI E-Lab is the best program for creating top-end entrepreneurs that has ever existed. The network is incredible."</p>
               <div className="flex items-center gap-3 mt-4 pt-4 border-t border-gray-100">
                 <div className="w-8 h-8 flex items-center justify-center">
                   <Image src="/assets/e-lab/partners/CDTM.png" alt="CDTM" width={32} height={24} className="object-contain" />
                 </div>
-                <span className={`text-xs text-gray-500 ${archivoRegular.className}`}>CDTM Alumni</span>
+                <span className={`text-xs text-gray-500`}>CDTM Alumni</span>
               </div>
             </div>
 
@@ -459,17 +459,17 @@ export default function Page() {
                   />
                 </div>
                 <div className="flex-1">
-                  <h3 className={`font-semibold text-lg text-gray-900 ${archivoSemiBold.className}`}>Leonardo Benini</h3>
-                  <p className={`text-sm text-gray-600 ${archivoRegular.className}`}>Founder @ Stealth Startup</p>
-                  <p className={`text-xs text-purple-600 font-medium ${archivoMedium.className}`}>AI E-Lab 3.0</p>
+                  <h3 className={`font-semibold text-lg text-gray-900`}>Leonardo Benini</h3>
+                  <p className={`text-sm text-gray-600`}>Founder @ Stealth Startup</p>
+                  <p className={`text-xs text-purple-600 font-medium`}>AI E-Lab 3.0</p>
                 </div>
               </div>
-              <p className={`text-gray-700 text-sm leading-relaxed flex-1 ${archivoRegular.className}`}>"From zero to funded startup - the AI E-Lab accelerated our journey beyond what we thought possible."</p>
+              <p className={`text-gray-700 text-sm leading-relaxed flex-1`}>"From zero to funded startup - the AI E-Lab accelerated our journey beyond what we thought possible."</p>
               <div className="flex items-center gap-3 mt-4 pt-4 border-t border-gray-100">
                 <div className="w-8 h-8 flex items-center justify-center">
                   <Image src="/assets/e-lab/partners/ewor.png" alt="EWOR" width={32} height={24} className="object-contain" />
                 </div>
-                <span className={`text-xs text-gray-500 ${archivoRegular.className}`}>EWOR Fellow</span>
+                <span className={`text-xs text-gray-500`}>EWOR Fellow</span>
               </div>
             </div>
 
@@ -484,18 +484,18 @@ export default function Page() {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="flex-1">
-                  <h3 className={`font-semibold text-lg text-gray-900 ${archivoSemiBold.className}`}>Oliver Schoppe</h3>
-                  <p className={`text-sm text-gray-600 ${archivoRegular.className}`}>Principal @ UVC Partners</p>
-                  <p className={`text-xs text-purple-600 font-medium ${archivoMedium.className}`}>Mentor & Investor</p>
+                <div className="flex-1">  
+                  <h3 className={`font-semibold text-lg text-gray-900`}>Oliver Schoppe</h3>
+                  <p className={`text-sm text-gray-600`}>Principal @ UVC Partners</p>
+                  <p className={`text-xs text-purple-600 font-medium`}>Mentor & Investor</p>
                 </div>
               </div>
-              <p className={`text-gray-700 text-sm leading-relaxed flex-1 ${archivoRegular.className}`}>"The quality of founders coming out of AI E-Lab is exceptional. We're proud to support this community."</p>
+              <p className={`text-gray-700 text-sm leading-relaxed flex-1`}>"The quality of founders coming out of AI E-Lab is exceptional. We're proud to support this community."</p>
               <div className="flex items-center gap-3 mt-4 pt-4 border-t border-gray-100">
                 <div className="w-8 h-8 flex items-center justify-center">
                   <Image src="/assets/e-lab/partners/uvc_b.png" alt="UVC Partners" width={32} height={24} className="object-contain" />
                 </div>
-                <span className={`text-xs text-gray-500 ${archivoRegular.className}`}>UVC Partners</span>
+                  <span className={`text-xs text-gray-500`}>UVC Partners</span>
               </div>
             </div>
           </div>
@@ -627,7 +627,7 @@ export default function Page() {
               className="w-full h-64 object-cover rounded"
             />
           </div>
-          <div className={`w-full md:w-1/2 space-y-4 ${archivoRegular.className}`}>
+            <div className={`w-full md:w-1/2 space-y-4`}>
             <p className="text-gray-800 text-lg">Work from the TUM.ai headquarters, the home base of Europe's leading student AI initiatives.</p>
             <p className="text-gray-800 text-lg">You'll share the space with founders, builders, and AI talents from the TUM.ai network.</p>
             <p className="text-gray-800 text-lg">Get your designated Desks, monitors, whiteboards — and a community that's building every day.</p>
@@ -720,7 +720,7 @@ export default function Page() {
       {/* Notable Startups Section */}
       <Section className="py-12 md:py-16 bg-gray-50 w-full overflow-hidden">
         <div className="max-w-6xl mx-auto text-center px-4">
-          <p className={`text-sm text-gray-500 mb-8 uppercase tracking-wider ${archivoRegular.className}`}>
+          <p className={`text-sm text-gray-500 mb-8 uppercase tracking-wider`}>
             Notable AI E-Lab Startups
           </p>
           
@@ -838,7 +838,7 @@ export default function Page() {
                 className="flex justify-between items-center cursor-pointer"
                 onClick={() => toggleFAQ(index)}
               >
-                <h3 className={`text-lg font-normal text-gray-800 ${archivoMedium.className}`}>{item.question}</h3>
+                <h3 className={`text-lg font-normal text-gray-800`}>{item.question}</h3>
                 <span className={`text-2xl text-gray-400 transition-transform ${openFAQ === index ? 'rotate-45' : ''}`}>
                   +
                 </span>
