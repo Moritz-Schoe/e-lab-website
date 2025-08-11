@@ -114,11 +114,11 @@ export default function Page() {
     const timelineItems = [
       { title: "Start", description: "October", side: "right" },
       { title: "Onboarding Weekend", description: "3 days intensive", side: "left" },
-      { title: "Education Sessions", description: "Weekly sessions", side: "right" },
+      { title: "Education Sessions", description: "Learning", side: "right" },
       { title: "Build & Iterate I", description: "4 weeks", side: "left" },
-      { title: "Litmus Test", description: "Pitch event", side: "right" },
-      { title: "Build & Iterate II", description: "5 weeks", side: "left" },
-      { title: "Pre-Demo Day Pitch", description: "Selection Day", side: "right" },
+      { title: "Midterm-Pitch", description: "Initial Feedback", side: "right" },
+      { title: "Build & Iterate II", description: "6 weeks", side: "left" },
+      { title: "Pre-Demo Day Pitch", description: "The Final Test", side: "right" },
       { title: "Demo Day", description: "January", side: "left" }
     ];
 

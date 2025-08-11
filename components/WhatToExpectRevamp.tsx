@@ -132,9 +132,11 @@ function Stat({ title, from = 0, to, suffix = "", isMoney = false }: { title: st
         className={`text-6xl font-bold ${archivoBold.className}`}
       >
         <span
-          className="inline-block rounded-xl px-3 py-1 text-white shadow-md shadow-purple-500/20"
+          className="inline-block rounded-xl px-3 py-1 text-white shadow-lg backdrop-blur-2xl border border-white/30"
           style={{
-            background: "linear-gradient(135deg,#7C3AED 0%,#A855F7 33%,#EC4899 66%,#6366F1 100%)",
+            background: "linear-gradient(135deg, rgba(124, 58, 237, 0.5) 0%, rgba(168, 85, 247, 0.45) 33%, rgba(236, 72, 153, 0.45) 66%, rgba(99, 102, 241, 0.5) 100%)",
+            backdropFilter: "blur(20px) saturate(150%)",
+            boxShadow: "0 8px 32px rgba(124, 58, 237, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.3), inset 0 -1px 0 rgba(255, 255, 255, 0.1)"
           }}
         >
           {isMoney ? (
