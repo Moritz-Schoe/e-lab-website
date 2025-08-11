@@ -229,7 +229,7 @@ export default function Page() {
       <WhatToExpectRevamp />
 
       {/* Alumni Testimonials Carousel */}
-      <Section className="flex flex-col items-center justify-center py-12 sm:py-12 lg:py-16 bg-gradient-to-br from-gray-50 to-white w-full overflow-hidden">
+      <Section className="flex flex-col items-center justify-center py-12 sm:py-12 lg:py-16 bg-gradient-to-br from-gray-50 to-white w-full">
         <h2 className={`text-3xl md:text-4xl tracking-tight font-normal mb-4 text-black text-center uppercase ${archivoSemiExpandedBold.className}`}>Our Community</h2>
         <p className={`text-base text-gray-600 mt-4 mb-10 text-center`}>Hear from founders building the next generation of AI companies</p>
 
@@ -578,8 +578,14 @@ export default function Page() {
                 <a href="https://www.get-ikigai.com/" target="_blank" rel="noopener noreferrer" className="h-10 md:h-12 w-24 md:w-32 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300">
                   <Image src="/assets/e-lab/startups/get-ilkigai.svg" alt="Get Ikigai" width={135} height={25} className="h-6 md:h-8 w-auto object-contain" />
                 </a>
-                <a href="https://www.tau-robotics.com/" target="_blank" rel="noopener noreferrer" className="h-10 md:h-12 w-22 md:w-28 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300">
-                  <Image src="/assets/e-lab/startups/TauRobotics.svg" alt="Tau Robotics" width={40} height={40} className="h-8 md:h-10 w-auto object-contain" />
+                <a href="https://www.tau-robotics.com/" target="_blank" rel="noopener noreferrer" className="h-10 md:h-12 w-auto flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300">
+                  <div className="flex items-center">
+                    <Image src="/assets/e-lab/startups/TauRobotics.svg" alt="Tau Robotics" width={40} height={40} className="h-8 md:h-10 w-auto object-contain mr-2 sm:mr-4" />
+                    <span className={`text-sm md:text-base font-bold text-black ${archivoSemiExpandedBold.className}`}>Tau Robotics</span>
+                  </div>
+                </a>
+                <a href="https://www.helmit.org/" target="_blank" rel="noopener noreferrer" className="h-10 md:h-12 w-22 md:w-28 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300">
+                  <Image src="/assets/e-lab/startups/helmit.svg" alt="Helmit" width={40} height={40} className="h-8 md:h-10 w-auto object-contain" />
                 </a>
                 <a href="https://www.helmit.org/" target="_blank" rel="noopener noreferrer" className="h-10 md:h-12 w-22 md:w-28 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300">
                   <Image src="/assets/e-lab/startups/helmit.svg" alt="Helmit" width={40} height={40} className="h-8 md:h-10 w-auto object-contain" />
@@ -600,8 +606,14 @@ export default function Page() {
                 <a href="https://www.get-ikigai.com/" target="_blank" rel="noopener noreferrer" className="h-10 md:h-12 w-24 md:w-32 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300">
                   <Image src="/assets/e-lab/startups/get-ilkigai.svg" alt="Get Ikigai" width={135} height={25} className="h-6 md:h-8 w-auto object-contain" />
                 </a>
-                <a href="https://www.tau-robotics.com/" target="_blank" rel="noopener noreferrer" className="h-10 md:h-12 w-22 md:w-28 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300">
-                  <Image src="/assets/e-lab/startups/TauRobotics.svg" alt="Tau Robotics" width={40} height={40} className="h-8 md:h-10 w-auto object-contain" />
+                <a href="https://www.tau-robotics.com/" target="_blank" rel="noopener noreferrer" className="h-10 md:h-12 w-auto flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300">
+                  <div className="flex items-center">
+                    <Image src="/assets/e-lab/startups/TauRobotics.svg" alt="Tau Robotics" width={40} height={40} className="h-8 md:h-10 w-auto object-contain mr-2 sm:mr-4" />
+                    <span className={`text-sm md:text-base font-bold text-black ${archivoSemiExpandedBold.className}`}>Tau Robotics</span>
+                  </div>
+                </a>
+                <a href="https://www.helmit.org/" target="_blank" rel="noopener noreferrer" className="h-10 md:h-12 w-22 md:w-28 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300">
+                  <Image src="/assets/e-lab/startups/helmit.svg" alt="Helmit" width={40} height={40} className="h-8 md:h-10 w-auto object-contain" />
                 </a>
                 <a href="https://www.helmit.org/" target="_blank" rel="noopener noreferrer" className="h-10 md:h-12 w-22 md:w-28 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300">
                   <Image src="/assets/e-lab/startups/helmit.svg" alt="Helmit" width={40} height={40} className="h-8 md:h-10 w-auto object-contain" />

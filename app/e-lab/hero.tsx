@@ -6,6 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { archivoSemiExpandedBold } from "../../styles/fonts";
 
+
 export const Hero = () => {
   return (
     <section className="relative h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-black overflow-hidden">
@@ -20,52 +21,56 @@ export const Hero = () => {
         <div className="absolute inset-0 bg-[linear-gradient(rgba(168,85,247,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(168,85,247,0.03)_1px,transparent_1px)] bg-[size:50px_50px]"></div>
       </div>
 
-      {/* Main content - centered vertically */}
-      <div className="relative z-10 flex h-full w-full items-center justify-center text-white">
-        <div className="max-w-3xl mx-auto text-center p-4">
-          <div className="space-y-3">
-            {/* Logo and Title */}
-            <div className="flex flex-col items-center space-y-2">
-              <div className="flex justify-center">
-                {/* <Image
-                  src="/assets/e-lab/ai e-lab - glowing.png"
-                  alt="AI E-Lab"
-                  width={300}
-                  height={100}
-                  priority
-                  className="w-auto h-8 md:h-10 lg:h-12 object-contain max-w-full"
-                /> */}
-                <h1 className={`relative inline-block text-7xl font-round mb-6 text-white text-center uppercase ${archivoSemiExpandedBold.className}`}>
-                  AI E-Lab
-                  <span className="relative">
-                    <span
-                      className="absolute -top-3 -right-6 text-base font-bold"
-                      style={{
-                        fontSize: '1.15rem',
-                        lineHeight: 1,
-                        letterSpacing: 0,
-                        fontFamily: archivoSemiExpandedBold.style.fontFamily,
-                      }}
-                    >
-                      4.0
-                    </span>
-                  </span>
-                </h1>
+      {/* Main content */}
+      <div className="relative z-10 flex h-full w-full text-white">
+        <div className="max-w-6xl mx-auto text-center p-8 flex flex-col justify-between h-full">
 
-              </div>
-              <div className="flex items-center justify-center space-x-2">
-                <span className="text-sm md:text-base text-gray-300">by</span>
-                <Image
-                  src="/assets/logo_new_white_standard.png"
-                  alt="TUM.ai Logo"
-                  width={80}
-                  height={25}
-                  className="h-3 md:h-4 w-auto"
-                />
+          {/* Main content area */}
+          <div className="flex-1 flex flex-col justify-center space-y-8">
+            {/* Sphere and Title */}
+            <div className="flex flex-col items-center space-y-4 pt-8">
+              {/* <div className="relative">
+                <div className="w-32 h-32 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 p-1 shadow-2xl shadow-purple-500/30">
+                  <div className="w-full h-full rounded-full bg-black flex items-center justify-center overflow-hidden">
+                    <video
+                      muted
+                      autoPlay
+                      loop
+                      playsInline
+                      className="w-24 h-24 object-contain"
+                    >
+                      <source src="/assets/e-lab/sphere-e-lab.mp4" />
+                    </video>
+                  </div>
+                </div>
+                {/* Pulsing ring
+                <div className="absolute inset-0 rounded-full border-2 border-purple-400 animate-ping opacity-30"></div>
+              </div> */}
+
+              <div className="space-y-3">
+                <div className="flex justify-center">
+                  <div className="h-28 md:h-40 flex items-center">
+                    <h1 className={`uppercase font-bold leading-none tracking-tight text-white ${archivoSemiExpandedBold.className} text-[80px] md:text-[128px]`}>
+                      AI E-LAB<sup className="align-super text-[0.3em]">4.0</sup>
+                    </h1>
+                  </div>
+                </div>
+                <div className="flex items-center justify-center space-x-3">
+                  <span className="text-lg text-gray-300">by</span>
+                  <Image
+                    src="/assets/logo_new_white_standard.png"
+                    alt="TUM.ai Logo"
+                    width={100}
+                    height={35}
+                    className="h-7 w-auto"
+                    quality={100}
+                    unoptimized={true}
+                  />
               </div>
             </div>
           </div>
         </div>
+      </div>
       </div>
 
       {/* CTA Button - positioned between content and sponsors */}
@@ -87,41 +92,69 @@ export const Hero = () => {
         </a>
       </div>
 
-      {/* Sponsor section - moved to bottom */}
-      <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2 z-15 w-full max-w-5xl px-8">
-        <div className="text-center">
-          <p className="text-sm text-gray-400 mb-4">Sponsored by</p>
-          <div className="flex items-center justify-center space-x-6 opacity-80">
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/10 hover:bg-white/20 transition-all duration-300">
-              <Image
-                src="/assets/e-lab/partners/uvc_w.svg"
-                alt="Partner"
-                width={70}
-                height={35}
-                className="h-6 w-auto object-contain"
-              />
-            </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/10 hover:bg-white/20 transition-all duration-300">
-              <Image
-                src="/assets/e-lab/partners/lovable_w.png"
-                alt="Partner"
-                width={70}
-                height={35}
-                className="h-6 w-auto object-contain"
-              />
-            </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/10 hover:bg-white/20 transition-all duration-300">
-              <Image
-                src="/assets/e-lab/partners/cherry_w.png"
-                alt="Cherry Ventures"
-                width={70}
-                height={35}
-                className="h-6 w-auto object-contain"
-              />
+          {/* Sponsor section - positioned at bottom */}
+          <div className="mb-12 pt-5">
+            <p className="text-sm text-gray-400 mb-4">Sponsored by</p>
+            <div className="flex items-center justify-center space-x-6 opacity-70">
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-2 border border-white/10 hover:bg-white/20 transition-all duration-300">
+                <Image
+                  src="/assets/e-lab/partners/picus_w.png"
+                  alt="Picus"
+                  width={60}
+                  height={30}
+                  className="h-5 w-auto object-contain"
+                  quality={100}
+                  unoptimized={true}
+                />
+              </div>
+              <div className="flex items-center space-x-6">
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-2 border border-white/10 hover:bg-white/20 transition-all duration-300">
+                  <Image
+                    src="/assets/e-lab/partners/uvc_w.svg"
+                    alt="UVC Partners"
+                    width={60}
+                    height={30}
+                    className="h-5 w-auto object-contain"
+                    quality={100}
+                    unoptimized={true}
+                  />
+                </div>
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-2 border border-white/10 hover:bg-white/20 transition-all duration-300">
+                  <Image
+                    src="/assets/e-lab/partners/cherry_w.png"
+                    alt="Cherry Ventures"
+                    width={60}
+                    height={30}
+                    className="h-5 w-auto object-contain"
+                    quality={100}
+                    unoptimized={true}
+                  />
+                </div>
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-2 border border-white/10 hover:bg-white/20 transition-all duration-300">
+                  <Image
+                    src="/assets/e-lab/partners/hv_w.png"
+                    alt="HV Capital"
+                    width={60}
+                    height={30}
+                    className="h-5 w-auto object-contain"
+                    quality={100}
+                    unoptimized={true}
+                  />
+                </div>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-2 border border-white/10 hover:bg-white/20 transition-all duration-300">
+                <Image
+                  src="/assets/e-lab/partners/lovable_w.png"
+                  alt="Lovable"
+                  width={60}
+                  height={30}
+                  className="h-5 w-auto object-contain"
+                  quality={100}
+                  unoptimized={true}
+                />
+              </div>
             </div>
           </div>
-        </div>
-      </div>
 
       {/* Scroll indicator */}
       <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20">
